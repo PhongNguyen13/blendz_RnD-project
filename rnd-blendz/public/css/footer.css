@@ -1,0 +1,12 @@
+footer {
+  position: relative;
+  width: 100%;
+  /* padding: 40px 10vw; */
+  /* padding-bottom: 80px; */
+  background: #383838;
+}
+
+.info {
+  color: rgba(255, 255, 255, 0.75);
+  margin: 20px 0;
+}
