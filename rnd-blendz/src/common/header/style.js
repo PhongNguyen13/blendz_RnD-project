@@ -24,12 +24,13 @@ export const Nav = styled.div`
     margin: 0 auto;
 `;
 
-export const NavItem = styled.div`
+export const NavItem = styled.a`
     line-height: 56px;
     padding: 0 15px;
     font-size: 20px;
     float: right;
     color: #FDFEFE;
+    text-decoration : none ;
 `;
 
 export const Addition = styled.div`

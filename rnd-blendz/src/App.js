@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Header from './common/header/index.js'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Home from './pages/home'
-import Shop from './pages/shop'
+import Home from './pages/home';
+import Shop from './pages/shop';
+import Help from './pages/help';
+import About from './pages/about';
 
 
 class App extends Component {
@@ -16,8 +18,8 @@ class App extends Component {
         <Routes>
         <Route path="/" exact element={<Home />}> </Route>
         <Route path="/shop" exact element={<Shop />}> </Route>
-
-
+        <Route path="/help" exact element={<Help />}> </Route>
+        <Route path="/about" exact element={<About />}> </Route>
         </Routes>
         </div>
       </Router>

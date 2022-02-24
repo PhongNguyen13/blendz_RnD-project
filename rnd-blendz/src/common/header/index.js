@@ -7,10 +7,10 @@ class Header extends Component {
             <HeaderWrapper>
                 <Logo href="/"/>
                 <Nav>
-                    <NavItem>About</NavItem>                       
-                    <NavItem>Help</NavItem>                 
-                    <NavItem>Shop</NavItem>              
-                    <NavItem>Home</NavItem>    
+                    <NavItem href="./about">About</NavItem>                                         
+                    <NavItem href="./help">Help</NavItem>                 
+                    <NavItem href="./shop">Shop</NavItem>              
+                    <NavItem href="/" >Home</NavItem>    
                 </Nav>
                 <Addition>
                     <Button>Cart</Button>
