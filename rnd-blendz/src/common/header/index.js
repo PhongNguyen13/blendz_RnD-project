@@ -13,8 +13,8 @@ class Header extends Component {
                     <NavItem href="/" >Home</NavItem>    
                 </Nav>
                 <Addition>
-                    <Button>Cart</Button>
-                    <Button>Login</Button>
+                    <Button href="/cart">Cart</Button>
+                    <Button href="/login">Login</Button>
                 </Addition>
             </HeaderWrapper>
         )

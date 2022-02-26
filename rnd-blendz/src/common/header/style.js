@@ -39,9 +39,9 @@ export const Addition = styled.div`
     top: 0;
     height: 56px;
     width:350px;
-`
+`;
 
-export const Button = styled.div`
+export const Button = styled.a`
     float: right;
     color: #FDFEFE;
     background: #A0A0A0  ;
@@ -51,4 +51,5 @@ export const Button = styled.div`
     line-height:38px;
     border-radius: 5px;
     border: 1px solid #9EA482;
-`
+    text-decoration : none ;
+`;
