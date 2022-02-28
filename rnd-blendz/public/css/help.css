@@ -2,9 +2,10 @@
 @import "footer.css";
 
 .container-fluid {
-  width: 40%;
+  width: 70%;
   margin: 0 auto;
   margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .container-fluid h2 {
@@ -25,6 +26,7 @@
 
 .accordion {
   width: 100%;
+  height: fit-content;
   padding: 0 5px;
   border: 2px solid #6db5ff;
   cursor: pointer;
@@ -38,7 +40,7 @@
   margin: 0 10px 0 0;
   width: 30px;
   height: 30px;
-  background: url(img/plus.jpg) no-repeat 8px 7px #6db5ff;
+  background: 8px 7px #6db5ff;
   border-radius: 50%;
   float: left;
   transition: all 0.5s ease-in;
@@ -54,7 +56,10 @@
 }
 
 .active .icon {
-  background: url(img/minus.jpg) no-repeat 8px -25px #fff;
+  background: 8px -25px #fff;
+  border-radius: 50%;
+  float: left;
+  transition: all 0.5s ease-in;
 }
 
 .active {
