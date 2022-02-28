@@ -8,7 +8,6 @@ import About from './pages/about';
 import Login from "./pages/login/index.js";
 import Cart from "./pages/cart/index.js";
 import Footer from "./common/footer/index.js";
-import LocationBar from "./common/LocationBar/index.js";
 
 
 class App extends Component {
@@ -18,7 +17,6 @@ class App extends Component {
       <div>
       <Router>
         <Header />
-        {/*<LocationBar />*/}
         <div>
         <Routes>
         <Route path="/" exact element={<Home />}> </Route>
