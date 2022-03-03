@@ -8,8 +8,6 @@
   outline: none;
   list-style: none;
   text-decoration: none;
-  font-family: "roboto", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
 }
 
 .about-conatiner {
@@ -22,7 +20,7 @@
 
 .about h1 {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 100px;
   margin-bottom: 40px;
   color: #444444;
   font-family: "roboto", cursive;
@@ -42,4 +40,6 @@
   font-size: 15px;
   line-height: 1.5;
   color: #a9a9a9;
+  font-family: "roboto", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
