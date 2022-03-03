@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { HeaderWrapper, Logo, Nav, NavItem, Addition, Button, NavSearch } from './style';
+import { HeaderWrapper, Logo, Nav, NavItem, Addition, Button } from './style';
 import { connect } from 'react-redux'; 
 import { actionCreators } from './store';
 import { actionCreators as loginActionCreators } from '../../pages/login/store/all.js';
@@ -11,18 +11,17 @@ class Header extends Component {
 
 
     render() {
-        const { focused, login, logout} = this.props;
+        const { login, logout} = this.props;
         return(
             <HeaderWrapper>
                 <Logo href="/"/>
                 <Nav>                        
-                    <NavSearch className={focused ? 'focused' : ''}
-                    onFocus={this.props.handleInputFocus}
-                    onBlur={this.props.handleInputBlur}
-                    />
-                    <NavItem>About</NavItem>                                         
-                    <NavItem>Help</NavItem>                 
-                    <NavItem>Shop</NavItem>              
+                    <NavItem href="about">About</NavItem>
+                    <NavItem>|</NavItem>                                          
+                    <NavItem href="help">Help</NavItem>
+                    <NavItem>|</NavItem>                  
+                    <NavItem href="/shop">Shop</NavItem>
+                    <NavItem>|</NavItem>              
                     <NavItem href="/">Home</NavItem>    
                 </Nav>
                 <Addition>
@@ -45,13 +44,6 @@ const mapStateToProps = (state) => {
 
 const mapDispathToProprs = (dispatch) => {
     return{
-        handleInputFocus(){
-            dispatch(actionCreators.searchFocus());
-        },
-
-        handleInputBlur(){
-            dispatch(actionCreators.searchBlur());
-        },
         logout(){
             dispatch(loginActionCreators.logout())
         }
