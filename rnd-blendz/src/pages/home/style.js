@@ -15,28 +15,28 @@ export const HomeWrapper = styled.div`
 
 export const RightArea = styled.div`
     float: right;
-    height: 500px;
-    width: 700px;
+    height: 50%;
+    width: 50%;
 `;
 
 export const RightItem = styled.div`
     color: grey;
     &.title{
-        line-height: 200px;
+        line-height: 200%;
         text-align: center;
-        height: 200px;
-        font-size: 50px;
+        height: 40%;
+        font-size: 300%;
     }
     &.text{
         text-align: left;
-        font-size: 20px;
+        font-size: 120%;
     }
 `;
 
 export const LeftArea = styled.div`
     float: left;
-    height: 500px;
-    width: 500px;
+    height: 70%;
+    width: 37%;
     background: url(${HomePic});
     background-size: contain;
 `;
