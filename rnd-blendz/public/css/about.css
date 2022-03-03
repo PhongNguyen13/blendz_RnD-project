@@ -16,6 +16,8 @@
   text-align: center;
   padding: 5% 10%;
   justify-content: space-between;
+  font-family: "roboto", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .about h1 {
