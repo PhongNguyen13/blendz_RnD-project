@@ -4,6 +4,8 @@ import { HomeWrapper, LeftArea, RightArea, RightItem } from "./style";
 class Home extends Component {
     render(){
         return(
+            <div>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
             <HomeWrapper>
                 <RightArea>
                     <RightItem className="title">Welcome to Blendz</RightItem>
@@ -11,6 +13,7 @@ class Home extends Component {
                 </RightArea>
                 <LeftArea></LeftArea>
             </HomeWrapper>
+            </div>
         )
     }
 }
