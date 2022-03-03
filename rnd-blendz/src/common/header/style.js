@@ -2,7 +2,11 @@ import styled from "styled-components";
 import logoPic from '../../statics/Logo.png'
 
 export const HeaderWrapper = styled.div`
+    z-index: 1;
     height: 60px;
+    top:0;
+    left:0;
+    right:0;
     background: #FFC300;
     border-bottom: 2px solid #7B7776;
 `;
@@ -52,4 +56,18 @@ export const Button = styled.a`
     border-radius: 5px;
     border: 1px solid #9EA482;
     text-decoration : none ;
+`;
+
+export const NavSearch = styled.input.attrs({placeholder: 'search'})`
+    width:160;
+    height: 38px;
+    margin-top: 9px;
+    border:none;
+    outline:none;
+    border-radius: 19px;
+    background: white;
+
+    &.focused {
+        width: 300px;
+    }
 `;
