@@ -4,8 +4,6 @@ import { FooterImage, FooterNav, FooterNavItem, FooterWrapper, FooterInfo} from 
 class Footer extends Component {
     render(){
         return(
-            <div>
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
             <FooterWrapper>
                 <FooterNav>
                     <FooterNavItem href="/">Home</FooterNavItem>
@@ -21,7 +19,6 @@ class Footer extends Component {
                     Contact:022022222 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Address:55d ssdadsa
                 </FooterInfo>
             </FooterWrapper>
-            </div>
         )
     }
 }

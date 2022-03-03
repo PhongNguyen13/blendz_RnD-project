@@ -5,7 +5,7 @@ import logoPic2 from '../../statics/HLogo.png';
 export const HeaderWrapper = styled.div`
     z-index: 1;
     position absolute;
-    height: auto;
+    height: 100px;
     top:0;
     left:0;
     right:0;
@@ -18,22 +18,23 @@ export const Logo = styled.a`
     top: 10;
     left: 0;
     display: block;
-    width: 735%;
-    height: 100%;
+    width: 735px;
+    height: 100px;
     background: url(${logoPic2});
+    background-size: 735px 100px;
     background-repeat: no-repeat;
 `;
 
 export const Nav = styled.div`
     height: 100%;
-    width: 50%;
+    width: 900px;
     margin: 0 auto;
 `;
 
 export const NavItem = styled.a`
-    line-height: 500%;
-    padding: 0 1.5%;
-    font-size: 120%;
+    line-height: 100px;
+    padding: 0 15px;
+    font-size: 20px;
     float: right;
     color: #FDFEFE;
     text-decoration : none ;
@@ -43,8 +44,8 @@ export const Addition = styled.div`
     position: absolute;
     right: 0;
     top: 0;
-    height: 100%;
-    width: 25%;
+    height: 100px;
+    width: 450px;
 
 `;
 
@@ -52,10 +53,10 @@ export const Button = styled.a`
     float: right;
     color: #FDFEFE;
     background: #A0A0A0  ;
-    margin-top: 5%;
-    margin-right: 20%;
-    padding: 0 8%;
-    line-height:300%;
+    margin-top: 25px;
+    margin-right: 100px;
+    padding: 0 30px;
+    line-height:45px;
     border-radius: 5px;
     border: 1px solid #9EA482;
     text-decoration : none ;

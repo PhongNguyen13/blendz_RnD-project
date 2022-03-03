@@ -13,8 +13,6 @@ class Header extends Component {
     render() {
         const { login, logout} = this.props;
         return(
-            <div>
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
             <HeaderWrapper>
                 <Logo href="/"/>
                 <Nav>                        
@@ -33,7 +31,6 @@ class Header extends Component {
                     }
                 </Addition>
             </HeaderWrapper>
-            </div>
         )
     }
 }
