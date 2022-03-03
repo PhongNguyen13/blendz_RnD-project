@@ -35,8 +35,8 @@ export const Button = styled.div`
     height: 30px;
     line-height: 30px;
     color: #fff;
-    background: #3194d0;
-    border-radius: 15px;
+    background: #A0A0A0;
+    border-radius: 5px;
     margin: 10px auto;
     text-align: center;
 `;

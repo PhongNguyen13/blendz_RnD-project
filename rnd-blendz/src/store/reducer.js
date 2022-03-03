@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux-immutable';
 import { reducer as headerReducer } from '../common/header/store';
-import { reducer as loginReducer } from '../pages/Login/store';
+import { reducer as loginReducer } from '../pages/login/store/all.js';
 
 const reducer = combineReducers({
     header: headerReducer,

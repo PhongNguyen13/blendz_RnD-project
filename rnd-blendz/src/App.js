@@ -4,7 +4,7 @@ import store from './store';
 import { Provider } from 'react-redux';
 import Header from './common/header/index.js'
 import Home from './pages/home';
-import Login from './pages/Login';
+import Login from './pages/login/login.js';
 
 class App extends Component {
 
