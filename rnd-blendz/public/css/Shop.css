@@ -28,3 +28,29 @@ h1 {
   margin-bottom: 50px;
   text-align: center;
 }
+/* 
+.shop {
+  width: 200px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  list-style: none;
+}
+
+.shop-title {
+  grid-column: span 2;
+  text-transform: capitalize;
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.shop .shop-link {
+  text-decoration: none;
+  text-transform: capitalize;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.shop-link:hover {
+  color: #fff;
+} */
