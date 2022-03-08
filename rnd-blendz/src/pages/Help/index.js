@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import { Answer, Button, HelpWrapper, Question, QuestionWrapper } from "./style";
-import { connect } from 'react-redux';
-import { actionCreators } from './store';
+import './help.css'
 
 class Help extends Component {
     render(){
         return(
             <div>
-                <div><br><br></br></br></div>
             <nav class="navbar"></nav>
      
             <div class="container-fluid">
@@ -15,7 +12,6 @@ class Help extends Component {
                 <div class="accordion">
                     <div class="icon"></div>
                     <h5>Question 1?</h5>
-                    {getQuestion()}
                 </div>
     
                 <div class="panel">
@@ -62,25 +58,26 @@ class Help extends Component {
         )
     }
 
-    getQuestion(){
-        
-var acc = document.getElementsByClassName('accordion');
-var i;
-var len = acc.length;
-
-for(i = 0; i < len; i++) {
-    acc[i].addEventListener('click', function() {
-        this.classList.toggle('active');
-        var panel = this.nextElementSibling;
-        if(panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-        } else {
-            panel.style.maxHeight = panel.scrollHeight + 'px';
+    getQuestion() {
+        var acc = document.getElementsByClassName('accordion');
+        var i;
+        var len = acc.length;
+    
+        for(i = 0; i < len; i++) {
+            acc[i].addEventListener('click', function() {
+                this.classList.toggle('active');
+                var panel = this.nextElementSibling;
+                if(panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + 'px';
+                }
+            })
         }
-    })
-}
     }
 }
+
+
 
 
 export default Help;
