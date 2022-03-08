@@ -58,7 +58,7 @@ class Help extends Component {
     }
 }
 
-const displayAnswer = () => ({
+/*const displayAnswer = () => ({
     let acc = document.getElementsByClassName('accordion');
     var i;
     var len = acc.length;
@@ -74,6 +74,7 @@ for(i = 0; i < len; i++) {
         }
     })
 }
-});
+});*/
 
-export default connect(displayAnswer)(Help);
+//export default connect(displayAnswer)(Help);
+export default Help;
