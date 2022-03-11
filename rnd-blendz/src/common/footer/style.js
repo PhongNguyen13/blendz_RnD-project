@@ -8,6 +8,7 @@ export const FooterWrapper = styled.div`
     bottom:0;
     left:0;
     right:0;
+    background:#6db5ff;
 `;
 
 export const FooterNav = styled.div `

@@ -88,8 +88,9 @@ const AccordionSection = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  height: 100vh;
+  height: 50vh;
   background: #fff;
+
 `;
 
 const Container = styled.div`
