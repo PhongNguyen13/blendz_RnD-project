@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import store from './store';
+import { Provider } from 'react-redux';
+import Header from './common/header/index.js';
+import Footer from './common/footer/index.js';
+import Home from './pages/home';
+import Shop from './pages/Shop';
+import Help from './pages/Help';
+import About from './pages/About';
+import Login from "./pages/login/login.js";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  render() {
+    return (
+    <Provider store={store}>
+      <Header/>
+      <Router>
+        <Routes>
+        <Route path="/" exact element={<Home />}> </Route>
+        <Route path="/shop" exact element={<Shop />}> </Route>
+        <Route path="/help" exact element={<Help />}> </Route>
+        <Route path="/about" exact element={<About />}> </Route>
+        <Route path="/login" exact element={<Login />}> </Route>
+        </Routes>
+      </Router>
+      <Footer/>
+    </Provider>
+    )
+  }
 }
 
 export default App;
+
+
+{/* 
+      <div>
+      <Router>
+        <Header />
+        <div>
+        <Routes>
+        <Route path="/" exact element={<Home />}> </Route>
+        </Routes>
+        </div>
+      </Router>
+      </div>
+
+
+
+*/}
