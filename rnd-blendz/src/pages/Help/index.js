@@ -1,81 +1,3 @@
-// import React, { Component } from "react";
-// import './help.css'
-
-// var acc = document.getElementsByClassName('accordion');
-// var i;
-// var len = acc.length;
-
-// for(i = 0; i < len; i++) {
-//     acc[i].addEventListener('click', function() {
-//         this.classList.toggle('active');
-//         var panel = this.nextElementSibling;
-//         if(panel.style.maxHeight) {
-//             panel.style.maxHeight = null;
-//         } else {
-//             panel.style.maxHeight = panel.scrollHeight + 'px';
-//         }
-//     })
-// }
-
-// class Help extends Component {    
-//     render(){
-//         return(
-//             <div class="container-fluid">
-//             <h2>Frequently Asked Questions (FAQs)</h2>
-//             <div class="accordion">
-//                 <div class="icon"></div>
-//                 <h5>Question 1?</h5> 
-//             </div>
-
-//             <div class="panel">
-//                 <p>Test answer 1..............</p>
-//                 <iframe width="560" height="315" src="https://www.youtube.com/embed/ZNMeyrgmr5o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-//             </div>
-
-//             <div class="accordion">
-//                 <div class="icon"></div>
-//                 <h5>Question 2?</h5> 
-//             </div>
-
-//             <div class="panel">
-//                 <p>Test answer 2...............</p>
-//             </div>
-
-//             <div class="accordion">
-//                 <div class="icon"></div>
-//                 <h5>Question 3?</h5> 
-//             </div>
-
-//             <div class="panel">
-//                 <p>Test answer 3...............</p>
-//             </div>
-
-//             <div class="accordion">
-//                 <div class="icon"></div>
-//                 <h5>Question 4?</h5> 
-//             </div>
-
-//             <div class="panel">
-//                 <p>Test answer 4...............</p>
-//             </div>
-
-//             <div class="accordion">
-//                 <div class="icon"></div>
-//                 <h5>Question 5?</h5> 
-//             </div>
-
-//             <div class="panel">
-//                 <p>Test answer 5...............</p>
-//             </div>
-//         </div>
-        
-
-//         )
-//     }
-// }
-
-// export default Help;
-
 import React, { useState } from 'react';
 import { Data } from './Data';
 import styled from 'styled-components';
@@ -89,47 +11,68 @@ const AccordionSection = styled.div`
   justify-content: center;
   position: relative;
   height: 50vh;
+  width: 100%
   background: #fff;
 
+  h1 {
+    color: hotpink;
+    position: relative;
+    width: max-width;
+    font-size: 30px;
+  }
 `;
 
+/*const Container = styled.div`
+  position: absolute;
+  top: 40%;
+  box-shadow: 2px 10px 35px 1px rgba(153, 153, 153, 0.3);
+`;*/
 const Container = styled.div`
   position: absolute;
-  top: 30%;
-  box-shadow: 2px 10px 35px 1px rgba(153, 153, 153, 0.3);
+  top: 60%;
 `;
 
 const Wrap = styled.div`
-  background: #272727;
-  color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   text-align: center;
   cursor: pointer;
-  h1 {
-    padding: 2rem;
-    font-size: 2rem;
+  border: 2px solid #6db5ff;
+  border-radius: 50px;
+  margin: 10px 0;
+  h2 {
+    color: #1f5c9a;
+    padding: 5px 10px 10px 10px;
+    font-size: 22px;
+    font-weight: normal;
+    transition: all 0.5s ease-in;
   }
   span {
-    margin-right: 1.5rem;
+    margin: 0 10px 0 0;
+    width: 25px;
+    height: 25px;
+    background: 8px 7px #6db5ff;
+    border-radius: 50%;
+    float: left;
+    transition: all 0.5s ease-in;
   }
 `;
 
 const Dropdown = styled.div`
-  background: #1c1c1c;
-  color: #00ffb9;
+  background-color: #6db5ff;
+  color: #fff;
   width: 100%;
-  height: 100px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1px solid #00ffb9;
-  border-top: 1px solid #00ffb9;
+  border-left: 2px solid #fff;
+  border-radius: 50px;
   p {
-    font-size: 2rem;
+    padding: 5px 10px 10px 10px;
+    margin-left: 25px;
+    font-size: 20px;
+    text-align: justify;
   }
 `;
 
@@ -146,14 +89,16 @@ const Help = () => {
   };
 
   return (
-    <IconContext.Provider value={{ color: '#00FFB9', size: '25px' }}>
+    <IconContext.Provider value={{ color: '#fff', size: '25px' }}>
       <AccordionSection>
+      <h1>FREQUENTLY ASKED QUESTION</h1>
         <Container>
           {Data.map((item, index) => {
             return (
               <>
+                
                 <Wrap onClick={() => toggle(index)} key={index}>
-                  <h1>{item.question}</h1>
+                  <h2>{item.question}</h2>
                   <span>{clicked === index ? <FiMinus /> : <FiPlus />}</span>
                 </Wrap>
                 {clicked === index ? (
