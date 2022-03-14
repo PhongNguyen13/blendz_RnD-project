@@ -1,11 +1,13 @@
 export const Data = [
     {
       question: 'My First Class 1 machine is not cooling?',
-      answer: 'The machine has overheated and requires the reset button to be pushed.'
+      answer: 'The machine has overheated and requires the reset button to be pushed.',
+      link: <script>PDFObject.embed("/file/Question1.pdf")</script>
     },
     {
       question: 'How does a slush machine work?',
-      answer: 'The machine is operating at -3 degrees Celsius, by having a product with a minimum of 14% sugar and continuous agitation the machine will shave the loosely bonded ice crystals to form a slush.'
+      answer: "The machine is operating at -3 degrees Celsius, by having a product with a minimum of 14% sugar and continuous agitation the machine will shave the loosely bonded ice crystals to form a slush.",
+      link: <iframe width="560" height="315" src="https://www.youtube.com/embed/UgfACPnSziI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     },
     {
       question: 'Can I put ordinary soft drinks into my slush machine?',

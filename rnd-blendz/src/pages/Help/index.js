@@ -83,7 +83,7 @@ const Dropdown = styled.div`
     padding: 5px 10px 10px 10px;
     margin-left: 25px;
     font-size: 15px;
-    text-align: justify;
+    text-align: left;
   }
 `;
 
@@ -112,7 +112,7 @@ const Help = () => {
                 </Wrap>
                 {clicked === index ? (
                   <Dropdown>
-                    <p>{item.answer}</p>
+                    <p><a>{item.answer}</a>{item.link}</p>
                   </Dropdown>
                 ) : null}
               </>
