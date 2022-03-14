@@ -14,9 +14,9 @@ class Login extends PureComponent {
                     <LoginBox>
                         <Content className="Title">Blendz Login</Content>
                         <Content className="STitle">Account:</Content>
-                        <Input className="Account" placeholder="Account" ref={(input) => {this.account = input}}/>
+                        <Input placeholder="Account" ref={(input) => {this.account = input}}/>
                         <Content className="STitle">Password:</Content>
-                        <Input className="Password" placeholder="Password" type='password' ref={(input) => {this.password = input}}/>
+                        <Input placeholder="Password" type='password' ref={(input) => {this.password = input}}/>
                         <Button onClick={() => this.props.login(this.account, this.password)}>Login</Button>
                     </LoginBox>
                 </LoginWrapper>    

@@ -10,49 +10,39 @@ export const ShopWrapper = styled.div`
     bottom 0;
     left: 0;
     right: 0;
-    padding-top: 200px;
-    padding-right:300px;
-    padding-left: 300px;
-    margin-left: auto;
-    margin-right: auto;
+    padding-top: 10%;
 `;
 
 export const ShopIconWrapper = styled.div`
-    height: 500px;
-    width: 1200px;
-    margin: auto;
-    margin-top: 50px;
-
-`
-
-export const Title = styled.div`
-    margin: auto;
-    height: 60px;
-    width: 1200px;
-    text-align: center;
-    font-size: 50px;
-    color: grey;
+    height: 60%;
+    width: 70%;
+    margin: 2% auto;
 `;
 
 export const ShopIcon = styled.div`
-    height: 300px;
-    width: 300px;
+    height: 50%;
+    width: 20%;
     float: left;
-    margin: 50px;
+    margin: 5% auto;
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
     
     &.icon1{
         background: url(${icon1});
-        background-size: 300px 300px;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
 
     &.icon2{
+        margin-left: 20%;
         background: url(${icon2});
-        background-size: 300px 300px;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
 
     &.icon3{
+        float: right;
         background: url(${icon3});
-        background-size: 300px 300px;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
 `;

@@ -10,53 +10,45 @@ export const LoginWrapper = styled.div`
 `;
 
 export const LoginBox = styled.div`
-    width: 600px;
-    height: 350px;
-    margin: 200px auto;
+    width: 20%;
+    height: 50%;
+    margin: 10% auto;
     background: white;
-    padding-top: 80px;
+    padding-top: 3%;
     box-shadow: 0 0 8px rgba(0,0,0,.1);
 `;
 
 export const Content = styled.div`
     &.Title{
         text-align: center;
-        font-size: 25px;
+        font-size: 150%;
     }
     &.STitle{
-        margin-top: 20px;
-        margin-bottom: 0px;
-        margin-left:180px;
-        font-size: 15px;
+        margin-top: 10%;
+        margin-left:20%;
+        font-size: 100%;
     }
 
 `;
 
 export const Input = styled.input`
     display: block;
-    width: 200px;
-    height: 40px;
-    line-height: 30px;
-    padding: 0 20px;
+    width: 50%;
+    height: 10%;
+    padding: 0 5%;
     margin:auto;
     color: #777;
-    .&Account{
-        margin-top: 10px;
-    }
-    .&Password{
-        margin-top: 20px;
 
 `;
 
 export const Button = styled.div`
-    width: 220px;
-    height: 35px;
-    line-height: 30px;
+    width: 50%;
+    height: 8%;
+    line-height: 150%;
     color: #fff;
     background: #A0A0A0;
-    border-radius: 5px;
-    margin: 10px auto;
-    margin-top: 40px;
+    border-radius: 2%;
+    margin: 10% auto;
     text-align: center;
-    font-size: 20px;
+    font-size: 150%;
 `;
