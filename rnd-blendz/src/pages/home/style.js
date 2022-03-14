@@ -8,35 +8,37 @@ export const HomeWrapper = styled.div`
     bottom 0;
     left: 0;
     right: 0;
-    padding-top: 200px;
-    padding-right:300px;
-    padding-left: 300px;
 `;
+
+export const LeftArea = styled.div`
+    float: left;
+    height: 50%;
+    width: 30%;
+    margin-left: 15%;
+    margin-top: 10%;
+    background: url(${HomePic});
+    background-size: 100% 100%;
+`;
+
 
 export const RightArea = styled.div`
     float: right;
-    height: 500px;
-    width: 700px;
+    height: 50%;
+    width: 30%;
+    margin-right: 15%;
+    margin-top: 10%;
 `;
 
 export const RightItem = styled.div`
     color: grey;
     &.title{
-        line-height: 200px;
+        line-height: 200%;
         text-align: center;
-        height: 200px;
-        font-size: 50px;
+        font-size: 200%;
+        margin-bottom: 5%;
     }
     &.text{
         text-align: left;
-        font-size: 20px;
+        font-size: 100%;
     }
-`;
-
-export const LeftArea = styled.div`
-    float: left;
-    height: 500px;
-    width: 500px;
-    background: url(${HomePic});
-    background-size: contain;
 `;
