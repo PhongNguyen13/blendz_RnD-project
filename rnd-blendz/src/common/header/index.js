@@ -5,11 +5,11 @@ import { actionCreators } from './store';
 import { actionCreators as loginActionCreators } from '../../pages/login/store/all.js';
 
 class Header extends Component {
+    
     constructor(props) {
         super(props);
     }
-
-
+    
     render() {
         const { login, logout} = this.props;
         return(
@@ -37,7 +37,6 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        focused: state.get('header').get('focused'),
         login: state.get('login').get('login')
     }
 }

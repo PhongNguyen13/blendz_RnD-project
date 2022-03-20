@@ -5,16 +5,18 @@
     bottom: 0;
     left: 0;
     right: 0;
+    padding-top:5%;
+    margin-bottom:5%;
 }
 
 .InfoWrapper{
-    height: 60%;
+    height: 70%;
     width: 60%;
     margin:auto;
-    margin-top: 10%;
+    margin-top: 5%;
     border-radius: 3%;
     box-shadow: 12px 12px 2px 1px rgba(192, 109, 31, 0.2);
-    background: rgba(255, 212, 22, 0.2);
+    background: #EEB764;
 }
 
 .title{

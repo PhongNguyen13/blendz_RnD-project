@@ -19,7 +19,7 @@ class App extends Component {
       <Router>
         <Routes>
         <Route path="/" exact element={<Home />}> </Route>
-        <Route path="/shop" exact element={<Shop />}> </Route>
+        <Route path="/shop" element={<Shop />}> </Route>
         <Route path="/help" exact element={<Help />}> </Route>
         <Route path="/about" exact element={<About />}> </Route>
         <Route path="/login" exact element={<Login />}> </Route>
@@ -32,20 +32,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-{/* 
-      <div>
-      <Router>
-        <Header />
-        <div>
-        <Routes>
-        <Route path="/" exact element={<Home />}> </Route>
-        </Routes>
-        </div>
-      </Router>
-      </div>
-
-
-
-*/}

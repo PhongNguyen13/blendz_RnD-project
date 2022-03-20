@@ -7,12 +7,14 @@ export const LoginWrapper = styled.div`
     bottom 0;
     left: 0;
     right: 0;
+    padding-top:5%;
+    margin-bottom:5%;
 `;
 
 export const LoginBox = styled.div`
     width: 20%;
     height: 50%;
-    margin: 10% auto;
+    margin: 8% auto;
     background: white;
     padding-top: 3%;
     box-shadow: 0 0 8px rgba(0,0,0,.1);
@@ -51,4 +53,5 @@ export const Button = styled.div`
     margin: 10% auto;
     text-align: center;
     font-size: 150%;
+    cursor: pointer;
 `;
