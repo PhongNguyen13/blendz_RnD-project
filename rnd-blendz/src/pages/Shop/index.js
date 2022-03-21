@@ -21,7 +21,7 @@ class Shop extends Component {
     }
 
     getList(){
-        if(this.props.selected === 1){
+        if(this.props.selected === "Machine"){
             return(
                 <div>
                 <ShopInforTitle>Machine</ShopInforTitle>
@@ -30,9 +30,9 @@ class Shop extends Component {
                 })}
                 </div>
             )
-        }else if (this.props.selected === 2){
+        }else if (this.props.selected === "Beverages"){
             return 2;
-        }else if (this.props.selected === 3) {
+        }else if (this.props.selected === "Accessories") {
             return 3;
         }else{
             return(
@@ -52,14 +52,14 @@ const mapStateTothis= (state) => {
 const mapDispathTothis = (dispatch) => {
     return{
         handleInput(){
-            dispatch(actionCreators.selectone());
+            dispatch(actionCreators.selectMachine());
             dispatch(actionCreators.getList());
         },
         handleInput2(){
-            dispatch(actionCreators.selecttwo());
+            dispatch(actionCreators.selectBeverages());
         },
         handleInput3(){
-            dispatch(actionCreators.selectthree());
+            dispatch(actionCreators.selectAccessories());
         }
     }
 }

@@ -2,22 +2,22 @@ import * as constants from './constants';
 import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
-    selected: 0,
+    selected: "start",
     list: []
 });
 
 export default (state = defaultState, action) => {
 
-    if(action.type === constants.SELECT_ONE) {
-        return state.set('selected', 1);
+    if(action.type === constants.SELECT_MACHINE) {
+        return state.set('selected', "Machine");
     }
 
-    if(action.type === constants.SELECT_TWO) {
-        return state.set('selected', 2);
+    if(action.type === constants.SELECT_BEVERAGES) {
+        return state.set('selected', "Beverages");
     }
 
-    if(action.type === constants.SELECT_THREE) {
-        return state.set('selected', 3);
+    if(action.type === constants.SELECT_ACCESSORIES) {
+        return state.set('selected', "Accessories");
     }
     
     if (action.type === constants.CHANGE_LIST) {

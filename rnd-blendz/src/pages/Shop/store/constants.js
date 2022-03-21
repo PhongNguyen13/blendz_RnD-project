@@ -1,4 +1,4 @@
 export const CHANGE_LIST = 'shop/CHANGE_LIST';
-export const SELECT_ONE = 'shop/SELECT_ONE';
-export const SELECT_TWO = 'shop/SELECT_TWO';
-export const SELECT_THREE = 'shop/SELECT_THREE';
+export const SELECT_MACHINE= 'shop/SELECT_MACHINE';
+export const SELECT_BEVERAGES = 'shop/SELECT_BEVERAGES';
+export const SELECT_ACCESSORIES = 'shop/SELECT_ACCESSORIES';

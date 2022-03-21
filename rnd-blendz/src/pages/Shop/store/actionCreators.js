@@ -2,16 +2,16 @@ import * as constants from './constants';
 import axios from 'axios';
 import { fromJS } from 'immutable';
 
-export const selectone = () => ({
-    type: constants.SELECT_ONE
+export const selectMachine = () => ({
+    type: constants.SELECT_MACHINE
 });
 
-export const selecttwo = () => ({
-    type: constants.SELECT_TWO
+export const selectBeverages = () => ({
+    type: constants.SELECT_BEVERAGES
 });
 
-export const selectthree = () => ({
-    type: constants.SELECT_THREE
+export const selectAccessories = () => ({
+    type: constants.SELECT_ACCESSORIES
 });
 
 const changeList = (data) => ({
