@@ -50,8 +50,20 @@ export const Button = styled.div`
     color: #fff;
     background: #A0A0A0;
     border-radius: 2%;
-    margin: 10% auto;
+    margin: 10% auto 5%;
     text-align: center;
     font-size: 150%;
     cursor: pointer;
+`;
+
+export const RegisterWrapper = styled.div`
+    width: 20%;
+    height: 8%;
+    margin: auto;
+`;
+
+export const Register = styled.a`
+    width:80%;
+    height:80%;
+    color:red;
 `;

@@ -9,6 +9,7 @@ import Shop from './pages/Shop/index';
 import Help from './pages/Help/index';
 import About from './pages/About/index';
 import Login from './pages/login/login.js';
+import Register from "./pages/Register";
 
 class App extends Component {
 
@@ -23,6 +24,7 @@ class App extends Component {
         <Route path="/help" exact element={<Help />}> </Route>
         <Route path="/about" exact element={<About />}> </Route>
         <Route path="/login" exact element={<Login />}> </Route>
+        <Route path="/register" exact element={<Register />}> </Route>
         </Routes>
       </Router>
       <Footer/>
