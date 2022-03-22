@@ -4,6 +4,7 @@ import HomePic from '../../statics/HomeImage.png'
 export const HomeWrapper = styled.div`
     z-index:-1;
     position absolute;
+    
     top: 0;
     bottom 0;
     left: 100px;
@@ -35,8 +36,8 @@ export const RightItem = styled.div`
 
 export const LeftArea = styled.div`
     float: left;
-    height: 250px;
-    width: 250px;
+    height: 300px;
+    width: 300px;
     background: url(${HomePic});
     background-size: contain;
 `;

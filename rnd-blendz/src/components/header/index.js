@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { HeaderWrapper, Logo, Nav, NavItem, Addition, Button } from './style';
+import { Badge } from "@material-ui/core";
+// import { ShoppingCartOutlined } from "@material-ui/icons";
+
+
 import { connect } from 'react-redux'; 
 import { actionCreators } from './store';
-import { actionCreators as loginActionCreators } from '../../pages/login/store/all.js';
+import { actionCreators as loginActionCreators } from '../../pages/Login/store/all.js';
 
 class Header extends Component {
     constructor(props) {
@@ -15,21 +19,23 @@ class Header extends Component {
         return(
             <HeaderWrapper>
                 <Logo href="/"/>
-                <Nav>                        
-                    <NavItem href="about">About</NavItem>
-                    <NavItem>|</NavItem>                                          
-                    <NavItem href="help">Help</NavItem>
-                    <NavItem>|</NavItem>                  
-                    <NavItem href="/shop">Shop</NavItem>
-                    <NavItem>|</NavItem>              
+                <Nav>  
                     <NavItem href="/">Home</NavItem>    
+                    <NavItem href="/shop">Shop</NavItem>
+                    <NavItem href="help">Help</NavItem>
+                    <NavItem href="about">About</NavItem>             
+                    <NavItem>
+                        {/* <Badge badgeContent={4} color="primary">
+                            <ShoppingCartOutlined />
+                        </Badge> */}
+                    </NavItem>
                 </Nav>
-                <Addition>
-                    <Button>Cart</Button>
+                {/* <Addition>
                     {
                         login ? <Button onClick={logout} >Log out</Button> : <Button href="/login">Login</Button>
                     }
-                </Addition>
+                    <Button>Cart</Button>
+                </Addition> */}
             </HeaderWrapper>
         )
     }

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import FooterlogoPic from '../../statics/FooterLogo.png'
 
 export const FooterWrapper = styled.div`
     z-index: 1;
@@ -8,6 +7,9 @@ export const FooterWrapper = styled.div`
     bottom:0;
     left:0;
     right:0;
+
+    background: #383838;
+
 `;
 
 export const FooterNav = styled.div `
@@ -24,16 +26,14 @@ export const FooterNavItem = styled.a`
     text-decoration : none;
 `;
 
-export const FooterImage = styled.div`
-    margin: 10px auto;
-    width: 80px;
-    height: 20px;
-    background: url(${FooterlogoPic});
-`;
-
 export const FooterInfo = styled.div`
     text-align: center;
     margin: 10px auto;
+    color: grey;
+`;
+
+export const Copyright = styled.div`
+    text-align: center;
     color: grey;
 `;
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FooterImage, FooterNav, FooterNavItem, FooterWrapper, FooterInfo} from "./style";
+import { FooterNav, FooterNavItem, FooterWrapper, FooterInfo, Copyright} from "./style";
 
 class Footer extends Component {
     render(){
@@ -14,10 +14,14 @@ class Footer extends Component {
                     <FooterNavItem>|</FooterNavItem> 
                     <FooterNavItem href="/about">About</FooterNavItem>                    
                 </FooterNav>
-                <FooterImage/>
+                <Copyright>
+                     &copy; Blendz
+                </Copyright>
                 <FooterInfo>
                     Contact:022022222 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Address:55d ssdadsa
                 </FooterInfo>
+                
+
             </FooterWrapper>
         )
     }
