@@ -6,7 +6,7 @@ const defaultState = fromJS({
     list: []
 });
 
-export default (state = defaultState, action) => {
+const selecter = (state = defaultState, action) => {
 
     if(action.type === constants.SELECT_MACHINE) {
         return state.set('selected', "Machine");
@@ -25,3 +25,5 @@ export default (state = defaultState, action) => {
     }
     return state;
 }
+
+export default selecter;
