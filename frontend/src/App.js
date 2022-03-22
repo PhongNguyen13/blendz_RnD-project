@@ -8,7 +8,7 @@ import Home from './pages/home';
 import Shop from './pages/Shop/index';
 import Help from './pages/Help/index';
 import About from './pages/About/index';
-import Login from './pages/login/login.js';
+import Login from './pages/login/index';
 import Register from "./pages/Register";
 
 class App extends Component {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { RegisterBox, RegisterWrapper, Content, Input, Button } from './style';
 import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { actionCreators } from './store/index';
+import { actionCreators2 } from "../login/store/index";
 
 class Register extends Component {
     render(){
@@ -28,12 +28,12 @@ class Register extends Component {
 }
 
 const mapState = (state) => ({
-    loginStatus: state.get('login').get('login')
+    loginStatus: state.getIn(['login','login'])
 })
 
 const mapDispatch = (dispatch) => ({
     register(emailElem, newpasswordElem){
-        dispatch(actionCreators.register(emailElem.value,newpasswordElem.value));
+        dispatch(actionCreators2.register(emailElem.value,newpasswordElem.value));
     }
 });
 

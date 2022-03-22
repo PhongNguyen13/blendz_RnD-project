@@ -1,1 +1,0 @@
-export const CHANGE_RLOGIN = 'register/CHANGE_RLOGIN';

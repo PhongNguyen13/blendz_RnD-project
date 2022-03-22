@@ -12,6 +12,9 @@ const Loginstate = (state = defaultState, action) => {
             return state.set('login', action.value);
         case constants.LOGOUT:
             return state.set('login',action.value);
+        case constants.CHANGE_RLOGIN:
+            return state.set('login',action.value);
+
         default:
             return state;
     }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { HeaderWrapper, Logo, Nav, NavItem, Addition, Button } from './style';
 import { connect } from 'react-redux'; 
 import { actionCreators } from './store';
-import { actionCreators as loginActionCreators } from '../../pages/login/store/all.js';
+import { actionCreators as loginActionCreators } from '../../pages/login/store/index';
 
 class Header extends Component {
     
