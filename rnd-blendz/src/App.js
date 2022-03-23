@@ -26,7 +26,7 @@ class App extends Component {
             <Route path="/login" exact element={<Login />}> </Route>
           </Routes>
       </Router>
-      <Footer/>
+      {/* <Footer/> */}
     </Provider>
     )
   }

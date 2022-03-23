@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { HeaderWrapper, Logo, Nav, NavItem, Addition, Button } from './style';
+import { HeaderWrapper, Logo, Nav, NavItem } from './style';
 import { Badge } from "@material-ui/core";
-// import { ShoppingCartOutlined } from "@material-ui/icons";
+import { AccountCircle, ShoppingCartOutlined } from "@material-ui/icons";
 
-
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
 import { actionCreators } from './store';
 import { actionCreators as loginActionCreators } from '../../pages/Login/store/all.js';
 
@@ -15,47 +14,55 @@ class Header extends Component {
 
 
     render() {
-        const { login, logout} = this.props;
-        return(
+        return (
             <HeaderWrapper>
-                <Logo href="/"/>
-                <Nav>  
-                    <NavItem href="/">Home</NavItem>    
-                    <NavItem href="/shop">Shop</NavItem>
-                    <NavItem href="help">Help</NavItem>
-                    <NavItem href="about">About</NavItem>             
+                <Logo href="/" />
+                <Nav>
+                    <NavItem href="/">HOME</NavItem>
+                    <NavItem href="/shop">SHOP</NavItem>
+                    <NavItem href="/help">HELP</NavItem>
+                    <NavItem href="/about">ABOUT</NavItem>
+                    <NavItem href="/login">
+                        <AccountCircle />
+                    </NavItem>
                     <NavItem>
-                        {/* <Badge badgeContent={4} color="primary">
+                        <Badge badgeContent={2} color="primary">
                             <ShoppingCartOutlined />
-                        </Badge> */}
+                        </Badge>
                     </NavItem>
                 </Nav>
+            </HeaderWrapper>
+        )
+    }
+}
+
+export default Header;
+
+        // const { login, logout } = this.props;
+
+            {/* {login ? <NavItem onClick={logout}>SIGN OUT</NavItem> : <NavItem href="/login">SIGN IN</NavItem>} */}
+
                 {/* <Addition>
                     {
                         login ? <Button onClick={logout} >Log out</Button> : <Button href="/login">Login</Button>
                     }
                     <Button>Cart</Button>
                 </Addition> */}
-            </HeaderWrapper>
-        )
-    }
-}
 
-const mapStateToProps = (state) => {
-    return {
-        focused: state.get('header').get('focused'),
-        login: state.get('login').get('login')
-    }
-}
+// const mapStateToProps = (state) => {
+//     return {
+//         focused: state.get('header').get('focused'),
+//         login: state.get('login').get('login')
+//     }
+// }
 
-const mapDispathToProprs = (dispatch) => {
-    return{
-        logout(){
-            dispatch(loginActionCreators.logout())
-        }
-    }
-}
+// const mapDispathToProprs = (dispatch) => {
+//     return {
+//         logout() {
+//             dispatch(loginActionCreators.logout())
+//         }
+//     }
+// }
 
 
-
-export default connect(mapStateToProps, mapDispathToProprs)(Header);
+/* export default connect(mapStateToProps, mapDispathToProprs)(Header);*/
