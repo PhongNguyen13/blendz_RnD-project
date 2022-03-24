@@ -3,9 +3,9 @@ import { HeaderWrapper, Logo, Nav, NavItem } from './style';
 import { Badge } from "@material-ui/core";
 import { AccountCircle, ShoppingCartOutlined } from "@material-ui/icons";
 
-import { connect } from 'react-redux';
-import { actionCreators } from './store';
-import { actionCreators as loginActionCreators } from '../../pages/Login/store/all.js';
+// import { connect } from 'react-redux';
+// import { actionCreators } from './store';
+// import { actionCreators as loginActionCreators } from '../../pages/Login/store/all.js';
 
 class Header extends Component {
     constructor(props) {
@@ -40,7 +40,7 @@ export default Header;
 
         // const { login, logout } = this.props;
 
-            {/* {login ? <NavItem onClick={logout}>SIGN OUT</NavItem> : <NavItem href="/login">SIGN IN</NavItem>} */}
+            {/* {login ? <NavItem onClick={logout}>LOG OUT</NavItem> : <NavItem href="/login">LOG IN</NavItem>} */}
 
                 {/* <Addition>
                     {

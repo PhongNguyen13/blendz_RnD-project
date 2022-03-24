@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import store from './store';
 import { Provider } from 'react-redux';
+import { GlobalStyle } from './style';
 
 import Header from './components/header';
 import Footer from './components/footer';
@@ -16,6 +17,7 @@ class App extends Component {
   render() {
     return (
     <Provider store={store}>
+      <GlobalStyle />
       <Header/>
       <Router>    
           <Routes>
@@ -26,7 +28,7 @@ class App extends Component {
             <Route path="/login" exact element={<Login />}> </Route>
           </Routes>
       </Router>
-      {/* <Footer/> */}
+      <Footer/>
     </Provider>
     )
   }

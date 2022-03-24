@@ -7,18 +7,18 @@ class Footer extends Component {
             <FooterWrapper>
                 <FooterNav>
                     <FooterNavItem href="/">Home</FooterNavItem>
-                    <FooterNavItem>|</FooterNavItem> 
                     <FooterNavItem href="/shop">Shop</FooterNavItem>
-                    <FooterNavItem>|</FooterNavItem> 
                     <FooterNavItem href="/help">Help</FooterNavItem>
-                    <FooterNavItem>|</FooterNavItem> 
                     <FooterNavItem href="/about">About</FooterNavItem>                    
                 </FooterNav>
                 <Copyright>
                      &copy; Blendz
                 </Copyright>
                 <FooterInfo>
-                    Contact:022022222 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Address:55d ssdadsa
+                    Contact:022022222
+                </FooterInfo>
+                <FooterInfo>
+                    Address:55d ssdadsa
                 </FooterInfo>
                 
 
