@@ -2,7 +2,7 @@ export const Data = [
     {
       question: 'My First Class 1 machine is not cooling?',
       answer: 'The machine has overheated and requires the reset button to be pushed.',
-      link: <script>PDFObject.embed("/file/Question1.pdf")</script>
+      link: <iframe src="https://drive.google.com/file/d/1C-uoAYQ0Edy7lflZI4jqwuXGIY3PklJ5/preview" title="Answer PDF" width="640" height="480" allow="autoplay"></iframe>
     },
     {
       question: 'How does a slush machine work?',
@@ -19,7 +19,9 @@ export const Data = [
     },
     {
       question: 'My Bigbiz 2 machine is not chilling, all the lights are flashing?',
-      answer: 'The machine has overheated and popped the cutout.</br>The reset button is on the front of the machine behind the left hand side drip tray.'
+      answer: 'The machine has overheated and popped the cutout.</br>The reset button is on the front of the machine behind the left hand side drip tray.',
+      link: <iframe src="https://drive.google.com/file/d/1iWLmgaMsQWinD6TwU4rHpdhW19uF2ZDZ/preview" title = "Answer PDF" width="640" height="480" allow="autoplay"></iframe>,
+      link2: <iframe src="https://drive.google.com/file/d/1g0s1EhFH7oS5Z4iK_ttKws3DfhEjMqNz/preview" title="Answer" width="640" height="480" allow="autoplay"></iframe>
     },
     {
       question: 'First Class 2 or 3 not freezing?',

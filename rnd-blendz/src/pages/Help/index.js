@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { Data } from './Data';
 import styled from 'styled-components';
@@ -112,7 +113,7 @@ const Help = () => {
                 </Wrap>
                 {clicked === index ? (
                   <Dropdown>
-                    <p><a>{item.answer}</a>{item.link}</p>
+                    <p><a>{item.answer}</a><a>{item.link}</a>{item.link2}</p>
                   </Dropdown>
                 ) : null}
               </>
