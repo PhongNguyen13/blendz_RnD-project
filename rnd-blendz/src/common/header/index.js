@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import { HeaderWrapper, Logo, Nav, NavItem, Addition, Button } from './style';
-import { connect } from 'react-redux'; 
-import { actionCreators } from './store';
-import { actionCreators as loginActionCreators } from '../../pages/login/store/all.js';
+import { HeaderWrapper, Logo, Nav, NavItem } from './style';
+import { Badge } from "@material-ui/core";
+import { AccountCircle, ShoppingCartOutlined } from "@material-ui/icons";
+
+// import { connect } from 'react-redux';
+// import { actionCreators } from './store';
+// import { actionCreators as loginActionCreators } from '../../pages/Login/store/all.js';
 
 class Header extends Component {
     constructor(props) {
@@ -11,45 +14,26 @@ class Header extends Component {
 
 
     render() {
-        const { login, logout} = this.props;
-        return(
+        return (
             <HeaderWrapper>
-                <Logo href="/"/>
-                <Nav>                        
-                    <NavItem href="about">About</NavItem>
-                    <NavItem>|</NavItem>                                          
-                    <NavItem href="help">Help</NavItem>
-                    <NavItem>|</NavItem>                  
-                    <NavItem href="/shop">Shop</NavItem>
-                    <NavItem>|</NavItem>              
-                    <NavItem href="/">Home</NavItem>    
+                <Logo href="/" />
+                <Nav>
+                    <NavItem href="/">HOME</NavItem>
+                    <NavItem href="/shop">SHOP</NavItem>
+                    <NavItem href="/help">HELP</NavItem>
+                    <NavItem href="/about">ABOUT</NavItem>
+                    <NavItem href="/login">
+                        <AccountCircle />
+                    </NavItem>
+                    <NavItem>
+                        <Badge badgeContent={2} color="primary">
+                            <ShoppingCartOutlined />
+                        </Badge>
+                    </NavItem>
                 </Nav>
-                <Addition>
-                    <Button>Cart</Button>
-                    {
-                        login ? <Button onClick={logout} >Log out</Button> : <Button href="/login">Login</Button>
-                    }
-                </Addition>
             </HeaderWrapper>
         )
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        focused: state.get('header').get('focused'),
-        login: state.get('login').get('login')
-    }
-}
-
-const mapDispathToProprs = (dispatch) => {
-    return{
-        logout(){
-            dispatch(loginActionCreators.logout())
-        }
-    }
-}
-
-
-
-export default connect(mapStateToProps, mapDispathToProprs)(Header);
+export default Header;

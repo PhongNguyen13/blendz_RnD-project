@@ -4,12 +4,12 @@ import icon2 from '../../statics/Shopicon2.png'
 import icon3 from '../../statics/Shopicon3.png'
 
 export const ShopWrapper = styled.div`
-    z-index:-1;
-    position absolute;
-    top: 0;
-    bottom 0;
-    left: 0;
-    right: 0;
+    // z-index:-1;
+    // position absolute;
+    // top: 0;
+    // bottom 0;
+    // left: 0;
+    // right: 0;
     padding-top: 200px;
     padding-right:300px;
     padding-left: 300px;
@@ -22,7 +22,6 @@ export const ShopIconWrapper = styled.div`
     width: 800px;
     margin: auto;
     margin-top: 50px;
-
 `
 
 export const Title = styled.div`
@@ -45,12 +44,10 @@ export const ShopIcon = styled.div`
         background: url(${icon1});
         background-size: 100px 100px;
     }
-
     &.icon2{
         background: url(${icon2});
         background-size: 100px 100px;
     }
-
     &.icon3{
         background: url(${icon3});
         background-size: 100px 100px;

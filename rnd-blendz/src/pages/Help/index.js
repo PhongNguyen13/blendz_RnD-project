@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { Data } from './Data';
-import styled from 'styled-components';
+import { AccordionSection, Wrap, Dropdown} from "./style";
 import { IconContext } from 'react-icons';
 import { FiPlus, FiMinus } from 'react-icons/fi';
 
@@ -81,7 +81,7 @@ const Dropdown = styled.div`
     font-size: 15px;
     text-align: left;
   }
-`;
+`;*/
 
 const Help = () => {
   const [clicked, setClicked] = useState(false);
@@ -119,4 +119,4 @@ const Help = () => {
   );
 };
 
-export default Help;*/
+export default Help;
