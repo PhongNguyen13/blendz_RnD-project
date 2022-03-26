@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { IconContext } from 'react-icons';
 import { FiPlus, FiMinus } from 'react-icons/fi';
 
-const AccordionSection = styled.div`
+/*const AccordionSection = styled.div`
   margin-top: 150px;
   margin bottom: 150px;
   margin-left: 180px;
@@ -39,11 +39,6 @@ const AccordionSection = styled.div`
     background-color: hotpink;
   }
 `;
-
-/*const Container = styled.div`
-  position: absolute;
-  top: 60%;
-`;*/
 
 const Wrap = styled.div`
   display: flex;
@@ -124,4 +119,4 @@ const Help = () => {
   );
 };
 
-export default Help;
+export default Help;*/
