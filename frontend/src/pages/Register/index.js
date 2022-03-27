@@ -17,7 +17,7 @@ class Register extends Component {
                         <Input placeholder="Email" ref={(input) => {this.email = input}}/>
                         <Content className="STitle">Please enter your Password:</Content>
                         <Input placeholder="New Password" type='password' ref={(input) => {this.newpassword = input}}/>
-                        <Button onClick={() => this.props.register(this.email, this.newpassword)}>Create Account</Button>                    
+                        <Button onClick={() => this.props.Signup(this.email, this.newpassword)}>Create Account</Button>                    
                     </RegisterBox>
                 </RegisterWrapper>
             )
@@ -32,8 +32,8 @@ const mapState = (state) => ({
 })
 
 const mapDispatch = (dispatch) => ({
-    register(emailElem, newpasswordElem){
-        dispatch(actionCreators2.register(emailElem.value,newpasswordElem.value));
+    Signup(emailElem, newpasswordElem){
+        dispatch(actionCreators2.sign_up(emailElem.value,newpasswordElem.value));
     }
 });
 
