@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const AccordionSection = styled.div`
-    margin-top: 150px;
-    margin bottom: 150px;
+    margin-top: 50px;
+    margin bottom: 50px;
     margin-left: 180px;
     height: 50vh;
     width: 100%;
@@ -70,7 +70,8 @@ export const Dropdown = styled.div`
   p {
     padding: 5px 10px 10px 10px;
     margin-left: 25px;
-    font-size: 15px;
+    font-size: 17px;
     text-align: left;
+    line-height: 1.5;
   }
 `;

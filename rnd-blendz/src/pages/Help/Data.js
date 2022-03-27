@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 export const Data = [
   {
     question: 'My First Class 1 machine is not cooling?',
     answer: 'The machine has overheated and requires the reset button to be pushed.',
-    link: <iframe src="https://drive.google.com/file/d/1C-uoAYQ0Edy7lflZI4jqwuXGIY3PklJ5/preview" title="Answer PDF" width="640" height="480" allow="autoplay"></iframe>
+    link: <a href="src/file/Question1.pdf">First Class 1 Reset after Overheating</a>
   },
   {
     question: 'How does a slush machine work?',
@@ -20,11 +21,25 @@ export const Data = [
   {
     question: 'My Bigbiz 2 machine is not chilling, all the lights are flashing?',
     answer: 'The machine has overheated and popped the cutout.</br>The reset button is on the front of the machine behind the left hand side drip tray.',
-    link: <iframe src="https://drive.google.com/file/d/1iWLmgaMsQWinD6TwU4rHpdhW19uF2ZDZ/preview" title = "Answer PDF" width="640" height="480" allow="autoplay"></iframe>,
-    link2: <iframe src="https://drive.google.com/file/d/1g0s1EhFH7oS5Z4iK_ttKws3DfhEjMqNz/preview" title="Answer" width="640" height="480" allow="autoplay"></iframe>
+    link: <a href="src/file/Question5_01.pdf">BigBiz Reset after Overheating</a>,
+    link2: <a href="src/file/Question5_02.pdf">Keep the lint filter clean</a>
   },
   {
     question: 'First Class 2 or 3 not freezing?',
-    answer: 'Requires the reset button pushed.'
+    answer: 'Requires the reset button pushed.',
+    link: <a href="src/file/Question6.pdf">Reset after Overheating First Class 2 and 3</a>
+  },
+  {
+    question: 'Cleaning and operation instructions for the first class machines?',
+    answer: 'Requires the reset button pushed.',
+    link: <a href="src/file/Question7_01.pdf">First Class Dismantle, Cleaning and Reassemble</a>,
+    link2: <a href="src/file/Question7_02.pdf">Operation of "First Class" machine</a>,
+    link3: <a href="src/file/Question7_03.pdf">First Class machine description</a>
+  },
+  {
+    question: 'Cleaning and operation of the BigBiz machines?',
+    answer: 'Requires the reset button pushed.',
+    link: <a href="src/file/Question8_01.pdf">Operation of "BigBiz" machine</a>,
+    link2: <a href="src/file/Question8_02.pdf">BigBiz Dismantle, Cleaning and Reassemble</a>
   }
 ];

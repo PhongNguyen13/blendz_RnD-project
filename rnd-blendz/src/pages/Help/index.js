@@ -29,7 +29,10 @@ const Help = () => {
                 </Wrap>
                 {clicked === index ? (
                   <Dropdown>
-                    <p><a>{item.answer}</a><a>{item.link}</a>{item.link2}</p>
+                    <p>{item.answer}<br></br>
+                    {item.link}<br></br>
+                    {item.link2}<br></br>
+                    {item.link3}</p>
                   </Dropdown>
                 ) : null}
               </>
