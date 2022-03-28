@@ -25,7 +25,7 @@ class Header extends Component {
                     <NavItem href="/login">
                         <AccountCircle />
                     </NavItem>
-                    <NavItem>
+                    <NavItem href="/cart">
                         <Badge badgeContent={2} color="primary">
                             <ShoppingCartOutlined />
                         </Badge>

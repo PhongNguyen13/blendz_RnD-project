@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import icon1 from '../../assets/Shopicon1.png'
-import icon2 from '../../assets/Shopicon2.png'
-import icon3 from '../../assets/Shopicon3.png'
 
 export const ShopWrapper = styled.div`
     // z-index:-1;
@@ -10,49 +7,72 @@ export const ShopWrapper = styled.div`
     // bottom 0;
     // left: 0;
     // right: 0;
-    padding-top: 200px;
-    padding-right:300px;
-    padding-left: 300px;
-    margin-left: auto;
-    margin-right: auto;
+    // padding-top:5%;
+    // padding-left: 2%;
+    // padding-right: 2%;
+    // margin-bottom:5%;
+    // margin-top: 1%; 
+    display: flex; 
+    padding: 5% 5%;
+
 `;
 
-export const ShopIconWrapper = styled.div`
-    height: 400px;
-    width: 800px;
-    margin: auto;
-    margin-top: 50px;
+export const ShopNav = styled.div`
+    // width: 10%;
+    // height: 60%;
+    // margin-top: 5%;
+    // margin-right: 2%;
+    // float: left;
+    border: 1px solid #787878;
+    border-radius: 1%;
+`;
 
+export const ShopNavTitle = styled.div`
+    // width:100%;
+    // height:10%;
+    background: #FF9900;
+    border-bottom: 1px solid #787878;
+    font-size: 130%;
+    text-align: center;
+    line-height: 200%;
+    font-weight: bold;
 `
 
-export const Title = styled.div`
-    margin: auto;
-    // height: 60px;
-    // width: 1000px;
+export const ShopNavItem = styled.div`
+    // width: 100%;
+    // height: 7%;
+    // margin: 5% auto;
+    font-size: 130%;
+    font-size: 110%;
     text-align: center;
-    font-size: 30px;
-    color: grey;
+    line-height: 150%;
+    cursor: pointer;
+    border-bottom: 1px solid #787878;
 `;
 
-export const ShopIcon = styled.div`
-    height: 100px;
-    width: 100px;
-    float: left;
-    margin: 50px;
-    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
-    
-    &.icon1{
-        background: url(${icon1});
-        background-size: 100px 100px;
-    }
+export const ShopInforWrapper = styled.div`
+    // width: 85%;
+    // height:90%;
+    // float: left;
+    background: #EEB764;
+`;
 
-    &.icon2{
-        background: url(${icon2});
-        background-size: 100px 100px;
-    }
+export const ShopInforTitle = styled.div`
+    // width:100%;
+    // height: 10%;
+    font-size: 250%;
+    text-align: center;
+    line-height: 150%;
+    font-weight: bold;
+    background: #FF9900;
+`;
 
-    &.icon3{
-        background: url(${icon3});
-        background-size: 100px 100px;
-    }
+export const ShopInforItem = styled.a`
+    // width: 15%;
+    // height: 35%;
+    display: block;
+    // float: left;
+    border: 5px solid #FF9900;
+    border-radius: 2px;
+    margin: 5% 5%;
 `;

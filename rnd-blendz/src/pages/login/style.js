@@ -60,3 +60,15 @@ export const Button = styled.div`
     text-align: center;
     font-size: 20px;
 `;
+
+export const RegisterWrapper = styled.div`
+    width: 20%;
+    height: 8%;
+    margin: auto;
+`;
+
+export const Register = styled.a`
+    width:80%;
+    height:80%;
+    color:red;
+`;

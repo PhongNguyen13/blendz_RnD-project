@@ -1,25 +1,63 @@
 import axios from "axios";
 import * as constants from './constants';
+import { login, logout, UseAuth, reSetPassword } from "../../../firebase";
+import { fromJS } from "immutable";
 
 const changeLogin = () => ({
     type: constants.CHANGE_LOGIN,
     value: true
 })
 
-export const logout = () => ({
-    type: constants.LOGOUT,
+const ChangeLogout = () => ({
+    type: constants.CHANGE_LOGOUT,
     value: false
 })
 
-export const login = (account, password ) => {
-    return (dispatch) => {
-        axios.get('/api/login.json?account=' + account + '&password=' + password).then((res) => {
-            const result = res.data.data;
-            if (result) {
-                dispatch(changeLogin())
-            }else{
-                alert('fail login')
-            }
+const GetUser = (data) => ({
+    type: constants.GET_USER,
+    data: fromJS(data)
+})
+
+
+export const log_in = (email, password) => {
+    return(dispatch) => {
+        login(email, password).then((res) => {
+            console.log(res);
+            dispatch(changeLogin())
+        }).catch(error => {
+            console.log(error);
+            alert(error);
         })
+    }
+}
+
+export const log_out = () => {
+    return(dispatch) => {
+        logout().then((res) => {
+            console.log("Logout");
+            dispatch(ChangeLogout())
+        }).catch(error => {
+            console.log(error);
+            alert(error);
+        })
+    }
+}
+
+export const Reset_Password = (email) => {
+    return(dispatch) => {
+        reSetPassword(email).then((res) => {
+            console.log("email has sended");
+            dispatch(ChangeLogout())
+        }).catch(error => {
+            console.log(error);
+            alert(error);
+        })
+    }
+}
+
+export const get_User = () =>{
+    return(dispatch) => {
+        const data = UseAuth().email;
+        dispatch(GetUser(data.data));
     }
 };

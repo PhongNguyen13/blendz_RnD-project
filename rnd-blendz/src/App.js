@@ -11,6 +11,9 @@ import Shop from './pages/Shop';
 import Help from './pages/Help';
 import About from './pages/About';
 import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ResetPassword from "./pages/ResetPassword";
+import Cart from "./pages/Cart";
 
 class App extends Component {
 
@@ -26,6 +29,9 @@ class App extends Component {
             <Route path="/help" exact element={<Help />}> </Route>
             <Route path="/about" exact element={<About />}> </Route>
             <Route path="/login" exact element={<Login />}> </Route>
+            <Route path="/register" exact element={<Register />}> </Route>
+            <Route path="/resetpassword" exact element={<ResetPassword />}> </Route>
+            <Route path="/cart" exact element={<Cart />}> </Route>
           </Routes>
       </Router>
       <Footer/>
