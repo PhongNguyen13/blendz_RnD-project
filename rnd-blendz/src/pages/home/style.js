@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import HomePic from '../../statics/HomeImage.png'
-
+import HomePic from '../../assets/HomeImage.png'
 
 export const HomeWrapper = styled.div`
     // z-index:-1;

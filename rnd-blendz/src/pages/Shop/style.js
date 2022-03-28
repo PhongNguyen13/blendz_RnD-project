@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import icon1 from '../../statics/Shopicon1.png'
-import icon2 from '../../statics/Shopicon2.png'
-import icon3 from '../../statics/Shopicon3.png'
+import icon1 from '../../assets/Shopicon1.png'
+import icon2 from '../../assets/Shopicon2.png'
+import icon3 from '../../assets/Shopicon3.png'
 
 export const ShopWrapper = styled.div`
     // z-index:-1;
