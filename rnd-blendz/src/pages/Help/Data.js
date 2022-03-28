@@ -31,14 +31,12 @@ export const Data = [
   },
   {
     question: 'Cleaning and operation instructions for the first class machines?',
-    answer: 'Requires the reset button pushed.',
     link: <a href="src/file/Question7_01.pdf">First Class Dismantle, Cleaning and Reassemble</a>,
     link2: <a href="src/file/Question7_02.pdf">Operation of "First Class" machine</a>,
     link3: <a href="src/file/Question7_03.pdf">First Class machine description</a>
   },
   {
     question: 'Cleaning and operation of the BigBiz machines?',
-    answer: 'Requires the reset button pushed.',
     link: <a href="src/file/Question8_01.pdf">Operation of "BigBiz" machine</a>,
     link2: <a href="src/file/Question8_02.pdf">BigBiz Dismantle, Cleaning and Reassemble</a>
   }

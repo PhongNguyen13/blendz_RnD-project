@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 export const AccordionSection = styled.div`
     margin-top: 50px;
@@ -30,6 +31,8 @@ export const AccordionSection = styled.div`
         height: 2px;
         background-color: hotpink;
     }
+
+    ${mobile({ height: "200px", padding: "0px 0px" })}
 `;
 
 export const Wrap = styled.div`
