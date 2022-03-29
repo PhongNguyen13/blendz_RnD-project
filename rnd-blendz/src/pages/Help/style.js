@@ -32,7 +32,7 @@ export const AccordionSection = styled.div`
         background-color: hotpink;
     }
 
-    ${mobile({ height: "200px", padding: "0px 0px" })}
+    ${mobile({ padding: "10px 0px" })}
 `;
 
 export const Wrap = styled.div`

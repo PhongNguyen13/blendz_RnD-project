@@ -6,15 +6,17 @@ class About extends Component {
         return(
             <AboutWrapper>
                 <InfoWrapper>
-                    <Title>We are Blendz</Title>
+                    <Title>WELCOME TO BLENDZ</Title>
                     <Content>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,when an unknown prin
-                        ter took a galley of type and scrambled it to make a type specimen book. It has survived not only
-                        five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem 
-                        Ipsum.
+                        Blendz is the New Zealand and South Pacific distributor of slushy machines from Elmeco in Italy.
+
+                        We offer machine sales and support, rentals, servicing, spare parts, slushy concentrate and accessories as a complete hassle free solution.
+
+                        The ideas for Blendz are constantly being developed and tested to provide a range of unique and interesting beverages.
+
+                        '2 Mix it' was conceived in conjunction with Blendz, as the vehicle in which the blended beverages can be administered.
+
+                        On this site you will see our dispensing machinery and accessories which allows you to make this happen for your business.
                     </Content>
                 </InfoWrapper>
             </AboutWrapper>
