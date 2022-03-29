@@ -2,11 +2,12 @@ import styled from "styled-components";
 import { mobile } from "../../responsive";
 
 export const AccordionSection = styled.div`
-    margin-top: 50px;
-    margin bottom: 50px;
-    margin-left: 180px;
-    height: 50vh;
-    width: 100%;
+    // margin-top: 50px;
+    // margin bottom: 50px;
+    // margin-left: 180px;
+    padding: 50px 200px;
+    // height: 50vh;
+    // width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -21,25 +22,26 @@ export const AccordionSection = styled.div`
         position: relative;
         width: max-width;
         font-size: 35px;
+        margin-bottom: 50px;
     }
     h1::after {
         content: "";
         position: absolute;
         bottom: 0;
         margin-right: 200px;
-        width: 310px;
+        width: 38%;
         height: 2px;
         background-color: hotpink;
     }
+    ${mobile({ padding: '0px 10px'})}
 
-    ${mobile({ padding: "10px 0px" })}
 `;
 
 export const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 70%;
+  width: 100%;
   text-align: center;
   cursor: pointer;
   border: 2px solid #6db5ff;
@@ -61,12 +63,14 @@ export const Wrap = styled.div`
     float: left;
     transition: all 0.5s ease-in;
   }
+
+
 `;
 
 export const Dropdown = styled.div`
   background-color: #6db5ff;
   color: #fff;
-  width: 70%;
+  width: 100%;
   display: flex;
   border-left: 2px solid #fff;
   border-radius: 50px;

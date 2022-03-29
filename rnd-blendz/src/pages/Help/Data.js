@@ -1,9 +1,18 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
+import Q1 from "../../file/Question1.pdf";
+import Q5a from "../../file/Question5_01.pdf";
+import Q5b from "../../file/Question5_02.pdf";
+import Q6 from "../../file/Question6.pdf";
+import Q7a from "../../file/Question7_01.pdf";
+import Q7b from "../../file/Question7_02.pdf";
+import Q7c from "../../file/Question7_03.pdf";
+import Q8a from "../../file/Question8_01.pdf";
+import Q8b from "../../file/Question8_02.pdf";
+
 export const Data = [
   {
     question: 'My First Class 1 machine is not cooling?',
     answer: 'The machine has overheated and requires the reset button to be pushed.',
-    link: <a href="src/file/Question1.pdf">First Class 1 Reset after Overheating</a>
+    link: <a href={Q1} target="_blank" type="application/pdf" rel="noreferrer">First Class 1 Reset after Overheating</a>
   },
   {
     question: 'How does a slush machine work?',
@@ -21,23 +30,23 @@ export const Data = [
   {
     question: 'My Bigbiz 2 machine is not chilling, all the lights are flashing?',
     answer: 'The machine has overheated and popped the cutout.</br>The reset button is on the front of the machine behind the left hand side drip tray.',
-    link: <a href="src/file/Question5_01.pdf">BigBiz Reset after Overheating</a>,
-    link2: <a href="src/file/Question5_02.pdf">Keep the lint filter clean</a>
+    link: <a href={Q5a} target="_blank" type="application/pdf" rel="noreferrer">BigBiz Reset after Overheating</a>,
+    link2: <a href={Q5b} target="_blank" type="application/pdf" rel="noreferrer">Keep the lint filter clean</a>
   },
   {
     question: 'First Class 2 or 3 not freezing?',
     answer: 'Requires the reset button pushed.',
-    link: <a href="src/file/Question6.pdf">Reset after Overheating First Class 2 and 3</a>
+    link: <a href={Q6} target="_blank" type="application/pdf" rel="noreferrer">Reset after Overheating First Class 2 and 3</a>
   },
   {
     question: 'Cleaning and operation instructions for the first class machines?',
-    link: <a href="src/file/Question7_01.pdf">First Class Dismantle, Cleaning and Reassemble</a>,
-    link2: <a href="src/file/Question7_02.pdf">Operation of "First Class" machine</a>,
-    link3: <a href="src/file/Question7_03.pdf">First Class machine description</a>
+    link: <a href={Q7a} target="_blank" type="application/pdf" rel="noreferrer">First Class Dismantle, Cleaning and Reassemble</a>,
+    link2: <a href={Q7b} target="_blank" type="application/pdf" rel="noreferrer">Operation of "First Class" machine</a>,
+    link3: <a href={Q7c} target="_blank" type="application/pdf" rel="noreferrer">First Class machine description</a>
   },
   {
     question: 'Cleaning and operation of the BigBiz machines?',
-    link: <a href="src/file/Question8_01.pdf">Operation of "BigBiz" machine</a>,
-    link2: <a href="src/file/Question8_02.pdf">BigBiz Dismantle, Cleaning and Reassemble</a>
+    link: <a href={Q8a} target="_blank" type="application/pdf" rel="noreferrer">Operation of "BigBiz" machine</a>,
+    link2: <a href={Q8b} target="_blank" type="application/pdf" rel="noreferrer">BigBiz Dismantle, Cleaning and Reassemble</a>
   }
 ];
