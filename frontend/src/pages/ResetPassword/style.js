@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const ResetWrapper = styled.div`
-    z-index:-1;
-    position absolute;
+    // z-index:-1;
+    // position absolute;
     top: 0;
     bottom 0;
     left: 0;

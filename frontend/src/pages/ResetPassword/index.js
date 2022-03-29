@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ResetWrapper, ResetBox, Content, Input, Button } from './style';
 import { connect } from 'react-redux';
-import { actionCreators as ActionCreators3 } from '../login/store/index';
+import { actionCreators as ActionCreators3 } from '../Login/store/index';
 
 class ResetPassword extends Component {
     render(){

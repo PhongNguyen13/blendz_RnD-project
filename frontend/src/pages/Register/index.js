@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { RegisterBox, RegisterWrapper, Content, Input, Button } from './style';
 import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { actionCreators2 } from "../login/store/index";
+import { actionCreators2 } from "../Login/store/index";
 
 class Register extends Component {
     render(){

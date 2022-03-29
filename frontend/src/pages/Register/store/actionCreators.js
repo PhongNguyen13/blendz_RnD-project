@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as constants from '../../login/store/constants';
+import * as constants from '../../Login/store/constants';
 import { signup } from "../../../firebase";
 
 const ChangeRLogin = () => ({
