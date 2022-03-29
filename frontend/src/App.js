@@ -7,7 +7,7 @@ import { GlobalStyle } from './style';
 import Header from './components/header';
 import Footer from './components/footer';
 import Home from './pages/Home';
-import Shop from './pages/Shop';
+import Shop from './pages/Shop/';
 import Help from './pages/Help';
 import About from './pages/About';
 import Login from "./pages/Login";
