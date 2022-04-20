@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import store from './store';
 import { Provider } from 'react-redux';
 import { GlobalStyle } from './style';
@@ -15,6 +15,7 @@ import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import Cart from "./pages/Cart";
 import User from "./pages/User";
+import NotFound from "./pages/NotFound";
 
 class App extends Component {
 
@@ -34,6 +35,8 @@ class App extends Component {
             <Route path="/resetpassword" exact element={<ResetPassword />}> </Route>
             <Route path="/cart" exact element={<Cart />}> </Route>
             <Route path="/user" exact element={<User />}></Route>
+            <Route path="/404" exact element={<NotFound />}></Route>
+            <Route path="*" element={<Navigate to="/NotFound" replace />}></Route>
           </Routes>
       </Router>
       <Footer/>
