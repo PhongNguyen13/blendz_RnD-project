@@ -11,6 +11,7 @@ admin.initializeApp({
     databaseURL:"https://blendz-1e3a0.firebaseio.com"
 });
 
+//verify the connection with firebase
 var firebase = admin.database();
 console.log(firebase);
 
