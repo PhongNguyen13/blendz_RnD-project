@@ -32,7 +32,6 @@ class Login extends Component {
 }
 
 const mapState = (state) => ({
-    
     loginStatus: state.get('login').get('login')
 });
 

@@ -32,8 +32,7 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        login: state.get('login').get('login'),
-        Currentuser: state.getIn(['login','Currentuser'])
+        login: state.get('login').get('login')
     }
 }
 
@@ -41,9 +40,6 @@ const mapDispathToProprs = (dispatch) => {
     return{
         logout(){
             dispatch(loginActionCreators.log_out())
-        },
-        getUser(){
-            dispatch(loginActionCreators.get_User())
         }
     }
 }
