@@ -25,11 +25,14 @@ class Login extends Component {
             )
         }else{
             return <Navigate to='/'/>
+
+
         }
     }
 }
 
 const mapState = (state) => ({
+    
     loginStatus: state.get('login').get('login')
 });
 
