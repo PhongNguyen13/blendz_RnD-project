@@ -36,7 +36,7 @@ class App extends Component {
             <Route path="/cart" exact element={<Cart />}> </Route>
             <Route path="/user" exact element={<User />}></Route>
             <Route path="/404" exact element={<NotFound />}></Route>
-            <Route path="*" element={<Navigate to="/NotFound" replace />}></Route>
+            <Route path="*" element={<Navigate to="/404" replace />}></Route>
           </Routes>
       </Router>
       <Footer/>
