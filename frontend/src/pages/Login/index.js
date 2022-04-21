@@ -7,8 +7,10 @@ import { actionCreators } from './store/index';
 class Login extends Component {
     render(){
         const { loginStatus } = this.props;
-        
-        if (!loginStatus) {
+        var storage=window.localStorage;
+        var Islogin = storage.getItem("Islogin");
+
+        if (Islogin == 0) {
             return(
                 <LoginWrapper>
                     <LoginBox>
@@ -25,8 +27,6 @@ class Login extends Component {
             )
         }else{
             return <Navigate to='/'/>
-
-
         }
     }
 }

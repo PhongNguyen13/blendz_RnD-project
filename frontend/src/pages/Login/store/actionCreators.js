@@ -23,7 +23,9 @@ export const log_in = (email, password) => {
     return(dispatch) => {
         login(email, password).then((res) => {
             console.log(res);
-            dispatch(changeLogin())
+            var storage=window.localStorage;
+            storage.setItem("Islogin", 1);
+            dispatch(changeLogin());
         }).catch(error => {
             console.log(error);
             alert(error);
@@ -35,6 +37,8 @@ export const log_out = () => {
     return(dispatch) => {
         logout().then((res) => {
             console.log("Logout");
+            var storage=window.localStorage;
+            storage.setItem("Islogin", 0);
             dispatch(ChangeLogout())
         }).catch(error => {
             console.log(error);
