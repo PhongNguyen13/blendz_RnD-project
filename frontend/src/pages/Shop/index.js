@@ -27,8 +27,8 @@ class Shop extends Component {
                 return (
                     <ShopInforItem key={item.get('id')} >
                         <img src={item.get('imgUrl')}></img>
-                        <h1>{item.get('name')}</h1>
-                        <h1>{item.get('price')}</h1>
+                        <ShopInforTitle>{item.get('name')}</ShopInforTitle>
+                        <ShopInforTitle>{item.get('price')}</ShopInforTitle>
                     </ShopInforItem>
                     
                 );
