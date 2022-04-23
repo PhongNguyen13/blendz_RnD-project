@@ -14,16 +14,17 @@ export const selectAccessories = () => ({
     type: constants.SELECT_ACCESSORIES
 });
 
-const changeList = (data) => ({
-    type: constants.CHANGE_LIST,
-    data: fromJS(data)
+const changeMachineList = (result) => ({
+    type: constants.CHANGEtoMACHINELIST,
+    data: fromJS(result)
 })
 
-export const getList = () => {
+export const getMachineList = () => {
     return (dispatch) => {
-        axios.get('/api/shopList.json').then((res) => {
-            const data = res.data;
-            dispatch(changeList(data.data));
+        axios.get('/api/Machine.json').then((res) => {
+            const result = res.data;
+            console.log(result);
+            dispatch(changeMachineList(result));
         }).catch(() => {
             console.log('error');
         })

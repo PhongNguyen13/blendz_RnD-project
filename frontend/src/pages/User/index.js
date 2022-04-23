@@ -1,19 +1,14 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { actionCreators as loginActionCreators } from '../../pages/Login/store/index';
+import { Button, ProfileTitle } from "./style";
 
 class User extends Component {
     render(){
         return(
             <div>
-            <h1>User</h1>
-            <h1>User</h1>
-            <h1>User</h1>
-            <h1>User</h1>
-            <h1>User</h1>
-            <h1>User</h1>
-            <h1>User</h1>
-            <button onClick={() => this.props.logout()}></button>
+            <ProfileTitle>Welcome to your profiles </ProfileTitle>
+            <Button onClick={() => this.props.logout()}>Logout</Button>
             </div>
         )
     }

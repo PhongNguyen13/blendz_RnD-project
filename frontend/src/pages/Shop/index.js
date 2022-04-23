@@ -14,22 +14,25 @@ class Shop extends Component {
                         <ShopNavItem onClick={() => this.props.handleInput3()}>Accessories</ShopNavItem>
                 </ShopNav>
                 <ShopInforWrapper>
-                    {this.getList()}
+                    {this.getMachineList()}
                 </ShopInforWrapper>
             </ShopWrapper>
         )
     }
 
-    getList(){
+    getMachineList(){
         if(this.props.selected === "Machine"){
-            return(
-                <div>
-                <ShopInforTitle>Machine</ShopInforTitle>
-                {this.props.list.map((item) => {
-                    return <ShopInforItem key={item}>{item}</ShopInforItem>
-                })}
-                </div>
-            )
+            const {list} = this.props;            
+            return list.map((item) =>{
+                return (
+                    <ShopInforItem key={item.get('id')} >
+                        <img src={item.get('imgUrl')}></img>
+                        <h1>{item.get('name')}</h1>
+                        <h1>{item.get('price')}</h1>
+                    </ShopInforItem>
+                    
+                );
+            });
         }else if (this.props.selected === "Beverages"){
             return 2;
         }else if (this.props.selected === "Accessories") {
@@ -45,7 +48,7 @@ class Shop extends Component {
 const mapStateTothis= (state) => {
     return {
         selected: state.getIn(['shop','selected']),
-        list: state.getIn(['shop','list'])
+        list: state.getIn(['shop','machine'])
     }
 }
 
@@ -53,7 +56,7 @@ const mapDispathTothis = (dispatch) => {
     return{
         handleInput(){
             dispatch(actionCreators.selectMachine());
-            dispatch(actionCreators.getList());
+            dispatch(actionCreators.getMachineList());
         },
         handleInput2(){
             dispatch(actionCreators.selectBeverages());

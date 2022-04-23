@@ -37,8 +37,11 @@ export const log_out = () => {
     return(dispatch) => {
         logout().then((res) => {
             console.log("Logout");
+            //change localstorage
             var storage=window.localStorage;
             storage.setItem("Islogin", 0);
+            //nav to login page
+            window.location.replace("/login");
             dispatch(ChangeLogout())
         }).catch(error => {
             console.log(error);

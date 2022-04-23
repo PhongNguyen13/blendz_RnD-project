@@ -8,48 +8,34 @@ import { actionCreators as loginActionCreators } from '../../pages/Login/store/i
 class Header extends Component {
     render() {
         const { login, logout} = this.props;
+        return (
+        <HeaderWrapper>
+            <Logo href="/" />
+            <Nav>
+                <NavItem href="/">HOME</NavItem>
+                <NavItem href="/shop">SHOP</NavItem>
+                <NavItem href="/help">HELP</NavItem>
+                <NavItem href="/about">ABOUT</NavItem>
+                {this.Islogin()}
+                <NavItem href="/cart">
+                    <Badge badgeContent={2} color="primary">
+                        <ShoppingCartOutlined />
+                        </Badge>
+                        </NavItem>
+                        </Nav>
+                        </HeaderWrapper>
+            )
+        }
+
+    Islogin() {
         var storage=window.localStorage;
         var Islogin = storage.getItem("Islogin");
-
         if(Islogin == 0){
-            return (
-                <HeaderWrapper>
-                    <Logo href="/" />
-                    <Nav>
-                        <NavItem href="/">HOME</NavItem>
-                        <NavItem href="/shop">SHOP</NavItem>
-                        <NavItem href="/help">HELP</NavItem>
-                        <NavItem href="/about">ABOUT</NavItem>
-                        <NavItem href="/login"><AccountCircle /></NavItem>
-                        <NavItem href="/cart">
-                            <Badge badgeContent={2} color="primary">
-                                <ShoppingCartOutlined />
-                            </Badge>
-                        </NavItem>
-                    </Nav>
-                </HeaderWrapper>
-            )
-        }else if (Islogin == 1){
-            return (
-                <HeaderWrapper>
-                    <Logo href="/" />
-                    <Nav>
-                        <NavItem href="/">HOME</NavItem>
-                        <NavItem href="/shop">SHOP</NavItem>
-                        <NavItem href="/help">HELP</NavItem>
-                        <NavItem href="/about">ABOUT</NavItem>
-                        <NavItem href="/user"><AccountCircle /></NavItem>
-                        <NavItem href="/cart">
-                            <Badge badgeContent={2} color="primary">
-                                <ShoppingCartOutlined />
-                            </Badge>
-                        </NavItem>
-                    </Nav>
-                </HeaderWrapper>
-            )
+            return(<NavItem href="/login"><AccountCircle /></NavItem>);
+        }else if(Islogin == 1){
+            return(<NavItem href="/user"><AccountCircle /></NavItem>);
         }else{
-            console.log("error");
-            console.log(Islogin);
+            console.log("error to display login button");
         }
     }
 }
