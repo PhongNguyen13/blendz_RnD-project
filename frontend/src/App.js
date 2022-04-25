@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import store from './store';
 import { Provider } from 'react-redux';
 import { GlobalStyle } from './style';
@@ -16,6 +16,7 @@ import ResetPassword from "./pages/ResetPassword";
 import Cart from "./pages/Cart";
 import User from "./pages/User";
 import NotFound from "./pages/NotFound";
+import Detail from "./pages/Detail";
 
 class App extends Component {
 
@@ -24,20 +25,21 @@ class App extends Component {
     <Provider store={store}>
       <GlobalStyle />
       <Header/>
-      <Router>    
-          <Routes>
-            <Route path="/" exact element={<Home />}> </Route>
-            <Route path="/shop" exact element={<Shop />}> </Route>
-            <Route path="/help" exact element={<Help />}> </Route>
-            <Route path="/about" exact element={<About />}> </Route>
-            <Route path="/login" exact element={<Login />}> </Route>
-            <Route path="/register" exact element={<Register />}> </Route>
-            <Route path="/resetpassword" exact element={<ResetPassword />}> </Route>
-            <Route path="/cart" exact element={<Cart />}> </Route>
-            <Route path="/user" exact element={<User />}></Route>
-            <Route path="/404" exact element={<NotFound />}></Route>
-            <Route path="*" element={<Navigate to="/404" replace />}></Route>
-          </Routes>
+      <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/shop" component={Shop} />
+        <Route path="/help" component={Help} />
+        <Route path="/about" component={About} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/resetPassword" component={ResetPassword} />
+        <Route path="/cart" component={Cart} />
+        <Route path="/user" component={User} />
+        <Route path="/shop/detail/:id" component={Detail} />
+        <Route exact path="/404" component={NotFound} />
+        <Route path="*" component={NotFound} />
+      </Switch>
       </Router>
       <Footer/>
     </Provider>
@@ -46,3 +48,18 @@ class App extends Component {
 }
 
 export default App;
+
+/*
+
+            <Route exact path="/" component={Home}> </Route>
+            <Route path="/shop" component={Shop}> </Route>
+            <Route path="/detail/:id" component={Detail}> </Route>
+            <Route path="/help" component={Help}> </Route>
+            <Route path="/about" component={About}> </Route>
+            <Route path="/login" component={Login}> </Route>
+            <Route path="/register" component={Register}> </Route>
+            <Route path="/resetpassword" component={ResetPassword}> </Route>
+            <Route path="/cart" component={Cart}> </Route>
+            <Route path="/user" component={User}></Route>
+            <Route path="/404" component={NotFound}></Route>
+*/

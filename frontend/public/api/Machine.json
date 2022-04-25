@@ -1,19 +1,19 @@
 
 
     [{
-        "id":1,
+        "id":"M1",
         "name": "A",
         "price": 5000,
         "imgUrl":"../img/M1.png"
       },
       {
-        "id":2,
+        "id":"M2",
         "name": "B",
         "price": 6000,
         "imgUrl":"../img/M2.png"
       },
       {
-        "id":3,
+        "id":"M3",
         "name": "C",
         "price": 8000,
         "imgUrl":"../img/M2.png"

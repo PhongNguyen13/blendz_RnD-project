@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { ShopWrapper, ShopNav, ShopNavItem, ShopInforWrapper, ShopNavTitle, ShopInforItem, ShopInforTitle } from "./style";
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
 import * as actionCreators from './store/actionCreators';
 
 class Shop extends Component {
@@ -14,32 +15,34 @@ class Shop extends Component {
                         <ShopNavItem onClick={() => this.props.handleInput3()}>Accessories</ShopNavItem>
                 </ShopNav>
                 <ShopInforWrapper>
-                    {this.getMachineList()}
+                    {this.getList()}
                 </ShopInforWrapper>
             </ShopWrapper>
         )
     }
 
-    getMachineList(){
-        if(this.props.selected === "Machine"){
-            const {list} = this.props;            
+    getList(){
+        if(this.props.selected === "start"){
+            return(
+                <h1>welcome to Shopping page</h1>
+            )
+        }else if(this.props.selected !== "start"){    
+            const {list} = this.props;        
             return list.map((item) =>{
                 return (
-                    <ShopInforItem key={item.get('id')} >
-                        <img src={item.get('imgUrl')}></img>
+                    <Link key={item.get('id')} to={`/shop/detail/${item.get('id')}`} >
+                    <ShopInforItem >
+                        <img src={item.get('imgUrl')} alt=''></img>
                         <ShopInforTitle>{item.get('name')}</ShopInforTitle>
                         <ShopInforTitle>{item.get('price')}</ShopInforTitle>
                     </ShopInforItem>
-                    
+                    </Link>
                 );
-            });
-        }else if (this.props.selected === "Beverages"){
-            return 2;
-        }else if (this.props.selected === "Accessories") {
-            return 3;
+            }
+            );
         }else{
-            return(
-                <h1>Welcome to Blendz</h1>
+            return (
+                <h1>error</h1>
             )
         }
     }
@@ -48,7 +51,7 @@ class Shop extends Component {
 const mapStateTothis= (state) => {
     return {
         selected: state.getIn(['shop','selected']),
-        list: state.getIn(['shop','machine'])
+        list: state.getIn(['shop','list'])
     }
 }
 
@@ -60,9 +63,11 @@ const mapDispathTothis = (dispatch) => {
         },
         handleInput2(){
             dispatch(actionCreators.selectBeverages());
+            dispatch(actionCreators.getBeveragesList());
         },
         handleInput3(){
             dispatch(actionCreators.selectAccessories());
+            dispatch(actionCreators.getAccessoriesList());
         }
     }
 }

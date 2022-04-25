@@ -67,7 +67,7 @@ export const ShopInforTitle = styled.div`
     background: #FF9900;
 `;
 
-export const ShopInforItem = styled.a`
+export const ShopInforItem = styled.div`
     // width: 15%;
     // height: 35%;
     display: block;
@@ -76,4 +76,5 @@ export const ShopInforItem = styled.a`
     border: 5px solid #FF9900;
     border-radius: 2px;
     margin: 5% 5%;
+    text-decoration:none
 `;
