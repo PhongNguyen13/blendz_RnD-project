@@ -35,7 +35,7 @@ class Header extends Component {
         }else if(Islogin == 1){
             return(<NavItem href="/user"><AccountCircle /></NavItem>);
         }else{
-            console.log("error to display login button");
+            return(<NavItem href="/login"><AccountCircle /></NavItem>);
         }
     }
 }
