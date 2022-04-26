@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { RegisterBox, RegisterWrapper, Content, Input, Button } from './style';
-import { Navigate } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actionCreators2 } from "../Login/store/index";
 
@@ -22,7 +22,7 @@ class Register extends Component {
                 </RegisterWrapper>
             )
         }else{
-            return <Navigate to='/'/>
+            return <Redirect to='/'/>
         }
     }
 }

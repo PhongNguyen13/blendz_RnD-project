@@ -59,6 +59,7 @@ export const Button = styled.div`
     margin-top: 40px;
     text-align: center;
     font-size: 20px;
+    cursor:pointer;
 `;
 
 export const RegisterWrapper = styled.div`
