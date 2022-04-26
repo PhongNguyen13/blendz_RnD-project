@@ -14,16 +14,37 @@ export const selectAccessories = () => ({
     type: constants.SELECT_ACCESSORIES
 });
 
-const changeList = (data) => ({
-    type: constants.CHANGE_LIST,
-    data: fromJS(data)
+const changeList = (result) => ({
+    type: constants.CHANGELIST,
+    data: fromJS(result)
 })
 
-export const getList = () => {
+export const getMachineList = () => {
     return (dispatch) => {
-        axios.get('/api/shopList.json').then((res) => {
-            const data = res.data;
-            dispatch(changeList(data.data));
+        axios.get('/api/Machine.json').then((res) => {
+            const result = res.data;
+            dispatch(changeList(result));
+        }).catch(() => {
+            console.log('error');
+        })
+    }
+}
+export const getBeveragesList = () => {
+    return (dispatch) => {
+        axios.get('/api/Beverages.json').then((res) => {
+            const result = res.data;
+            dispatch(changeList(result));
+        }).catch(() => {
+            console.log('error');
+        })
+    }
+}
+
+export const getAccessoriesList = () => {
+    return (dispatch) => {
+        axios.get('/api/Accessories.json').then((res) => {
+            const result = res.data;
+            dispatch(changeList(result));
         }).catch(() => {
             console.log('error');
         })

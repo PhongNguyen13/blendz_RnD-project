@@ -3,7 +3,7 @@ import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
     selected: "start",
-    list: []
+    list:[]
 });
 
 const selecter = (state = defaultState, action) => {
@@ -20,9 +20,10 @@ const selecter = (state = defaultState, action) => {
         return state.set('selected', "Accessories");
     }
     
-    if (action.type === constants.CHANGE_LIST) {
-        return state.set('list', action.data);
+    if (action.type === constants.CHANGELIST) {
+        return state.set('list',action.data);
     }
+
     return state;
 }
 

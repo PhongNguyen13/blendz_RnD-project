@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { ShopWrapper, ShopNav, ShopNavItem, ShopInforWrapper, ShopNavTitle, ShopInforItem, ShopInforTitle } from "./style";
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
 import * as actionCreators from './store/actionCreators';
 
 class Shop extends Component {
@@ -21,22 +22,27 @@ class Shop extends Component {
     }
 
     getList(){
-        if(this.props.selected === "Machine"){
+        if(this.props.selected === "start"){
             return(
-                <div>
-                <ShopInforTitle>Machine</ShopInforTitle>
-                {this.props.list.map((item) => {
-                    return <ShopInforItem key={item}>{item}</ShopInforItem>
-                })}
-                </div>
+                <h1>welcome to Shopping page</h1>
             )
-        }else if (this.props.selected === "Beverages"){
-            return 2;
-        }else if (this.props.selected === "Accessories") {
-            return 3;
+        }else if(this.props.selected !== "start"){    
+            const {list} = this.props;        
+            return list.map((item) =>{
+                return (
+                    <Link key={item.get('id')} to={`/shop/detail/${item.get('id')}`} >
+                    <ShopInforItem >
+                        <img src={item.get('imgUrl')} alt=''></img>
+                        <ShopInforTitle>{item.get('name')}</ShopInforTitle>
+                        <ShopInforTitle>{item.get('price')}</ShopInforTitle>
+                    </ShopInforItem>
+                    </Link>
+                );
+            }
+            );
         }else{
-            return(
-                <h1>Welcome to Blendz</h1>
+            return (
+                <h1>error</h1>
             )
         }
     }
@@ -53,13 +59,15 @@ const mapDispathTothis = (dispatch) => {
     return{
         handleInput(){
             dispatch(actionCreators.selectMachine());
-            dispatch(actionCreators.getList());
+            dispatch(actionCreators.getMachineList());
         },
         handleInput2(){
             dispatch(actionCreators.selectBeverages());
+            dispatch(actionCreators.getBeveragesList());
         },
         handleInput3(){
             dispatch(actionCreators.selectAccessories());
+            dispatch(actionCreators.getAccessoriesList());
         }
     }
 }
