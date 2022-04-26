@@ -2,12 +2,7 @@ import styled from "styled-components";
 import { mobile } from "../../responsive";
 
 export const AccordionSection = styled.div`
-    // margin-top: 50px;
-    // margin bottom: 50px;
-    // margin-left: 180px;
     padding: 50px 200px;
-    // height: 50vh;
-    // width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -32,6 +27,21 @@ export const AccordionSection = styled.div`
         width: 38%;
         height: 2px;
         background-color: hotpink;
+    }
+
+    p {
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+      margin-left: 250px;
+      font-size: 15px;
+    }
+
+    a {
+      position: absolute;
+      color: hotpink;
+      margin-left: 10px;
     }
     ${mobile({ padding: '0px 10px'})}
 `;

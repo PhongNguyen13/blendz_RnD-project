@@ -19,7 +19,7 @@ const Help = () => {
   return (
     <IconContext.Provider value={{ color: '#fff', size: '25px' }}>
       <AccordionSection>
-      <h1>FREQUENTLY ASKED QUESTION</h1>
+        <h1>FREQUENTLY ASKED QUESTION</h1>
           {Data.map((item, index) => {
             return (
               <>
@@ -38,6 +38,8 @@ const Help = () => {
               </>
             );
           })}
+        <p>Need more help?</p>
+        <a href='/contactus'>Contact Us</a>
       </AccordionSection>
     </IconContext.Provider>
   );
