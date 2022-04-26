@@ -15,26 +15,7 @@ class Detail extends Component {
             
         )
     }
-    componentDidMount(){
-        this.props.getProductDetail();
-        console.log("success");
-}
 }
 
+export default Detail;
 
-const mapStateTothis= (state) => {
-    return {
-        product: state.getIn(['detail','product'])
-    }
-}
-
-const mapDispathTothis = (dispatch) => {
-    return{
-        getProductDetail(){
-            dispatch(actionCreators.getProduct());
-        }
-    }
-}
-
-
-export default connect(mapStateTothis, mapDispathTothis)(Detail);
