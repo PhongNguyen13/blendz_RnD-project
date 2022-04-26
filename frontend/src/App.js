@@ -14,6 +14,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import Cart from "./pages/Cart";
+import ContactUs from "./pages/ContactUs"
 import User from "./pages/User";
 import NotFound from "./pages/NotFound";
 import Detail from "./pages/Detail";
@@ -33,6 +34,7 @@ class App extends Component {
         <Route path="/about" component={About} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/contactus" component={ContactUs} />
         <Route path="/resetPassword" component={ResetPassword} />
         <Route path="/cart" component={Cart} />
         <Route path="/user" component={User} />
