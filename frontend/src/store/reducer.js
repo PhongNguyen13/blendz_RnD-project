@@ -5,8 +5,7 @@ import {reducer as detailreducer } from '../pages/Detail/store/index';
 
 const reducer = combineReducers({
     login: loginReducer,
-    shop: shopreducer,
-    detail: detailreducer
+    shop: shopreducer
 })
 
 export default reducer;
