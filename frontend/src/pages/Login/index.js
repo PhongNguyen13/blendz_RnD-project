@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navigate } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Button, Input, LoginBox, LoginWrapper, Content, RegisterWrapper, Register } from './style';
 import { actionCreators } from './store/index';
@@ -26,7 +26,7 @@ class Login extends Component {
                 </LoginWrapper>    
             )
         }else{
-            return <Navigate to='/'/>
+            return <Redirect to='/'/>
         }
     }
 }
