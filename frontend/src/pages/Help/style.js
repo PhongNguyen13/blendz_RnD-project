@@ -35,13 +35,15 @@ export const AccordionSection = styled.div`
       align-items: center;
       margin-top: 30px;
       margin-left: 250px;
-      font-size: 15px;
+      font-size: 20px;
     }
 
     a {
       position: absolute;
       color: hotpink;
       margin-left: 10px;
+      font: bold;
+      font-size: 20px;
     }
     ${mobile({ padding: '0px 10px'})}
 `;
