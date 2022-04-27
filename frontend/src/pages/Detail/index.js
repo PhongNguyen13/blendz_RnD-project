@@ -12,10 +12,22 @@ class Detail extends Component {
                 <ItemInfo>
                 </ItemInfo>
             </DetailWrapper>
-            
         )
+    }
+    componentDidMount(){
+        this.props.getproduct(this.props.match.params.id);
     }
 }
 
-export default Detail;
+const mapStateTothis= (state) =>{
+    return{
+        product: state.getIn(['detail', 'product'])
+    }
+}
+const mapDispathTothis = (dispatch) =>({
+    getproduct(id){
+        dispatch(actionCreators.getdetail(id));
+    }
+})
 
+export default connect(mapStateTothis, mapDispathTothis)(Detail);
