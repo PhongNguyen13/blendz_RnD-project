@@ -6,9 +6,12 @@ const defaultState = fromJS({
 });
 
 const detailstate = (state = defaultState, action) => {
-    if(action.type === constants.GETDETAIL){
-        return state.set('product',action.data)
+    
+    if (action.type === constants.GETDETAIL) {
+        return state.set('product',action.data);
     }
+
+    return state;
 }
 
 export default detailstate;
