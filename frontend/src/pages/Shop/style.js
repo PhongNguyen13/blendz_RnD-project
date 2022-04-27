@@ -51,7 +51,7 @@ export const ShopNavItem = styled.div`
 `;
 
 export const ShopInforWrapper = styled.div`
-    // width: 85%;
+    width: 85%;
     // height:90%;
     // float: left;
     background: #EEB764;
@@ -67,12 +67,14 @@ export const ShopInforTitle = styled.div`
     background: #FF9900;
 `;
 
-export const ShopInforItem = styled.a`
+export const ShopInforItem = styled.div`
     // width: 15%;
     // height: 35%;
     display: block;
-    // float: left;
+    float: left;
+    margin: auto;
     border: 5px solid #FF9900;
     border-radius: 2px;
     margin: 5% 5%;
+    text-decoration:none
 `;
