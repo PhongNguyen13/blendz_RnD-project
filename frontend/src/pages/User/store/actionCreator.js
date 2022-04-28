@@ -2,11 +2,8 @@ import * as constants from './constants';
 import axios from 'axios';
 import { fromJS } from 'immutable';
 
-const changedetail = (imgUrl, name, price) => ({
-    type: constants.GETDETAIL,
-    imgUrl,
-    name,
-    price
+const changedetail = () => ({
+    type: constants.GETUSER,
 })
 
 export const getMachineDetail = (id) => {

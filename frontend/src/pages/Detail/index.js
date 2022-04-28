@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { DetailWrapper, Itemimg, ItemInfo } from "./style";
+import { DetailWrapper, Itemimg, ItemInfo, Button } from "./style";
 import * as actionCreators from './store/actionCreators';
 import { Link } from "react-router-dom";
 
@@ -17,6 +17,7 @@ class Detail extends Component {
                     {this.props.price}
                     </h1>
                 </ItemInfo>
+                
             </DetailWrapper>
         )
     }
@@ -51,7 +52,7 @@ const mapDispathTothis = (dispatch) =>({
     },
     getAccessorie(id){
         dispatch(actionCreators.getAccessorieDetail(id));
-    },
+    }
 })
 
 export default connect(mapStateTothis, mapDispathTothis)(Detail);

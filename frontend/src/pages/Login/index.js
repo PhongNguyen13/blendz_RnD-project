@@ -32,6 +32,7 @@ class Login extends Component {
     componentDidMount(){
         var storage=window.localStorage;
         storage.setItem("Islogin", "Notlogin");
+        storage.setItem("UID", "null");
     }
 }
 

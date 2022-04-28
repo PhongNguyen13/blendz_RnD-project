@@ -12,7 +12,11 @@ class Cart extends Component {
             </CartWrapper>
         )
         }else{
-            <h1>Please login</h1>
+            return(
+                <CartWrapper>
+                   <h1>Please Login</h1> 
+                </CartWrapper>
+            )
         }
     }
 }
