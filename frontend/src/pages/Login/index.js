@@ -7,10 +7,11 @@ import { actionCreators } from './store/index';
 class Login extends Component {
     render(){
         const { loginStatus } = this.props;
-        var storage=window.localStorage;
-        var Islogin = storage.getItem("Islogin");
+        // var storage=window.localStorage;
+        // var Islogin = storage.getItem("Islogin");
 
-        if (Islogin == 0) {
+        // if (Islogin == 0) {
+        if(!loginStatus) {
             return(
                 <LoginWrapper>
                     <LoginBox>
@@ -20,8 +21,12 @@ class Login extends Component {
                         <Content className="STitle">Password:</Content>
                         <Input placeholder="Password" type='password' ref={(input) => {this.password = input}}/>
                         <Button onClick={() => this.props.login(this.email, this.password)}>Login</Button>
-                        <RegisterWrapper><Register href="/register">Register</Register></RegisterWrapper>
-                        <RegisterWrapper><Register href="/resetpassword">forget password</Register></RegisterWrapper>
+                        <RegisterWrapper>
+                            <Register href="/register">Register</Register>
+                        </RegisterWrapper>
+                        <RegisterWrapper>
+                            <Register href="/resetpassword">forget password</Register>
+                        </RegisterWrapper>
                     </LoginBox>
                 </LoginWrapper>    
             )
