@@ -2,6 +2,8 @@ import {useEffect, useState} from 'react';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { addDoc, collection, getFirestore, setDoc}  from "firebase/firestore";
+import axios from 'axios';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,6 +18,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
 
 //Sign up 
 export function signup(email, password) {
