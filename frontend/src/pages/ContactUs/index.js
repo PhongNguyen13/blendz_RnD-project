@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { GlobalStyle, StyledFormWrapper, StyledForm, StyledInput, StyledTextArea, StyledButton, StyledError} from "./style";
+import { GlobalStyle, StyledFormWrapper, StyledForm, StyledInput, StyledTextArea, StyledButton } from "./style";
 import emailjs from 'emailjs-com';
 
 const ContactUs = () => {

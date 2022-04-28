@@ -10,7 +10,7 @@ class Login extends Component {
         var storage=window.localStorage;
         var Islogin = storage.getItem("Islogin");
 
-        if (Islogin == 0) {
+        if (Islogin === "Notlogin") {
             return(
                 <LoginWrapper>
                     <LoginBox>
@@ -28,6 +28,11 @@ class Login extends Component {
         }else{
             return <Redirect to='/'/>
         }
+    }
+    componentDidMount(){
+        var storage=window.localStorage;
+        storage.setItem("Islogin", "Notlogin");
+        storage.setItem("UID", "null");
     }
 }
 

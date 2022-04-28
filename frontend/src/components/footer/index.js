@@ -23,15 +23,13 @@ class Footer extends Component {
                         Contact: 0800 2 MIX IT (0800 264 948)
                     </FooterInfoItem>
                     <FooterInfoItem>
-                        Email: info@blendz.co.nz
+                        Email: &nbsp; <a href="mailto:info&#64;blendz&#46;co&#46;nz">info&#64;blendz&#46;co&#46;nz</a>
                     </FooterInfoItem>
                     <FooterInfoItem>
-                        Opening Hours: Monday-Friday 8:30am-5:00pm
+                        Opening Hours: Monday-Friday 8:30am - 5:00pm
                     </FooterInfoItem>
-                   
+                    <Copyright>Copyright &copy; Blendz All rights reserved.</Copyright>
                 </FooterInfo>
-
-                <Copyright>Copyright &copy; Blendz All rights reserved.</Copyright>
 
             </FooterWrapper>
         )

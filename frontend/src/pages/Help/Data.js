@@ -17,7 +17,7 @@ export const Data = [
   {
     question: 'How does a slush machine work?',
     answer: "The machine is operating at -3 degrees Celsius, by having a product with a minimum of 14% sugar and continuous agitation the machine will shave the loosely bonded ice crystals to form a slush.",
-    link: <iframe width="560" height="315" src="https://www.youtube.com/embed/UgfACPnSziI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    link: <iframe src="https://www.youtube.com/embed/UgfACPnSziI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   },
   {
     question: 'Can I put ordinary soft drinks into my slush machine?',
@@ -29,7 +29,7 @@ export const Data = [
   },
   {
     question: 'My Bigbiz 2 machine is not chilling, all the lights are flashing?',
-    answer: 'The machine has overheated and popped the cutout.</br>The reset button is on the front of the machine behind the left hand side drip tray.',
+    answer: 'The machine has overheated and popped the cutout. The reset button is on the front of the machine behind the left hand side drip tray.',
     link: <a href={Q5a} target="_blank" type="application/pdf" rel="noreferrer">BigBiz Reset after Overheating</a>,
     link2: <a href={Q5b} target="_blank" type="application/pdf" rel="noreferrer">Keep the lint filter clean</a>
   },

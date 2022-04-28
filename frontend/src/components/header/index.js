@@ -30,9 +30,9 @@ class Header extends Component {
     Islogin() {
         var storage=window.localStorage;
         var Islogin = storage.getItem("Islogin");
-        if(Islogin == 0){
+        if(Islogin === "Notlogin"){
             return(<NavItem href="/login"><AccountCircle /></NavItem>);
-        }else if(Islogin == 1){
+        }else if(Islogin === "login"){
             return(<NavItem href="/user"><AccountCircle /></NavItem>);
         }else{
             return(<NavItem href="/login"><AccountCircle /></NavItem>);
