@@ -2,16 +2,45 @@ import * as constants from './constants';
 import axios from 'axios';
 import { fromJS } from 'immutable';
 
-const changedetail = (result) => ({
+const changedetail = (imgUrl, name, price) => ({
     type: constants.GETDETAIL,
-    data: fromJS(result)
+    imgUrl,
+    name,
+    price
 })
 
-export const getdetail = (id) => {
+export const getMachineDetail = (id) => {
     return (dispatch) => {
-        axios.get('/api/Allproduct.json?id=' + id).then((res) => {
+        axios.get('http://localhost:8080/api/machine/' + id).then((res) => {
             const result = res.data;
-            dispatch(changedetail(result));
+            console.log(result.imgUrl);
+            dispatch(changedetail(result.imgUrl, result.name, result.price));
+        }).catch(() => {
+            console.log('error');
+        })
+    }
+}
+
+
+export const getBeverageDetail = (id) => {
+    return (dispatch) => {
+        axios.get('http://localhost:8080/api/beverage/' + id).then((res) => {
+            const result = res.data;
+            console.log(result.imgUrl);
+            dispatch(changedetail(result.imgUrl, result.name, result.price));
+        }).catch(() => {
+            console.log('error');
+        })
+    }
+}
+
+
+export const getAccessorieDetail = (id) => {
+    return (dispatch) => {
+        axios.get('http://localhost:8080/api/accessorie/' + id).then((res) => {
+            const result = res.data;
+            console.log(result.imgUrl);
+            dispatch(changedetail(result.imgUrl, result.name, result.price));
         }).catch(() => {
             console.log('error');
         })

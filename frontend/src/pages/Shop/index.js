@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import * as actionCreators from './store/actionCreators';
 
 class Shop extends Component {
-    render(){ 
+    render(){
         return(
             <ShopWrapper>
                 <ShopNav>
