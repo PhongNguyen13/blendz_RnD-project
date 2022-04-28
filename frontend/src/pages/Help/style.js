@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { mobile } from "../../responsive";
 
 export const AccordionSection = styled.div`
-    padding: 50px 50px;
+    padding: 50px 100px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -45,7 +45,7 @@ export const AccordionSection = styled.div`
       font: bold;
       font-size: 17px;
     }
-     ${mobile({ padding: '10px 10px'})}
+     ${mobile({ padding: '0px 10px'})}
 `;
 
 export const Wrap = styled.div`
