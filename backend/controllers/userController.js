@@ -31,7 +31,20 @@ const getUser = async (req, res, next) => {
     }
 }
 
+const updateUser = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const data = req.body;
+        const user =  await firestore.collection('user').doc(id);
+        await user.update(data);
+        res.send('User record updated successfuly');        
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
 module.exports = {
     addUser,
-    getUser
+    getUser,
+    updateUser
 }
