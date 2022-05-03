@@ -24,7 +24,7 @@ export const log_in = (email, password) => {
         login(email, password).then((res) => {
             console.log(res);
             var storage=window.localStorage;
-            storage.setItem("Islogin", 1);
+            storage.setItem("Islogin", "login");
             dispatch(changeLogin());
         }).catch(error => {
             console.log(error);
@@ -39,7 +39,7 @@ export const log_out = () => {
             console.log("Logout");
             //change localstorage
             var storage=window.localStorage;
-            storage.setItem("Islogin", 0);
+            storage.setItem("Islogin", "Notlogin");
             //nav to login page
             window.location.replace("/login");
             dispatch(ChangeLogout())

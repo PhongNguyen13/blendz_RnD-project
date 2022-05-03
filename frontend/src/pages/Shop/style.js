@@ -18,12 +18,12 @@ export const ShopWrapper = styled.div`
 `;
 
 export const ShopNav = styled.div`
-    // width: 10%;
+    width: 150px;
     // height: 60%;
     // margin-top: 5%;
-    // margin-right: 2%;
+    margin-right: 2%;
     // float: left;
-    border: 1px solid #787878;
+    // border: 1px solid #787878;
     border-radius: 1%;
 `;
 
