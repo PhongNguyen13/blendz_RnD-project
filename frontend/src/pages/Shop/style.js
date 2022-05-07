@@ -12,21 +12,22 @@ export const ShopNav = styled.div`
 `;
 
 export const ShopNavTitle = styled.div`
-    background: #FF9900;
-    border-bottom: 1px solid #787878;
     font-size: 130%;
     text-align: center;
     line-height: 200%;
     font-weight: bold;
+    margin-bottom: 10px;
 `
 
 export const ShopNavItem = styled.div`
-    font-size: 130%;
     font-size: 110%;
     text-align: center;
     line-height: 150%;
     cursor: pointer;
-    border-bottom: 1px solid #787878;
+    color: grey;
+    &:hover {
+        color: orange;
+    }
 `;
 
 export const ShopInforWrapper = styled.div`

@@ -24,7 +24,7 @@ class Shop extends Component {
     getList(){
         if(this.props.selected === "start"){
             return(
-                <h1>welcome to Shopping page</h1>
+                <h1>Welcome to Shopping page</h1>
             )
         }else if(this.props.selected !== "start"){    
             const {list} = this.props;        
