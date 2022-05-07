@@ -2,25 +2,57 @@ import styled from "styled-components";
 
 export const DetailWrapper = styled.div`
     display: flex; 
-    padding: 5% 5%;
-    background:grey;
+    flex-wrap: wrap;
+    padding: 5% 10%;
+    // background: grey;
 `;
 
 export const Itemimg = styled.div`
-    width: 40%;
-    height: 400px;
-    background:pink;
-    margin: 5% 5%;
+    
+    background: grey;
+    margin-right: 5%;
+    padding: 3%;
+    img {
+        width: 350px;
+        height: 400px;
+    }
 `;
 
 export const ItemInfo = styled.div`
-    width: 40%;
-    height: 400px;
-    margin: 5% 5%;
-    background:lightblue;
+    background:lightblue; 
+    h1 {
+        font-size:30px;
+        // text-align: center;
+        line-height: 150%;
+        font-weight: bold;
+        margin-bottom: 2%;
+
+    }
+    p {
+        font-size:20px;
+        line-height: 150%;
+
+    }
 `;
 
-export const Button = styled.button`
+export const Description = styled.div`
+    background:pink; 
+
+    h1 {
+        font-size:30px;
+        // text-align: center;
+        line-height: 150%;
+        font-weight: bold;
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+    p {
+        font-size:20px;
+        line-height: 150%;
+    }
+`;
+
+export const Button = styled.div`
     height: 50px;
     float: right;
     color: #FDFEFE;
@@ -34,4 +66,4 @@ export const Button = styled.button`
     text-decoration : none ;
     cursor: pointer;
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
-`;
+ `;

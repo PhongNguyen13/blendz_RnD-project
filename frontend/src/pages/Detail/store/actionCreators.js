@@ -2,19 +2,19 @@ import * as constants from './constants';
 import axios from 'axios';
 import { fromJS } from 'immutable';
 
-const changedetail = (imgUrl, name, price) => ({
+const changedetail = (imgUrl, name, price, description) => ({
     type: constants.GETDETAIL,
     imgUrl,
     name,
-    price
+    price,
+    description
 })
 
 export const getMachineDetail = (id) => {
     return (dispatch) => {
         axios.get('http://localhost:8080/api/machine/' + id).then((res) => {
             const result = res.data;
-            console.log(result);
-            dispatch(changedetail(result.imgUrl, result.name, result.price));
+            dispatch(changedetail(result.imgUrl, result.name, result.price, result.description));
         }).catch(() => {
             console.log('error');
         })

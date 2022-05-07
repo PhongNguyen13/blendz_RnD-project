@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { DetailWrapper, Itemimg, ItemInfo, Button } from "./style";
+import { DetailWrapper, Itemimg, ItemInfo, Description, Button } from "./style";
 import * as actionCreators from './store/actionCreators';
 import { Link } from "react-router-dom";
 
@@ -13,15 +13,16 @@ class Detail extends Component {
                 <Itemimg>
                     <img src={this.props.imgUrl} alt=''/>
                 </Itemimg>
-                <ItemInfo>
-                    {this.props.name}
-                    <h1>
-                    {this.props.price}
+                <ItemInfo>         
+                    <h1>{this.props.name}</h1>
+                    <p>{this.props.price}</p>
                     <input ref={(input) => {this.number = input}} />
                     <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id, this.number)}></Button>
-                    </h1>
                 </ItemInfo>
-                
+                <Description> 
+                    <h1>Description</h1>
+                    <p>{this.props.description}</p>
+                </Description> 
             </DetailWrapper>
         )
     }
@@ -45,7 +46,8 @@ const mapStateTothis= (state) =>{
     return{
         imgUrl: state.getIn(['detail', 'imgUrl']),
         name: state.getIn(['detail', 'name']),
-        price: state.getIn(['detail', 'price'])
+        price: state.getIn(['detail', 'price']),
+        description: state.getIn(['detail', 'description'])
     }
 }
 const mapDispathTothis = (dispatch) =>({
