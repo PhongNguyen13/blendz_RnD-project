@@ -1,9 +1,7 @@
 class User {
-    constructor(email, id, username, cart) {
+    constructor(email, id) {
         this.id = id;
         this.email = email;
-        this.username = username;
-        this.cart = cart
     }
 }
 

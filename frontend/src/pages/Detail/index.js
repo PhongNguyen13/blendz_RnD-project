@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 
 class Detail extends Component {
     render(){
+        var storage=window.localStorage;
+        var UID = storage.getItem("UID");
         return(
             <DetailWrapper>
                 <Itemimg>
@@ -15,6 +17,8 @@ class Detail extends Component {
                     {this.props.name}
                     <h1>
                     {this.props.price}
+                    <input ref={(input) => {this.number = input}} />
+                    <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id, this.number)}></Button>
                     </h1>
                 </ItemInfo>
                 
@@ -24,6 +28,7 @@ class Detail extends Component {
     componentDidMount(){
         var storage=window.localStorage;
         var Select = storage.getItem("Select");
+        var UID = storage.getItem("UID");
         if (Select === "Machine"){
             this.props.getMachine(this.props.match.params.id);
         }else if (Select === "Beverage"){
@@ -52,6 +57,9 @@ const mapDispathTothis = (dispatch) =>({
     },
     getAccessorie(id){
         dispatch(actionCreators.getAccessorieDetail(id));
+    },
+    putIteminCart(UID, itemID, number){
+        dispatch(actionCreators.postItem(UID, itemID,number.value));
     }
 })
 

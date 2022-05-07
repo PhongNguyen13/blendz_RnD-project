@@ -20,7 +20,7 @@ export const ItemInfo = styled.div`
     background:lightblue;
 `;
 
-export const Button = styled.div`
+export const Button = styled.button`
     height: 50px;
     float: right;
     color: #FDFEFE;
@@ -34,4 +34,4 @@ export const Button = styled.div`
     text-decoration : none ;
     cursor: pointer;
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
- `;
+`;
