@@ -10,7 +10,7 @@ class Login extends Component {
         var storage=window.localStorage;
         var Islogin = storage.getItem("Islogin");
 
-        if (Islogin == 0) {
+        if (Islogin === "Notlogin") {
             return(
                 <LoginWrapper>
                     <LoginBox>
@@ -21,13 +21,18 @@ class Login extends Component {
                         <Input placeholder="Password" type='password' ref={(input) => {this.password = input}}/>
                         <Button onClick={() => this.props.login(this.email, this.password)}>Login</Button>
                         <RegisterWrapper><Register href="/register">Register</Register></RegisterWrapper>
-                        <RegisterWrapper><Register href="/resetpassword">forget password</Register></RegisterWrapper>
+                        <RegisterWrapper><Register href="/resetpassword">Forgot password?</Register></RegisterWrapper>
                     </LoginBox>
                 </LoginWrapper>    
             )
         }else{
             return <Redirect to='/'/>
         }
+    }
+    componentDidMount(){
+        var storage=window.localStorage;
+        storage.setItem("Islogin", "Notlogin");
+        storage.setItem("UID", "null");
     }
 }
 

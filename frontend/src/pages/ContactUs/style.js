@@ -6,7 +6,6 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%
   }
   body {
-    font-family: Arial, Helvetica, sans-serif;
     background: linear-gradient(#ffff, #f7c1cb);
     height: 100%;
     margin: 0;
@@ -32,6 +31,8 @@ export const StyledFormWrapper = styled.div`
   align-items: center;
   height: 100vh;
   padding: 0 20px;
+
+    ${mobile({ padding: '0px 10px'})}
 `;
 
 export const StyledForm = styled.form`

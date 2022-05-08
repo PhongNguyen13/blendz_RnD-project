@@ -14,24 +14,19 @@ class Footer extends Component {
 
                 <FooterInfo>
                     <FooterInfoItem>
-                        Address: 
-                        282 Fordyce Road
-                        Helensville
-                        Auckland 0874
+                        Address: 282 Fordyce Road, Helensville, Auckland 0874
                     </FooterInfoItem>
                     <FooterInfoItem>
                         Contact: 0800 2 MIX IT (0800 264 948)
                     </FooterInfoItem>
                     <FooterInfoItem>
-                        Email: info@blendz.co.nz
+                        Email: &nbsp; <a href="mailto:info&#64;blendz&#46;co&#46;nz">info&#64;blendz&#46;co&#46;nz</a>
                     </FooterInfoItem>
                     <FooterInfoItem>
-                        Opening Hours: Monday-Friday 8:30am-5:00pm
+                        Opening Hours: Mon - Fri, 8:30am - 5:00pm
                     </FooterInfoItem>
-                   
+                    <Copyright>Copyright &copy; Blendz All rights reserved.</Copyright>
                 </FooterInfo>
-
-                <Copyright>Copyright &copy; Blendz All rights reserved.</Copyright>
 
             </FooterWrapper>
         )

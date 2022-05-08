@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { mobile } from "../../responsive";
 
 export const AccordionSection = styled.div`
-    padding: 50px 200px;
+    padding: 50px 100px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -33,17 +33,19 @@ export const AccordionSection = styled.div`
       position: relative;
       justify-content: center;
       align-items: center;
-      margin-top: 30px;
+      margin-top: 20px;
       margin-left: 250px;
-      font-size: 15px;
+      font-size: 17px;
     }
 
     a {
-      position: absolute;
+      position: relative;
       color: hotpink;
-      margin-left: 10px;
+      // margin-left: 10px;
+      font: bold;
+      font-size: 17px;
     }
-    ${mobile({ padding: '0px 10px'})}
+     ${mobile({ padding: '0px 10px'})}
 `;
 
 export const Wrap = styled.div`

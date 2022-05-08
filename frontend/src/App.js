@@ -50,18 +50,3 @@ class App extends Component {
 }
 
 export default App;
-
-/*
-
-            <Route exact path="/" component={Home}> </Route>
-            <Route path="/shop" component={Shop}> </Route>
-            <Route path="/detail/:id" component={Detail}> </Route>
-            <Route path="/help" component={Help}> </Route>
-            <Route path="/about" component={About}> </Route>
-            <Route path="/login" component={Login}> </Route>
-            <Route path="/register" component={Register}> </Route>
-            <Route path="/resetpassword" component={ResetPassword}> </Route>
-            <Route path="/cart" component={Cart}> </Route>
-            <Route path="/user" component={User}></Route>
-            <Route path="/404" component={NotFound}></Route>
-*/

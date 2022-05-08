@@ -38,8 +38,7 @@ const Help = () => {
               </>
             );
           })}
-        <p>Need more help?</p>
-        <a href='/contactus'>Contact Us</a>
+        <p>Need more help? <span><a href='/contactus'>Contact Us</a></span></p>
       </AccordionSection>
     </IconContext.Provider>
   );
