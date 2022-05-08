@@ -2,18 +2,19 @@ import * as constants from './constants';
 import axios from 'axios';
 import { fromJS } from 'immutable';
 
-const changedetail = (imgUrl, name, price) => ({
+const changedetail = (imgUrl, name, price, description) => ({
     type: constants.GETDETAIL,
     imgUrl,
     name,
-    price
+    price,
+    description
 })
 
 export const getMachineDetail = (id) => {
     return (dispatch) => {
         axios.get('http://localhost:8080/api/machine/' + id).then((res) => {
             const result = res.data;
-            dispatch(changedetail(result.imgUrl, result.name, result.price));
+            dispatch(changedetail(result.imgUrl, result.name, result.price, result.description));
         }).catch(() => {
             console.log('error');
         })
@@ -40,6 +41,19 @@ export const getAccessorieDetail = (id) => {
             dispatch(changedetail(result.imgUrl, result.name, result.price));
         }).catch(() => {
             console.log('error');
+        })
+    }
+}
+
+export const postItem = (UID, itemID, number) => {
+    return (dispatch) => {
+        console.log(number);
+        let postdata = {
+            "itemID": itemID,
+            "number":number
+        };
+        axios.post('http://localhost:8080/api/user/update/cart/' + UID, postdata).then(res=>{
+            console.log(res);
         })
     }
 }

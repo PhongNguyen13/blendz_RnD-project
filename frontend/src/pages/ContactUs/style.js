@@ -6,7 +6,6 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%
   }
   body {
-    // font-family: Arial, Helvetica, sans-serif;
     background: linear-gradient(#ffff, #f7c1cb);
     height: 100%;
     margin: 0;

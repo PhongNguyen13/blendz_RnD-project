@@ -4,11 +4,10 @@ import { mobile } from "../../responsive";
 export const AboutWrapper = styled.div`
     padding: 100px 100px;
 
-    ${mobile({ padding: "10px 0px" })}
+    // ${mobile({ padding: "10px 0px" })}
 `;
 
 export const InfoWrapper = styled.div`
-    font-family: Arial, Helvetica, sans-serif;
     margin: auto;
     border-radius: 35px;
     box-shadow: 12px 12px 2px 1px rgba(192, 109, 31, 0.2);
@@ -24,7 +23,7 @@ export const Title = styled.h1`
 
 export const Content = styled.div`
     padding: 30px 30px;
-    text-align: left;
+    text-align: center;
     font-size: 15px;
     p {
         margin: 10px 0px;
