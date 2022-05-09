@@ -4,7 +4,8 @@ import { fromJS } from 'immutable';
 const defaultState = fromJS({
     imgUrl:'',
     name:'',
-    price:''
+    price:'',
+    description:''
 });
 
 const detailstate = (state = defaultState, action) => {
@@ -13,7 +14,8 @@ const detailstate = (state = defaultState, action) => {
         return state.merge({
             imgUrl: action.imgUrl,
             name:action.name,
-            price:action.price
+            price:action.price,
+            description:action.description
         });
     }
 

@@ -2,39 +2,20 @@ import * as constants from './constants';
 import axios from 'axios';
 import { fromJS } from 'immutable';
 
-const changedetail = () => ({
+const getUserdetail = (name, email, cart,number) => ({
     type: constants.GETUSER,
+    name,
+    email,
+    cart,
+    number
 })
 
-export const getMachineDetail = (id) => {
+export const getUser = (UID) => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/api/machine/' + id).then((res) => {
+        axios.get('http://localhost:8080/api/user/' + UID).then((res) => {
             const result = res.data;
-            dispatch(changedetail(result.imgUrl, result.name, result.price));
-        }).catch(() => {
-            console.log('error');
-        })
-    }
-}
-
-
-export const getBeverageDetail = (id) => {
-    return (dispatch) => {
-        axios.get('http://localhost:8080/api/beverage/' + id).then((res) => {
-            const result = res.data;
-            dispatch(changedetail(result.imgUrl, result.name, result.price));
-        }).catch(() => {
-            console.log('error');
-        })
-    }
-}
-
-
-export const getAccessorieDetail = (id) => {
-    return (dispatch) => {
-        axios.get('http://localhost:8080/api/accessorie/' + id).then((res) => {
-            const result = res.data;
-            dispatch(changedetail(result.imgUrl, result.name, result.price));
+            console.log(res);
+            dispatch(getUserdetail(result.name, result.email));
         }).catch(() => {
             console.log('error');
         })

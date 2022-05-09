@@ -21,7 +21,7 @@ class Login extends Component {
                         <Input placeholder="Password" type='password' ref={(input) => {this.password = input}}/>
                         <Button onClick={() => this.props.login(this.email, this.password)}>Login</Button>
                         <RegisterWrapper><Register href="/register">Register</Register></RegisterWrapper>
-                        <RegisterWrapper><Register href="/resetpassword">forget password</Register></RegisterWrapper>
+                        <RegisterWrapper><Register href="/resetpassword">Forgot password?</Register></RegisterWrapper>
                     </LoginBox>
                 </LoginWrapper>    
             )
