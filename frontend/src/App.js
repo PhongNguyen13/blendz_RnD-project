@@ -50,9 +50,5 @@ class App extends Component {
     )
   }
 }
-/*
-window.onbeforeunload = function() {
-  localStorage.clear();
-}*/
 
 export default App;

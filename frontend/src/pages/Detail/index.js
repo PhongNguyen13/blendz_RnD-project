@@ -6,15 +6,12 @@ import { Link } from "react-router-dom";
 
 class Detail extends Component {
 
+    
     render(){
         var storage=window.localStorage;
         var UID = storage.getItem("UID");
         let Price = this.props.priceforPay;
         let Type = this.props.type;
-        const array = this.props.description;
-        const description = array.map((element)=>{
-            return <li>{element}</li>;
-        });
         return(
             <DetailWrapper>
                 <Itemimg>
@@ -28,7 +25,7 @@ class Detail extends Component {
                 </ItemInfo>
                 <Description> 
                     <h1>Description</h1>
-                    {description}
+                    <h1>{this.ListDes()}</h1>
                 </Description> 
             </DetailWrapper>
         )
@@ -46,6 +43,16 @@ class Detail extends Component {
         }else{
             return console.log("error to get detail");
         }
+    }
+
+    ListDes(){
+        const {description} = this.props;
+        return description.map((item) => {
+            return(
+                <h1>{item}</h1>
+            )
+        })
+        
     }
 }
 
