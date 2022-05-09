@@ -18,6 +18,7 @@ import ContactUs from "./pages/ContactUs"
 import User from "./pages/User";
 import NotFound from "./pages/NotFound";
 import Detail from "./pages/Detail";
+import Payment from "./pages/Payment"
 
 class App extends Component {
 
@@ -37,6 +38,7 @@ class App extends Component {
         <Route path="/contactus" component={ContactUs} />
         <Route path="/resetPassword" component={ResetPassword} />
         <Route path="/cart" component={Cart} />
+        <Route path="/payment" component={Payment} />
         <Route path="/user" component={User} />
         <Route path="/shop/detail/:id" component={Detail} />
         <Route exact path="/404" component={NotFound} />
@@ -48,5 +50,9 @@ class App extends Component {
     )
   }
 }
+/*
+window.onbeforeunload = function() {
+  localStorage.clear();
+}*/
 
 export default App;
