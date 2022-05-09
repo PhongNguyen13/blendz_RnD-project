@@ -44,7 +44,7 @@ class Cart extends Component {
 
 
                     <SummaryWrapper>
-                        <Summarytext>Total:{TotalPrice}</Summarytext>
+                        <Summarytext>Total: ${TotalPrice}</Summarytext>
                         <Button><a href="/">Pay Now</a></Button>
                     </SummaryWrapper>
                     
