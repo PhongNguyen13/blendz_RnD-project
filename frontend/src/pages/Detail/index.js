@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
 class Detail extends Component {
    
     render(){  
+        var storage=window.localStorage;
+        var UID = storage.getItem("UID");
+        
         return(
             <DetailWrapper>
                 <Itemimg>
