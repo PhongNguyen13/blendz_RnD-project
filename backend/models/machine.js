@@ -7,7 +7,6 @@ class Machine {
         this.des=des;
         this.type=type;
         this.priceforPay = priceforPay;
-
     }
 }
 
