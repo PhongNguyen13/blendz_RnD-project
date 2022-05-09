@@ -34,14 +34,13 @@ export const AccordionSection = styled.div`
       justify-content: center;
       align-items: center;
       margin-top: 20px;
-      margin-left: 250px;
+      margin-left: 300px;
       font-size: 17px;
     }
 
     a {
       position: relative;
       color: hotpink;
-      // margin-left: 10px;
       font: bold;
       font-size: 17px;
     }
