@@ -80,11 +80,23 @@ const getuserCart = async (req, res, next) => {
     }
 }
 
+const deleteCartItem = async (req, res, next) => {
+    try {
+        const uid = req.params.id;
+        const itemID = req.body.itemID;
+        await firestore.collection('user').doc(uid).collection('cart').doc(itemID).delete();
+        res.send('Item deleted successfuly');
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
 
 module.exports = {
     addUser,
     getUser,
     updateUser,
     updateUserCart,
-    getuserCart
+    getuserCart,
+    deleteCartItem
 }

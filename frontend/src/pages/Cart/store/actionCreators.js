@@ -18,3 +18,14 @@ export const getCart = (uid) => {
         })
     }
 }
+
+export const deleteCartitem = (uid, itemID) => {
+    return () => {
+        let postdata ={
+            "itemID": itemID
+        };
+        axios.post('http://localhost:8080/api/user/cart/delete/' + uid, postdata).then(res =>{
+            console.log(res);
+        })
+    }
+}

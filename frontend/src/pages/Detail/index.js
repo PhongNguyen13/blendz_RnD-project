@@ -16,8 +16,7 @@ class Detail extends Component {
                 <ItemInfo>         
                     <h1>{this.props.name}</h1>
                     <p>{this.props.price}</p>
-                    <input ref={(input) => {this.number = input}} />
-                    <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id, this.number)}></Button>
+                    <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id)}>Put it in Cart</Button>
                 </ItemInfo>
                 <Description> 
                     <h1>Description</h1>
@@ -60,8 +59,8 @@ const mapDispathTothis = (dispatch) =>({
     getAccessorie(id){
         dispatch(actionCreators.getAccessorieDetail(id));
     },
-    putIteminCart(UID, itemID, number){
-        dispatch(actionCreators.postItem(UID, itemID,number.value));
+    putIteminCart(UID, itemID){
+        dispatch(actionCreators.postItem(UID, itemID,1));
     }
 })
 

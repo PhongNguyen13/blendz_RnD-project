@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { CartWrapper } from "./style";
+import { CartWrapper, CartHeader,CartHeaderTitle, CartHeaderContent, 
+    CartContentWrappet, CartItemWrapper, ItemName, ItemNumber, Item, CartItemTitleWrapper, 
+    CartItemTitle, Button, SummaryWrapper} from "./style";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { actionCreator as userActionCreators } from ".././User/store";
@@ -12,10 +14,18 @@ class Cart extends Component {
         if (Islogin === "login"){
         return(
             <CartWrapper>
-                <h1>Cart Page</h1>            
-            <h1>{this.props.username}</h1>
-            <h1>{this.props.useremail}</h1>
-            <h1>{this.getCartList()}</h1>
+                <CartHeader>
+                <CartHeaderTitle>Cart</CartHeaderTitle>            
+                <CartHeaderContent>User: <a href="/user">{this.props.username}</a></CartHeaderContent>
+                </CartHeader>
+                    <CartContentWrappet>
+                        <CartItemTitleWrapper>
+                            <CartItemTitle>Product name</CartItemTitle>
+                            <CartItemTitle>Quantity</CartItemTitle>
+                        </CartItemTitleWrapper>
+                        <h1>{this.getCartList()}</h1>
+                    </CartContentWrappet>
+                    <SummaryWrapper>Total:</SummaryWrapper>
             </CartWrapper>
         )
         }else{
@@ -36,12 +46,17 @@ class Cart extends Component {
 
     getCartList(){
         const{cartlist} = this.props;
+        var storage=window.localStorage;
+        var ID = storage.getItem("UID");
         return cartlist.map((item) => {
             return(
-                <Link key={item.get('id')}>
-                    <div>{item.get('id')}</div>
-                    <div>{item.get('number')}</div>
-                </Link>
+                <CartItemWrapper>
+                    <Item key={item.get('id')}>
+                        <ItemName>{item.get('id')}</ItemName>
+                        <ItemNumber>{item.get('number')}</ItemNumber>
+                        <Button onClick={() => this.props.deleteitem(ID,item.get('id'))}><a href="/cart">Delete</a></Button>
+                    </Item>
+                </CartItemWrapper>
             )
         })
     }
@@ -63,6 +78,9 @@ const mapDispathToProprs = (dispatch) => {
         },
         getcartInfo(id){
             dispatch(cartActionCreators.getCart(id))
+        },
+        deleteitem(uid, itemID){
+            dispatch(cartActionCreators.deleteCartitem(uid, itemID))
         }
     }
 }
