@@ -14,7 +14,7 @@ export const getUser = (UID) => {
     return (dispatch) => {
         axios.get('http://localhost:8080/api/user/' + UID).then((res) => {
             const result = res.data;
-            console.log(res);
+            //console.log(res);
             dispatch(getUserdetail(result.name, result.email));
         }).catch(() => {
             console.log('error');

@@ -8,6 +8,8 @@ class Detail extends Component {
     render(){
         var storage=window.localStorage;
         var UID = storage.getItem("UID");
+        let Price = this.props.priceforPay;
+        let Type = this.props.type;
         return(
             <DetailWrapper>
                 <Itemimg>
@@ -16,7 +18,8 @@ class Detail extends Component {
                 <ItemInfo>         
                     <h1>{this.props.name}</h1>
                     <p>{this.props.price}</p>
-                    <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id)}>Put it in Cart</Button>
+                    <input ref={(input) => {this.number = input}} />
+                    <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id, this.number, Price, Type)}>Put it in Cart</Button>
                 </ItemInfo>
                 <Description> 
                     <h1>Description</h1>
@@ -46,7 +49,9 @@ const mapStateTothis= (state) =>{
         imgUrl: state.getIn(['detail', 'imgUrl']),
         name: state.getIn(['detail', 'name']),
         price: state.getIn(['detail', 'price']),
-        description: state.getIn(['detail', 'description'])
+        description: state.getIn(['detail', 'description']),
+        type: state.getIn(['detail', 'type']),
+        priceforPay: state.getIn(['detail', 'priceforPay'])
     }
 }
 const mapDispathTothis = (dispatch) =>({
@@ -59,8 +64,8 @@ const mapDispathTothis = (dispatch) =>({
     getAccessorie(id){
         dispatch(actionCreators.getAccessorieDetail(id));
     },
-    putIteminCart(UID, itemID){
-        dispatch(actionCreators.postItem(UID, itemID,1));
+    putIteminCart(UID, itemID, number, Price, Type){
+        dispatch(actionCreators.postItem(UID, itemID, number.value, Price, Type));
     }
 })
 

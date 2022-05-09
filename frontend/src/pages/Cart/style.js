@@ -66,10 +66,22 @@ export const Button = styled.button`
     text-decoration : none ;
     cursor: pointer;
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+    flow: right;
 `
+
+
 export const SummaryWrapper = styled.div`
+    display: flex;
     width: 100%;
     margin-top:10px;
     background: lightblue;
-    font-size: 35px;
+    font-size: 40px;
+`
+export const Summarytext= styled.div`
+    width: 90%;
+
+`
+
+export const Disappear=styled.div`
+    display:none;
 `
