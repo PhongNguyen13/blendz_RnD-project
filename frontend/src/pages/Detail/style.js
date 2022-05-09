@@ -36,19 +36,16 @@ export const ItemInfo = styled.div`
 `;
 
 export const Description = styled.div`
-    background:pink; 
+    padding: 2%;
 
     h1 {
         font-size:30px;
-        // text-align: center;
         line-height: 150%;
         font-weight: bold;
-        margin-top: 2%;
-        margin-bottom: 2%;
+        margin-bottom: 2%;  
     }
-    p {
-        font-size:20px;
-        line-height: 150%;
+    li {
+        font-size: 20px;
     }
 `;
 
