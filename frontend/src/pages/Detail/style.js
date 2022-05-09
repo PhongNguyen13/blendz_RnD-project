@@ -8,21 +8,22 @@ export const DetailWrapper = styled.div`
 `;
 
 export const Itemimg = styled.div`
-    
-    background: grey;
-    margin-right: 5%;
+    // background: grey;
     padding: 3%;
     img {
         width: 350px;
         height: 400px;
     }
+
+
 `;
 
 export const ItemInfo = styled.div`
-    background:lightblue; 
+    // background:lightblue; 
+    padding: 2%;
+
     h1 {
-        font-size:30px;
-        // text-align: center;
+        font-size:25px;
         line-height: 150%;
         font-weight: bold;
         margin-bottom: 2%;
@@ -39,13 +40,14 @@ export const Description = styled.div`
     padding: 2%;
 
     h1 {
-        font-size:30px;
+        font-size:20px;
         line-height: 150%;
         font-weight: bold;
-        margin-bottom: 2%;  
+        margin-bottom: 2%; 
+        border-bottom: 2px solid grey;
     }
     li {
-        font-size: 20px;
+        font-size: 15px;
     }
 `;
 

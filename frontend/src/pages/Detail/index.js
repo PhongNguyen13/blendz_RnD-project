@@ -6,10 +6,7 @@ import { Link } from "react-router-dom";
 
 class Detail extends Component {
    
-    render(){
-        var storage=window.localStorage;
-        var UID = storage.getItem("UID");
-            
+    render(){  
         return(
             <DetailWrapper>
                 <Itemimg>
@@ -23,19 +20,7 @@ class Detail extends Component {
                 </ItemInfo>
                 <Description> 
                     <h1>Description</h1>
-                    {/* {description} */}
-                    {this.getDes}
-                    {/* <li>{this.props.description[0]}</li>
-                    <li>{this.props.description[1]}</li>
-                    <li>{this.props.description[2]}</li>
-                    <li>{this.props.description[3]}</li>
-                    <li>{this.props.description[4]}</li>
-                    <li>{this.props.description[5]}</li>
-                    <li>{this.props.description[6]}</li>
-                    <li>{this.props.description[7]}</li>
-                    <li>{this.props.description[8]}</li>
-                    <li>{this.props.description[9]}</li>
-                    <li>{this.props.description[10]}</li> */}
+                    {this.getDesc()}
                 </Description> 
             </DetailWrapper>
         )
@@ -55,16 +40,16 @@ class Detail extends Component {
         }
     }
 
-    getDes(){
+    getDesc() {
         const {description} = this.props;
+
         return description.map((item) => {
             return(
-                <h1>{item}</h1>
+                <li>{item}</li>
             )
         })
-        
     }
-    }
+   
 }
 
 const mapStateTothis= (state) =>{

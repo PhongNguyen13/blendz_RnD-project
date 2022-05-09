@@ -2,6 +2,32 @@ import styled from "styled-components";
 import HomePic from '../../assets/HomeImage.png'
 
 export const HomeWrapper = styled.div`
+<<<<<<< HEAD
+    padding: 100px 100px;
+`;
+
+export const Title = styled.h1`
+    padding-top: 40px;
+    text-align: center;
+    font-size: 25px;
+    color: #008000;
+`;
+
+export const Text = styled.div`
+    padding: 30px 30px;
+    text-align: center;
+    font-size: 15px;
+    p {
+        margin: 10px 0px;
+    }
+    strong {
+        color: #008000;
+    }
+    a {
+        color: #0000FF;
+    }
+`;
+=======
     // z-index:-1;
     // position absolute;
     
@@ -42,3 +68,4 @@ export const LeftArea = styled.div`
     background: url(${HomePic});
     background-size: contain;
 `;
+>>>>>>> 80c3a7c2b4bfa0aa80059741afb7eaf2e3e04827
