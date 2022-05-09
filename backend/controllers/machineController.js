@@ -29,7 +29,8 @@ const getAllMachine = async (req, res, next) => {
                     doc.id,
                     doc.data().name,
                     doc.data().price,
-                    doc.data().imgUrl
+                    doc.data().imgUrl,
+                    doc.data().description
                 );
                 machinesArray.push(machine);
             });
