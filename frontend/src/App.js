@@ -18,6 +18,7 @@ import ContactUs from "./pages/ContactUs"
 import User from "./pages/User";
 import NotFound from "./pages/NotFound";
 import Detail from "./pages/Detail";
+import Payment from "./pages/Payment"
 
 class App extends Component {
 
@@ -37,6 +38,7 @@ class App extends Component {
         <Route path="/contactus" component={ContactUs} />
         <Route path="/resetPassword" component={ResetPassword} />
         <Route path="/cart" component={Cart} />
+        <Route path="/payment" component={Payment} />
         <Route path="/user" component={User} />
         <Route path="/shop/detail/:id" component={Detail} />
         <Route exact path="/404" component={NotFound} />
@@ -50,18 +52,3 @@ class App extends Component {
 }
 
 export default App;
-
-/*
-
-            <Route exact path="/" component={Home}> </Route>
-            <Route path="/shop" component={Shop}> </Route>
-            <Route path="/detail/:id" component={Detail}> </Route>
-            <Route path="/help" component={Help}> </Route>
-            <Route path="/about" component={About}> </Route>
-            <Route path="/login" component={Login}> </Route>
-            <Route path="/register" component={Register}> </Route>
-            <Route path="/resetpassword" component={ResetPassword}> </Route>
-            <Route path="/cart" component={Cart}> </Route>
-            <Route path="/user" component={User}></Route>
-            <Route path="/404" component={NotFound}></Route>
-*/

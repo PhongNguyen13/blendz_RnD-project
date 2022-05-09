@@ -2,7 +2,9 @@
 
 const firebase = require('../db');
 const User = require('../models/user');
+const Cart = require('../models/cart');
 const firestore = firebase.firestore();
+
 
 
 const addUser = async (req, res, next) => {
@@ -43,8 +45,46 @@ const updateUser = async (req, res, next) => {
     }
 }
 
+const updateUserCart = async (req, res, next) => {
+    try {
+        const uid = req.params.id;
+        const itemID = req.body.itemID;
+        const data = req.body;
+        await firestore.collection('user').doc(uid).collection('cart').doc(itemID).set(data);
+        res.send('Cart record updated successfuly');        
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
+const getuserCart = async (req, res, next) => {
+    try {
+        const uid = req.params.id;
+        const carts = await firestore.collection('user').doc(uid).collection('cart');
+        const data = await carts.get();
+        const cartsArray = [];
+        if(data.empty) {
+            res.status(404).send('No item in cart');
+        }else {
+            data.forEach(doc => {
+                const cart = new Cart(
+                    doc.id,
+                    doc.data().number
+                );
+                cartsArray.push(cart);
+            });
+            res.send(cartsArray);
+        }
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
+
 module.exports = {
     addUser,
     getUser,
-    updateUser
+    updateUser,
+    updateUserCart,
+    getuserCart
 }

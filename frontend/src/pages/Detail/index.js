@@ -21,6 +21,8 @@ class Detail extends Component {
                 <ItemInfo>         
                     <h1>{this.props.name}</h1>
                     <p>{this.props.price}</p>
+                    <input ref={(input) => {this.number = input}} />
+                    <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id, this.number)}></Button>
                 </ItemInfo>
                 <Description> 
                     <h1>Description</h1>
@@ -32,6 +34,7 @@ class Detail extends Component {
     componentDidMount(){
         var storage=window.localStorage;
         var Select = storage.getItem("Select");
+        var UID = storage.getItem("UID");
         if (Select === "Machine"){
             this.props.getMachine(this.props.match.params.id);
         }else if (Select === "Beverage"){
@@ -61,6 +64,9 @@ const mapDispathTothis = (dispatch) =>({
     },
     getAccessorie(id){
         dispatch(actionCreators.getAccessorieDetail(id));
+    },
+    putIteminCart(UID, itemID, number){
+        dispatch(actionCreators.postItem(UID, itemID,number.value));
     }
 })
 

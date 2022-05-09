@@ -44,3 +44,16 @@ export const getAccessorieDetail = (id) => {
         })
     }
 }
+
+export const postItem = (UID, itemID, number) => {
+    return (dispatch) => {
+        console.log(number);
+        let postdata = {
+            "itemID": itemID,
+            "number":number
+        };
+        axios.post('http://localhost:8080/api/user/update/cart/' + UID, postdata).then(res=>{
+            console.log(res);
+        })
+    }
+}
