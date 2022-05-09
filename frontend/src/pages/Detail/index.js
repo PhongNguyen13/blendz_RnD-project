@@ -5,7 +5,6 @@ import * as actionCreators from './store/actionCreators';
 import { Link } from "react-router-dom";
 
 class Detail extends Component {
-   
     render(){  
         var storage=window.localStorage;
         var UID = storage.getItem("UID");
@@ -19,7 +18,7 @@ class Detail extends Component {
                     <h1>{this.props.name}</h1>
                     <p>{this.props.price}</p>
                     <input ref={(input) => {this.number = input}} />
-                    <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id, this.number)}></Button>
+                    <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id, this.number, Price, Type)}>Put it in Cart</Button>
                 </ItemInfo>
                 <Description> 
                     <h1>Description</h1>
@@ -60,7 +59,9 @@ const mapStateTothis= (state) =>{
         imgUrl: state.getIn(['detail', 'imgUrl']),
         name: state.getIn(['detail', 'name']),
         price: state.getIn(['detail', 'price']),
-        description: state.getIn(['detail', 'description'])
+        description: state.getIn(['detail', 'description']),
+        type: state.getIn(['detail', 'type']),
+        priceforPay: state.getIn(['detail', 'priceforPay'])
     }
 }
 const mapDispathTothis = (dispatch) =>({
@@ -73,8 +74,8 @@ const mapDispathTothis = (dispatch) =>({
     getAccessorie(id){
         dispatch(actionCreators.getAccessorieDetail(id));
     },
-    putIteminCart(UID, itemID, number){
-        dispatch(actionCreators.postItem(UID, itemID,number.value));
+    putIteminCart(UID, itemID, number, Price, Type){
+        dispatch(actionCreators.postItem(UID, itemID, number.value, Price, Type));
     }
 })
 

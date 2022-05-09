@@ -28,6 +28,10 @@ class Shop extends Component {
         this.props.handleInput();
     }
 
+    componentDidMount(){
+        this.props.handleInput();
+    }
+
     getList(){
         if(this.props.selected === "start"){
             return(

@@ -4,7 +4,6 @@ import { fromJS } from 'immutable';
 const defaultState = fromJS({
     selected: "Machine",
     list: []
-});
 
 const selecter = (state = defaultState, action) => {
 

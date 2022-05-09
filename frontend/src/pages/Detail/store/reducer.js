@@ -6,6 +6,8 @@ const defaultState = fromJS({
     name:'',
     price:'',
     description:[]
+    type:'',
+    priceforPay:''
 });
 
 const detailstate = (state = defaultState, action) => {
@@ -15,7 +17,9 @@ const detailstate = (state = defaultState, action) => {
             imgUrl: action.imgUrl,
             name:action.name,
             price:action.price,
-            description:action.description
+            description:action.description,
+            type:action.Type,
+            priceforPay:action.priceforPay
         });
     }
 
