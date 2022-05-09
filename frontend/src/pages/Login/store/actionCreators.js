@@ -44,6 +44,7 @@ export const log_out = () => {
             var storage=window.localStorage;
             storage.setItem("Islogin", "Notlogin");
             storage.setItem("UID", null);
+            storage.setItem("Total", 0);
             //nav to login page
             window.location.replace("/login");
             dispatch(ChangeLogout())

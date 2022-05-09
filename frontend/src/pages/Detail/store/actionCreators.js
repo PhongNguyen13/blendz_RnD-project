@@ -2,19 +2,22 @@ import * as constants from './constants';
 import axios from 'axios';
 import { fromJS } from 'immutable';
 
-const changedetail = (imgUrl, name, price, description) => ({
+const changedetail = (imgUrl, name, price, description, Type, priceforPay) => ({
     type: constants.GETDETAIL,
     imgUrl,
     name,
     price,
-    description
+    description,
+    Type,
+    priceforPay
 })
 
 export const getMachineDetail = (id) => {
     return (dispatch) => {
         axios.get('http://localhost:8080/api/machine/' + id).then((res) => {
             const result = res.data;
-            dispatch(changedetail(result.imgUrl, result.name, result.price, result.description));
+            console.log(result);
+            dispatch(changedetail(result.imgUrl, result.name, result.price, result.description, result.type, result.priceforPay));
         }).catch(() => {
             console.log('error');
         })
@@ -45,15 +48,27 @@ export const getAccessorieDetail = (id) => {
     }
 }
 
-export const postItem = (UID, itemID, number) => {
+export const postItem = (UID, itemID, number, Price, Type) => {
     return (dispatch) => {
         console.log(number);
         let postdata = {
             "itemID": itemID,
-            "number":number
+            "number":number,
+            "Price":Price
         };
-        axios.post('http://localhost:8080/api/user/update/cart/' + UID, postdata).then(res=>{
+        
+        if(Type === "machine"){
+            if(number > 1){
+                axios.post('http://localhost:8080/api/user/update/Pendding/' + UID, postdata).then(res=>{
+                console.log(res);})
+            }else{
+                axios.post('http://localhost:8080/api/user/update/cart/' + UID, postdata).then(res=>{
+                console.log(res);})
+            }
+        }else{
+            axios.post('http://localhost:8080/api/user/update/cart/' + UID, postdata).then(res=>{
             console.log(res);
         })
+        }
     }
 }

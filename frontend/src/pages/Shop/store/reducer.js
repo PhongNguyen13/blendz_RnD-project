@@ -2,7 +2,7 @@ import * as constants from './constants';
 import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
-    selected: "start",
+    selected: "Machine",
     list:[]
 });
 
