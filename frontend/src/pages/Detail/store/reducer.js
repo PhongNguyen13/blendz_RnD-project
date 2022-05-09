@@ -5,7 +5,7 @@ const defaultState = fromJS({
     imgUrl:'',
     name:'',
     price:'',
-    description:''
+    description:[]
 });
 
 const detailstate = (state = defaultState, action) => {

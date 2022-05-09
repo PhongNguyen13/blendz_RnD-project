@@ -20,6 +20,9 @@ class Shop extends Component {
             </ShopWrapper>
         )
     }
+    componentDidMount(){
+        this.props.handleInput();
+    }
 
     getList(){
         if(this.props.selected === "start"){
@@ -45,6 +48,7 @@ class Shop extends Component {
             )
         }
     }
+    
 }
 
 const mapStateTothis= (state) => {

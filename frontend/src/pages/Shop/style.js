@@ -35,8 +35,8 @@ export const ShopInforWrapper = styled.div`
 `;
 
 export const ShopInforItem = styled.div`
-    width: 200px;
-    height: 300px;
+    width: 150px;
+    height: 275px;
     display: block;
     float: left;
     border: 2px solid #FF9900;
@@ -45,8 +45,8 @@ export const ShopInforItem = styled.div`
     padding: 2%;
 
     img {
-        width: 200px;
-        height: 225px;
+        width: 150px;
+        height: 175px;
         margin-bottom: 10px;
     }
     p {

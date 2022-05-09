@@ -1,19 +1,27 @@
 import styled from "styled-components";
 
 export const HomeWrapper = styled.div`
-    padding: 200px 100px;
+    padding: 100px 100px;
 `;
 
-export const Title = styled.p`
-    color: grey;
+export const Title = styled.h1`
+    padding-top: 40px;
     text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 50px;
+    font-size: 25px;
+    color: #008000;
 `;
 
-export const Text = styled.p`
-    color: grey;
-    text-align: left;
+export const Text = styled.div`
+    padding: 30px 30px;
+    text-align: center;
     font-size: 15px;
+    p {
+        margin: 10px 0px;
+    }
+    strong {
+        color: #008000;
+    }
+    a {
+        color: #0000FF;
+    }
 `;

@@ -6,13 +6,7 @@ import { Link } from "react-router-dom";
 
 class Detail extends Component {
    
-    render(){
-        const array = this.props.description;
-  
-        const description = array.map((element)=>{
-            return <li>{element}</li>;
-        });
-            
+    render(){  
         return(
             <DetailWrapper>
                 <Itemimg>
@@ -20,11 +14,23 @@ class Detail extends Component {
                 </Itemimg>
                 <ItemInfo>         
                     <h1>{this.props.name}</h1>
-                    <p>{this.props.price}</p>
+                    <p>{this.props.price}</p>                
                 </ItemInfo>
                 <Description> 
                     <h1>Description</h1>
-                    {description}
+                    {this.getDesc()}
+                    {/* <p>{description}</p> */}
+                    {/* <li>{this.props.description[0]}</li>
+                    <li>{this.props.description[1]}</li>
+                    <li>{this.props.description[2]}</li>
+                    <li>{this.props.description[3]}</li>
+                    <li>{this.props.description[4]}</li>
+                    <li>{this.props.description[5]}</li>
+                    <li>{this.props.description[6]}</li>
+                    <li>{this.props.description[7]}</li>
+                    <li>{this.props.description[8]}</li>
+                    <li>{this.props.description[9]}</li>
+                    <li>{this.props.description[10]}</li> */}
                 </Description> 
             </DetailWrapper>
         )
@@ -42,6 +48,18 @@ class Detail extends Component {
             return console.log("error to get detail");
         }
     }
+
+
+    getDesc() {
+        const {description} = this.props;
+
+        return description.map((item) => {
+            return(
+                <li>{item}</li>
+            )
+        })
+    }
+   
 }
 
 const mapStateTothis= (state) =>{
