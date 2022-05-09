@@ -11,10 +11,7 @@ class Detail extends Component {
         var UID = storage.getItem("UID");
         let Price = this.props.priceforPay;
         let Type = this.props.type;
-        const array = this.props.description;
-        const description = array.map((element)=>{
-            return <li>{element}</li>;
-        });
+
         return(
             <DetailWrapper>
                 <Itemimg>
@@ -28,7 +25,7 @@ class Detail extends Component {
                 </ItemInfo>
                 <Description> 
                     <h1>Description</h1>
-                    {description}
+                    {this.getDesc()}
                 </Description> 
             </DetailWrapper>
         )
@@ -47,6 +44,16 @@ class Detail extends Component {
             return console.log("error to get detail");
         }
     }
+    getDesc(){
+        const {description} = this.props;
+        return description.map((item) => {
+            return(
+                <li>{item}</li>
+            )
+        })
+    }
+
+
 }
 
 const mapStateTothis= (state) =>{
