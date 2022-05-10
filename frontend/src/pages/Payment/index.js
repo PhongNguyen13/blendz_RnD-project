@@ -25,7 +25,7 @@ export default function Payment() {
             onApprove: async (data, actions) => {
                 const order = await actions.order.capture();
                 console.log(order);
-                window.location.href = '/';
+                window.location.href = '/SuccessPayment';
             },
             onError: (err) => {
                 console.log(err);
