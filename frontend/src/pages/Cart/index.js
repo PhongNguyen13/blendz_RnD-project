@@ -12,6 +12,7 @@ class Cart extends Component {
         var storage=window.localStorage;
         var Islogin = storage.getItem("Islogin");
         var TotalPrice = storage.getItem("Total");
+        storage.setItem("PayState", "null");
         if (Islogin === "login"){
         return(
             <CartWrapper>

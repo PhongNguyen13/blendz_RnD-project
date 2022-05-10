@@ -5,8 +5,6 @@ export default function Payment() {
 
     var storage=window.localStorage;
     var TotalPrice = storage.getItem("Total");
-    storage.setItem("PayState", null);
-    var PaymentState = storage.getItem("PayState");
     const paypal = useRef();
 
     useEffect(() => {
@@ -28,31 +26,49 @@ export default function Payment() {
             onApprove: async (data, actions) => {
                 const order = await actions.order.capture();
                 console.log(order);
-                var storage=window.localStorage;
                 storage.setItem("PayState", "Success");
+                window.location.reload();
             },
             onError: (err) => {
                 console.log(err);
             }
         }).render(paypal.current)
     }, [])
+    
+    var PayState = storage.getItem("PayState");
+    console.log("this is " + PayState);
 
-    storage.setItem("PayState", "Success");
-    if(PaymentState === "null"){
+    const getState = (input) => {
+        if(input === "null"){
+            console.log(input);
+            return (
+                <div>
+                <h1>Working</h1>
+                </div>
+            );
+        }else if(input === "Success"){
+            console.log(input);
+            return (
+                <div>
+                <h1>Success</h1>
+                <Redirect to='/'/>
+                </div>
+            )
+        }else {
+            return(
+                <h1>Error</h1>
+            )
+        }
+    }
     return (
         <div>
             <div ref={paypal}></div>
+            {getState(PayState)}
         </div>
-    )}else if(PaymentState === "Success"){
-        return (
-        <div>
-            <Redirect ref={paypal} to='/'/>
-        </div>
-        )
-    }else{
-        return (<h1>Error</h1>)
-    }
+    )
 }
+
+
 
 
 
