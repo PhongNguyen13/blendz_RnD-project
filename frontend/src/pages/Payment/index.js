@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { Redirect } from 'react-router-dom';
 
 export default function Payment() {
 
@@ -26,8 +25,7 @@ export default function Payment() {
             onApprove: async (data, actions) => {
                 const order = await actions.order.capture();
                 console.log(order);
-                storage.setItem("PayState", "Success");
-                window.location.reload();
+                window.location.href = '/';
             },
             onError: (err) => {
                 console.log(err);
@@ -35,35 +33,9 @@ export default function Payment() {
         }).render(paypal.current)
     }, [])
     
-    var PayState = storage.getItem("PayState");
-    console.log("this is " + PayState);
-
-    const getState = (input) => {
-        if(input === "null"){
-            console.log(input);
-            return (
-                <div>
-                <h1>Working</h1>
-                </div>
-            );
-        }else if(input === "Success"){
-            console.log(input);
-            return (
-                <div>
-                <h1>Success</h1>
-                <Redirect to='/'/>
-                </div>
-            )
-        }else {
-            return(
-                <h1>Error</h1>
-            )
-        }
-    }
     return (
         <div>
             <div ref={paypal}></div>
-            {getState(PayState)}
         </div>
     )
 }
