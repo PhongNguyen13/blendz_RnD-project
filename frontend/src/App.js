@@ -19,6 +19,7 @@ import User from "./pages/User";
 import NotFound from "./pages/NotFound";
 import Detail from "./pages/Detail";
 import Payment from "./pages/Payment"
+import SuccessPayment from "./pages/SuccessPayment";
 
 class App extends Component {
 
@@ -42,6 +43,7 @@ class App extends Component {
         <Route path="/user" component={User} />
         <Route path="/shop/detail/:id" component={Detail} />
         <Route exact path="/404" component={NotFound} />
+        <Route path = "/SuccessPayment" component={SuccessPayment}/>
         <Route path="*" component={NotFound} />
       </Switch>
       </Router>
@@ -50,9 +52,5 @@ class App extends Component {
     )
   }
 }
-/*
-window.onbeforeunload = function() {
-  localStorage.clear();
-}*/
 
 export default App;

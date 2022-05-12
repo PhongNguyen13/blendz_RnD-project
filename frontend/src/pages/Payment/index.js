@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 
 export default function Payment() {
 
+    var storage=window.localStorage;
+    var TotalPrice = storage.getItem("Total");
     const paypal = useRef();
     var storage=window.localStorage;
     var TotalPrice = storage.getItem("Total")
@@ -25,19 +27,24 @@ export default function Payment() {
             onApprove: async (data, actions) => {
                 const order = await actions.order.capture();
                 console.log(order);
+                window.location.href = '/SuccessPayment';
             },
             onError: (err) => {
                 console.log(err);
             }
         }).render(paypal.current)
     }, [])
-
+    
     return (
         <div>
             <div ref={paypal}></div>
         </div>
     )
 }
+
+
+
+
 
 // import React, { useState } from 'react';
 // import PayPal from '../PayPal/PayPal';
