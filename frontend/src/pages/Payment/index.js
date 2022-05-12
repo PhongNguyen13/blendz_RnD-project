@@ -5,6 +5,8 @@ export default function Payment() {
     var storage=window.localStorage;
     var TotalPrice = storage.getItem("Total");
     const paypal = useRef();
+    var storage=window.localStorage;
+    var TotalPrice = storage.getItem("Total")
 
     useEffect(() => {
         window.paypal.Buttons({
