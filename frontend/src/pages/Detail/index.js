@@ -8,7 +8,8 @@ class Detail extends Component {
     render(){  
         var storage=window.localStorage;
         var UID = storage.getItem("UID");
-        
+        let Price = this.props.priceforPay;
+        let Type = this.props.type;
         return(
             <DetailWrapper>
                 <Itemimg>

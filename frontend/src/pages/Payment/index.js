@@ -3,6 +3,8 @@ import React, { useEffect, useRef } from 'react';
 export default function Payment() {
 
     const paypal = useRef();
+    var storage=window.localStorage;
+    var TotalPrice = storage.getItem("Total")
 
     useEffect(() => {
         window.paypal.Buttons({
@@ -14,7 +16,7 @@ export default function Payment() {
                             description: "Cool looking table",
                             amount: {
                                 currency_code: "NZD",
-                                value: 10.00
+                                value: TotalPrice
                             }
                         }
                     ]
