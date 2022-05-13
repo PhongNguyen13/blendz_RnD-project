@@ -6,7 +6,6 @@ export default function Payment() {
     var storage=window.localStorage;
     var uid = storage.getItem("UID");
     const paypal = useRef();
-    var storage=window.localStorage;
     var TotalPrice = storage.getItem("Total")
 
 
