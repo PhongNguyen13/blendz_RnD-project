@@ -6,6 +6,8 @@ export default function Payment() {
     var storage=window.localStorage;
     var uid = storage.getItem("UID");
     const paypal = useRef();
+    var storage=window.localStorage;
+    var TotalPrice = storage.getItem("Total")
 
 
     axios.get('http://localhost:8080/api/user/' + uid).then((res) => {
