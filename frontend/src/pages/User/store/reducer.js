@@ -3,7 +3,8 @@ import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
     name:'',
-    email:''
+    email:'',
+    CartTotalPrice:0
 });
 
 const Userdetail  = (state = defaultState, action) => {
@@ -11,7 +12,8 @@ const Userdetail  = (state = defaultState, action) => {
     if (action.type === constants.GETUSER) {
         return state.merge({
             name:action.name,
-            email:action.email
+            email:action.email,
+            CartTotalPrice:action.CartTotalPrice
         });
     }
 

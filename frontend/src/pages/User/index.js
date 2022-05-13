@@ -11,6 +11,7 @@ class User extends Component {
             <ProfileTitle>Welcome to your profiles </ProfileTitle>
             <h1>{this.props.username}</h1>
             <h1>{this.props.useremail}</h1>
+            <a href="OrderList">order List</a>
             <Button onClick={() => this.props.logout()}>Logout</Button>
             </div>
         )

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { CartWrapper, CartHeader,CartHeaderTitle, CartHeaderContent, 
     CartContentWrappet, CartItemWrapper, ItemName, ItemNumber, Item, CartItemTitleWrapper, 
     CartItemTitle, Button, SummaryWrapper, Summarytext, Disappear} from "./style";
-import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { actionCreator as userActionCreators } from ".././User/store";
 import { actionCreators as cartActionCreators } from "./store/index";
@@ -11,7 +10,8 @@ class Cart extends Component {
     render(){
         var storage=window.localStorage;
         var Islogin = storage.getItem("Islogin");
-        var TotalPrice = storage.getItem("Total");
+        var ID = storage.getItem("UID");
+        this.props.getUserinfo(ID);
         if (Islogin === "login"){
         return(
             <CartWrapper>
@@ -44,7 +44,7 @@ class Cart extends Component {
 
 
                     <SummaryWrapper>
-                        <Summarytext>Total: ${TotalPrice}</Summarytext>
+                        <Summarytext>Total: ${this.props.CartTotalPrice}</Summarytext>
                         <Button><a href="/payment">Pay Now</a></Button>
                     </SummaryWrapper>
                     
@@ -94,7 +94,8 @@ class Cart extends Component {
 
     getTotalPrice(Totalprice){
         var storage=window.localStorage;
-        storage.setItem("Total", Totalprice);
+        var ID = storage.getItem("UID");
+        this.props.updateTotalPrice(ID, Totalprice);
     }
 
     getPenddingList(){
@@ -123,7 +124,8 @@ const mapStateToProps = (state) => {
         username: state.getIn(['user', 'name']),
         useremail: state.getIn(['user', 'email']),
         cartlist: state.getIn(['cart','cartlist']),
-        penddinglist: state.getIn(['cart','penddinglist'])
+        penddinglist: state.getIn(['cart','penddinglist']),
+        CartTotalPrice: state.getIn(['user','CartTotalPrice'])
     }
 }
 
@@ -143,6 +145,9 @@ const mapDispathToProprs = (dispatch) => {
         },
         deletependdingitem(uid, itemID){
             dispatch(cartActionCreators.deletePenddingitem(uid, itemID))
+        },
+        updateTotalPrice(uid, TotalNumber){
+            dispatch(cartActionCreators.updateTotalPrice(uid, TotalNumber))
         }
     }
 }
