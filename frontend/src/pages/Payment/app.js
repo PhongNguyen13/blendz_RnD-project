@@ -1,4 +1,4 @@
-import * as paypal from "./paypal-api.js";
+import * as paypal from "/paypal-app.js";
 
 paypal
   .Buttons({

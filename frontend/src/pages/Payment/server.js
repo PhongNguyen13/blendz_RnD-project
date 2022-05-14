@@ -1,6 +1,6 @@
 import "dotenv/config";
 import express from "express";
-import * as paypal from "./paypal-api.js";
+import * as paypal from "/paypal-app.js";
 
 const app = express();
 app.set("view engine", "ejs");
