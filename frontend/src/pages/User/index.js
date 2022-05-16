@@ -8,7 +8,7 @@ class User extends Component {
     render(){
         return(
             <div>
-            <ProfileTitle>Welcome to your profiles </ProfileTitle>
+            <ProfileTitle>Welcome to your profiles</ProfileTitle>
             <UserInfo>{this.props.username}</UserInfo>
             <UserInfo>{this.props.useremail}</UserInfo>
             <Button onClick={() => this.props.ChangeName()}>Update User Name</Button>
