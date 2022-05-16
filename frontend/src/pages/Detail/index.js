@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { DetailWrapper, Itemimg, ItemInfo, Description, Button, InputWrapper, InputButton ,Input} from "./style";
 import * as actionCreators from './store/actionCreators';
 
+
 class Detail extends Component {
     constructor(props) {
         super(props);
@@ -52,7 +53,8 @@ class Detail extends Component {
                         <Input value={this.props.Quantity} onChange={this.handleChange}> {this.props.Quantity} </Input>
                         <InputButton onClick={this.handleChangeplusone}>+</InputButton>
                     </InputWrapper>
-                    <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id, this.props.Quantity , Price, Type)}>Put it in Cart</Button>
+                    <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id, this.props.Quantity , Price, Type)}>
+                        <a href={`/shop/detail/${this.props.match.params.id}`}>Put it in Cart</a></Button>
                 </ItemInfo>
                 <Description> 
                     <h1>Description</h1>
