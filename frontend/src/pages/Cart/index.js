@@ -35,7 +35,7 @@ class Cart extends Component {
 
                     <SummaryWrapper>
                         <Summarytext>Total: ${this.props.CartTotalPrice}</Summarytext>
-                        <Button><a href="/payment">Pay Now</a></Button>
+                        {this.CheckTotalPrice()}
                     </SummaryWrapper>
                     
             </CartWrapper>
@@ -55,6 +55,22 @@ class Cart extends Component {
         this.props.getUserinfo(ID);
         this.props.getcartInfo(ID);
         this.props.getpenddingInfo(ID);
+    }
+
+    CheckTotalPrice(){
+        if(this.props.CartTotalPrice === 0){
+            return (
+                <h1>Noting To Pay</h1>
+            )
+        }else if (this.props.CartTotalPrice > 0){
+            return(
+                <Button><a href="/payment">Pay Now</a></Button>
+            )
+        }else{
+            return(
+                <h1>Error</h1>
+            )
+        }
     }
 
     getCartListTitle(){
