@@ -7,7 +7,8 @@ const defaultState = fromJS({
     price:'',
     description:[],
     type:'',
-    priceforPay:''
+    priceforPay:'',
+    Quantity:1
 });
 
 const detailstate = (state = defaultState, action) => {
@@ -21,6 +22,10 @@ const detailstate = (state = defaultState, action) => {
             type:action.Type,
             priceforPay:action.priceforPay
         });
+    }
+
+    if (action.type === constants.QUANTITY){
+        return state.set('Quantity', action.value);
     }
 
     return state;

@@ -20,6 +20,8 @@ import NotFound from "./pages/NotFound";
 import Detail from "./pages/Detail";
 import Payment from "./pages/Payment"
 import SuccessPayment from "./pages/SuccessPayment";
+import OrderList from "./pages/OrderList";
+import OrderDetail from "./pages/OrderList/OrderListDetail";
 
 class App extends Component {
 
@@ -44,6 +46,8 @@ class App extends Component {
         <Route path="/shop/detail/:id" component={Detail} />
         <Route exact path="/404" component={NotFound} />
         <Route path = "/SuccessPayment" component={SuccessPayment}/>
+        <Route exact path = "/OrderList" component={OrderList}/>
+        <Route path = "/OrderList/OrderDetail/:id" component={OrderDetail}/>
         <Route path="*" component={NotFound} />
       </Switch>
       </Router>

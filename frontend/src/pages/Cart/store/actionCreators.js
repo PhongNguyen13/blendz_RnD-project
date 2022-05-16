@@ -11,7 +11,8 @@ export const getCart = (uid) => {
     return (dispatch) => {
         axios.get('http://localhost:8080/api/user/cart/'+ uid).then((res) => {
             const result = res.data;
-            //console.log(res.data);
+            console.log(res.status);
+
             dispatch(GetCart(result));
         }).catch(() => {
             console.log('error');
@@ -59,3 +60,16 @@ export const deletePenddingitem = (uid, itemID) => {
         })
     }
 }
+
+export const updateTotalPrice = (uid, TotalPrice) => {
+    return () => {
+        let postdata ={
+            "CartTotalPrice": TotalPrice
+        };
+        axios.post('http://localhost:8080/api/user/update/' + uid, postdata).then(res =>{
+            //console.log(res);
+            //console.log(TotalPrice);
+        })
+    }
+}
+

@@ -53,11 +53,25 @@ const updateUserCart = async (req, res, next) => {
         const itemID = req.body.itemID;
         const data = req.body;
         await firestore.collection('user').doc(uid).collection('cart').doc(itemID).set(data);
+        res.send('Cart record save successfuly');        
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
+const updateCart = async (req, res, next) => {
+    try {
+        const uid = req.params.id;
+        const itemID = req.body.itemID;
+        const data = req.body;
+        const cart = await firestore.collection('user').doc(uid).collection('cart').doc(itemID);
+        await cart.update(data);
         res.send('Cart record updated successfuly');        
     } catch (error) {
         res.status(400).send(error.message);
     }
 }
+
 
 const getuserCart = async (req, res, next) => {
     try {
@@ -72,7 +86,8 @@ const getuserCart = async (req, res, next) => {
                 const cart = new Cart(
                     doc.id,
                     doc.data().number,
-                    doc.data().Price
+                    doc.data().Price,
+                    doc.data().orderID
                 );
                 cartsArray.push(cart);
             });
@@ -93,6 +108,7 @@ const deleteCartItem = async (req, res, next) => {
         res.status(400).send(error.message);
     }
 }
+
 //Pendding Order API---------------------------------------------------------------------------------------------------
 
 const updatePenddingOrder = async (req, res, next) => {
@@ -142,6 +158,82 @@ const deletePenddingOrder = async (req, res, next) => {
     }
 }
 
+//-------------------------------------------------------------------------
+
+const CreatePaidList = async (req, res, next) => {
+    try {
+        const uid = req.params.id;
+        const data = req.body;
+        const orderID = req.body.orderID;
+        await firestore.collection('user').doc(uid).collection('PaidList').doc(orderID).set(data);
+        res.send('Paid list create successfully');        
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
+const updatePaidList= async (req, res, next) => {
+    try {
+        const id = req.body.id;
+        const orderID = req.body.orderID;
+        const uid = req.params.id;
+        const data = req.body;
+        await firestore.collection('user').doc(uid).collection('PaidList').doc(orderID).collection("order").doc(id).set(data);
+        res.send('PaidList record updated successfuly');        
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
+const getPaidList = async (req, res, next) => {
+    try {
+        const uid = req.params.id;
+        const carts = await firestore.collection('user').doc(uid).collection('PaidList');
+        const data = await carts.get();
+        const cartsArray = [];
+        if(data.empty) {
+            res.status(404).send('No item in Paid list');
+        }else {
+            data.forEach(doc => {
+                const cart = new Cart(
+                    doc.id
+                );
+                cartsArray.push(cart);
+            });
+            res.send(cartsArray);
+        }
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
+
+const getDetailOrderList = async (req, res, next) => {
+    try {
+        const uid = req.params.id;
+        const orderID = req.body.id;
+        const carts = await firestore.collection('user').doc(uid).collection('PaidList').doc(orderID).collection("order");
+        const data = await carts.get();
+        const cartsArray = [];
+        if(data.empty) {
+            res.status(404).send('No order list');
+        }else {
+            data.forEach(doc => {
+                const cart = new Cart(
+                    doc.id,
+                    doc.data().number,
+                    doc.data().Price
+                );
+                cartsArray.push(cart);
+            });
+            res.send(cartsArray);
+        }
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
+
 
 module.exports = {
     addUser,
@@ -152,5 +244,10 @@ module.exports = {
     deleteCartItem,
     updatePenddingOrder,
     getuserPenddingOrder,
-    deletePenddingOrder
+    deletePenddingOrder,
+    updatePaidList,
+    updateCart,
+    getPaidList,
+    CreatePaidList,
+    getDetailOrderList
 }

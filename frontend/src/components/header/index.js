@@ -4,6 +4,7 @@ import { Badge } from "@material-ui/core";
 import { AccountCircle, ShoppingCartOutlined } from "@material-ui/icons";
 import { connect } from 'react-redux';
 import { actionCreators as loginActionCreators } from '../../pages/Login/store/index';
+import { actionCreators as cartActionCreators } from '../../pages/Cart/store/index';
 
 class Header extends Component {
     render() {
@@ -18,7 +19,7 @@ class Header extends Component {
                 <NavItem href="/about">ABOUT</NavItem>
                 {this.Islogin()}
                 <NavItem href="/cart">
-                    <Badge badgeContent={2} color="primary">
+                    <Badge badgeContent={this.props.NumberofCartitem.size} color="primary">
                         <ShoppingCartOutlined />
                         </Badge>
                         </NavItem>
@@ -26,6 +27,11 @@ class Header extends Component {
                         </HeaderWrapper>
             )
         }
+    componentDidMount(){
+        var storage=window.localStorage;
+        var UID = storage.getItem("UID");
+        this.props.getcartInfo(UID);
+    }
 
     Islogin() {
         var storage=window.localStorage;
@@ -42,7 +48,8 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        login: state.get('login').get('login')
+        login: state.get('login').get('login'),
+        NumberofCartitem: state.getIn(['cart', 'cartlist'])
     }
 }
 
@@ -50,6 +57,9 @@ const mapDispathToProprs = (dispatch) => {
     return{
         logout(){
             dispatch(loginActionCreators.log_out())
+        },
+        getcartInfo(id){
+            dispatch(cartActionCreators.getCart(id))
         }
     }
 }

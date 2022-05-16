@@ -1,8 +1,9 @@
 class Cart {
-    constructor(id, number, Price) {
+    constructor(id, number, Price, orderID) {
         this.id = id;
         this.number = number;
         this.Price = Price;
+        this.orderID = orderID;
     }
 }
 

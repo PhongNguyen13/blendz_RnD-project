@@ -2,12 +2,11 @@ import * as constants from './constants';
 import axios from 'axios';
 import { fromJS } from 'immutable';
 
-const getUserdetail = (name, email, cart,number) => ({
+const getUserdetail = (name, email,CartTotalPrice) => ({
     type: constants.GETUSER,
     name,
     email,
-    cart,
-    number
+    CartTotalPrice
 })
 
 export const getUser = (UID) => {
@@ -15,9 +14,44 @@ export const getUser = (UID) => {
         axios.get('http://localhost:8080/api/user/' + UID).then((res) => {
             const result = res.data;
             //console.log(res);
-            dispatch(getUserdetail(result.name, result.email));
+            //console.log(result.CartTotalPrice);
+            dispatch(getUserdetail(result.name, result.email, result.CartTotalPrice));
         }).catch(() => {
             console.log('error');
+        })
+    }
+}
+
+const SendChangeName = () => ({
+    type : constants.CHANGENAME,
+    value: true
+})
+
+export const Changename = () => {
+    return (dispatch) => {
+        dispatch(SendChangeName());
+    }
+}
+
+const SendChangeName2 = () => ({
+    type : constants.CANCELCHANGENAME,
+    value: false
+})
+
+export const CancelChangename = () => {
+    return (dispatch) => {
+        dispatch(SendChangeName2());
+    }
+}
+
+
+export const updatename = (name, UID) => {
+    return () => {
+        let postdata = {
+            "name":name
+        };
+        axios.post('http://localhost:8080/api/user/update/' + UID, postdata).then((res) => {
+            console.log(res);
         })
     }
 }
