@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as actionCreator from './store/actionCreator';
+import { OrderWrapper, Title, OrderButton } from './style';
 
 class OrderList extends Component {
     render(){
         return(
-            <div>
-            <h1>Order List</h1>
+            <OrderWrapper>
+            <Title>Order List</Title>
             <div>{this.getOrderList()}</div>
-            </div>
+            </OrderWrapper>
         )
     }
 
@@ -20,14 +21,17 @@ class OrderList extends Component {
     }
 
     getOrderList(){
-            const {Orderlist} = this.props;        
+            const {Orderlist} = this.props;
+            console.log(Orderlist.size);
             return Orderlist.map((item) =>{
                 return (
+                    <OrderButton>
                     <Link key={item.get('id')} to={`/OrderList/OrderDetail/${item.get('id')}`}>
                     <div>
                         <p>{item.get('id')}</p>
                     </div>
                     </Link>
+                    </OrderButton>
                 );
             });
         }

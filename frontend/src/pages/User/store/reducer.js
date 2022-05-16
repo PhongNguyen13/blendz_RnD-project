@@ -4,7 +4,8 @@ import { fromJS } from 'immutable';
 const defaultState = fromJS({
     name:'',
     email:'',
-    CartTotalPrice:0
+    CartTotalPrice:0,
+    ChangeNameState:false
 });
 
 const Userdetail  = (state = defaultState, action) => {
@@ -15,6 +16,13 @@ const Userdetail  = (state = defaultState, action) => {
             email:action.email,
             CartTotalPrice:action.CartTotalPrice
         });
+    }
+    if (action.type === constants.CHANGENAME) {
+        return state.set('ChangeNameState', action.value);
+    }
+
+    if (action.type === constants.CANCELCHANGENAME) {
+        return state.set('ChangeNameState', action.value);
     }
 
     return state;

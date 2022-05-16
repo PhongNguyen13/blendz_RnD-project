@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import * as actionCreator from '../store/actionCreator';
+import { OrderWrapper, Title, OrderInfoWrapper, OrderName, OrderNumber, OrderPrice} from '../style';
 
 class OrderListDetail extends Component {
     render(){
         
         return(
-            <div>
-            <h1>Order Detail </h1>
+            <OrderWrapper>
+            <Title>Order Detail </Title>
+            <OrderInfoWrapper>
+                <OrderName><h1>Produc</h1></OrderName>
+                <OrderNumber><h1>Quantity</h1></OrderNumber>
+                <OrderPrice><h1>Price</h1></OrderPrice>
+            </OrderInfoWrapper>
             <div>{this.getOrderDetailList()}</div>
-            </div>
+            </OrderWrapper>
         )
     }
 
@@ -26,12 +32,12 @@ class OrderListDetail extends Component {
             return (
                 <div key={item.get('id')}>
                 <div>
-                    <p>{item.get('id')}</p>
-                    <p>{item.get('number')}</p>
-                    <p>{item.get('Price')}</p>
+                    <OrderInfoWrapper>
+                        <OrderName>{item.get('id')}</OrderName>
+                        <OrderNumber>{item.get('number')}</OrderNumber>
+                        <OrderPrice>{item.get('Price')}</OrderPrice>
+                    </OrderInfoWrapper>
                 </div>
-                
-                <div>------------------------------</div>
                 </div>
             );
         });

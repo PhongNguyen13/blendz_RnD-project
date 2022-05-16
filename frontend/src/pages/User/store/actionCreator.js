@@ -21,3 +21,37 @@ export const getUser = (UID) => {
         })
     }
 }
+
+const SendChangeName = () => ({
+    type : constants.CHANGENAME,
+    value: true
+})
+
+export const Changename = () => {
+    return (dispatch) => {
+        dispatch(SendChangeName());
+    }
+}
+
+const SendChangeName2 = () => ({
+    type : constants.CANCELCHANGENAME,
+    value: false
+})
+
+export const CancelChangename = () => {
+    return (dispatch) => {
+        dispatch(SendChangeName2());
+    }
+}
+
+
+export const updatename = (name, UID) => {
+    return () => {
+        let postdata = {
+            "name":name
+        };
+        axios.post('http://localhost:8080/api/user/update/' + UID, postdata).then((res) => {
+            console.log(res);
+        })
+    }
+}
