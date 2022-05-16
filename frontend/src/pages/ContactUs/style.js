@@ -6,10 +6,10 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%
   }
   body {
-    background: linear-gradient(#ffff, #f7c1cb);
+    background: linear-gradient(#ffff, #3D550C);
     height: 100%;
     margin: 0;
-    color: #555;
+    color: #1A5653;
   }
 
   ${mobile({ padding: '0px 10px'})}
@@ -45,7 +45,7 @@ export const StyledForm = styled.form`
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
 
   h1 {
-    color: hotpink;
+    color: #3D550C;
     position: relative;
     width: max-width;
     font-size: 35px;
@@ -69,7 +69,7 @@ export const StyledTextArea = styled.textarea`
 `;
 export const StyledButton = styled.button`
   display: block;
-  background-color: #f7797d;
+  background-color: #FF9900;
   color: #fff;
   font-size: 0.9rem;
   border: 0;

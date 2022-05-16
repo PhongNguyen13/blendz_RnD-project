@@ -80,13 +80,15 @@ export const PayButton = styled.button`
 export const SummaryWrapper = styled.div`
     display: flex;
     width: 100%;
-    margin-top:10px;
-    background: lightblue;
+    height: 80px;
+    margin-top:50px;
+    margin-bottom: 20px;
+    background: white;
     font-size: 40px;
 `
 export const Summarytext= styled.div`
     width: 90%;
-
+    height: 80px;
 `
 
 export const Disappear=styled.div`

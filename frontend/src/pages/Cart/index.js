@@ -5,6 +5,8 @@ import { CartWrapper, CartHeader,CartHeaderTitle, CartHeaderContent,
 import { connect } from 'react-redux';
 import { actionCreator as userActionCreators } from ".././User/store";
 import { actionCreators as cartActionCreators } from "./store/index";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import PaypalCheckoutButton from "../Payment/PaypalCheckoutButton";
 
 class Cart extends Component {
     render(){
@@ -20,7 +22,6 @@ class Cart extends Component {
                 <CartHeaderContent>User: <a href="/user">{this.props.username}</a></CartHeaderContent>
                 </CartHeader>
                     
-
                     <CartContentWrappet>
                         <h1>{this.getPenddingListTitle()}</h1>
                         <h1>{this.getPenddingList()}</h1>
@@ -64,7 +65,10 @@ class Cart extends Component {
             )
         }else if (this.props.CartTotalPrice > 0){
             return(
-                <PayButton><a href="/payment">Pay Now</a></PayButton>
+                <PayPalScriptProvider 
+                       options={{ "client-id": "AZM_MzL_PrjRYM9QMPq8p69xf4-fK8MR7WpTcH4mSGk-IwY2ZJLkziRc7qGf_sfzOXhkSajfBcXd5UQS&currency=NZD" }}>
+                       <PaypalCheckoutButton product={TotalPrice} />
+                </PayPalScriptProvider>
             )
         }else{
             return(
