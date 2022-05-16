@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { actionCreator as userActionCreators } from ".././User/store";
 import { actionCreators as cartActionCreators } from "./store/index";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import PaypalCheckoutButton from "../Payment/PaypalCheckoutButton";
 
 class Cart extends Component {
     render(){
@@ -21,7 +23,7 @@ class Cart extends Component {
                 </CartHeader>
                     
 
-                    <CartContentWrappet>Pendding
+                    <CartContentWrappet>Pending
                         <CartItemTitleWrapper>
                             <CartItemTitle>Product name</CartItemTitle>
                             <CartItemTitle>Quantity</CartItemTitle>
@@ -45,7 +47,11 @@ class Cart extends Component {
 
                     <SummaryWrapper>
                         <Summarytext>Total: ${TotalPrice}</Summarytext>
-                        <Button><a href="/payment">Pay Now</a></Button>
+                        <PayPalScriptProvider 
+                        options={{ "client-id": "AZM_MzL_PrjRYM9QMPq8p69xf4-fK8MR7WpTcH4mSGk-IwY2ZJLkziRc7qGf_sfzOXhkSajfBcXd5UQS&currency=NZD" }}>
+                            <PaypalCheckoutButton product={TotalPrice} />
+                        </PayPalScriptProvider>
+                        {/* <Button><a href="/payment">Pay Now</a></Button> */}
                     </SummaryWrapper>
                     
             </CartWrapper>

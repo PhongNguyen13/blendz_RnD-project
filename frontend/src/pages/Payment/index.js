@@ -1,136 +1,116 @@
-// import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import axios from 'axios';
 
-// export default function Payment() {
+export default function Payment() {
 
-//     var storage=window.localStorage;
-//     var TotalPrice = storage.getItem("Total");
-//     const paypal = useRef();
-//     var storage=window.localStorage;
-//     var TotalPrice = storage.getItem("Total")
+    var storage=window.localStorage;
+    var uid = storage.getItem("UID");
+    const paypal = useRef();
+    var TotalPrice = storage.getItem("Total")
 
-//     useEffect(() => {
-//         window.paypal.Buttons({
-//             createOrder: (data, actions, err) => {
-//                 return actions.order.create({
-//                     intent: "CAPTURE",
-//                     purchase_units: [
-//                         {
-//                             description: "Cool looking table",
-//                             amount: {
-//                                 currency_code: "NZD",
-//                                 value: TotalPrice
-//                             }
-//                         }
-//                     ]
-//                 })
-//             },
-//             onApprove: async (data, actions) => {
-//                 const order = await actions.order.capture();
-//                 console.log(order);
-//                 window.location.href = '/SuccessPayment';
-//             },
-//             onError: (err) => {
-//                 console.log(err);
-//             }
-//         }).render(paypal.current)
-//     }, [])
+
+    axios.get('http://localhost:8080/api/user/' + uid).then((res) => {
+        const result = res.data;
+        let Total = result.CartTotalPrice;
+        var storage=window.localStorage;
+        storage.setItem("Total", Total);
+    }).catch(() => {
+        console.log('error to get price');
+    })
+
     
-//     return (
-//         <div>
-//             <div ref={paypal}></div>
-//         </div>
-//     )
-// }
+    var TotalPrice = storage.getItem("Total");
+    
+
+    useEffect(() => {
+
+        window.paypal.Buttons({
+            createOrder: (data, actions, err) => {
+                return actions.order.create({
+                    intent: "CAPTURE",
+                    purchase_units: [
+                        {
+                            description: "Cool looking table",
+                            amount: {
+                                currency_code: "NZD",
+                                value: TotalPrice
+                            }
+                        }
+                    ]
+                })
+            },
+            onApprove: async (data, actions) => {
+                const order = await actions.order.capture();
+                //console.log(order.id);
+                const orderID = order.id;
+                
+                axios.get('http://localhost:8080/api/user/cart/'+ uid).then((res) => {
+                    const result = res.data;
+                    for(var i = 0; i < result.length; i++){
+//update order number for cart
+                        let setOrderID = {
+                            "itemID":result[i].id,
+                            "orderID": orderID
+                        };
+                        axios.post('http://localhost:8080/api/user/update/cartitem/' + uid, setOrderID).then(res=>{
+                            //console.log(res);
+                        })
+//create order number
+                        let postPaidListData = {
+                            "orderID": orderID
+                        }
+                        axios.post('http://localhost:8080/api/user/create/paidlist/' + uid, postPaidListData).then(res => {
+                            //console.log(res);
+                        })
+                    }
+                })
 
 
+                axios.get('http://localhost:8080/api/user/cart/'+ uid).then((res) =>{
+                    const result = res.data;
+                    for(var i = 0; i < result.length; i++){
+                        console.log("this is the the id get from cart" + result[i].id)
+                        
+//post order list
+                        let postdata = result[i];
+                        //console.log(result[i]);
+                        axios.post('http://localhost:8080/api/user/update/PaidList/' + uid, postdata).then(res=>{
+                            //console.log(res);
+                        })
+//clean the cart
+                        let postDeleteitemID = {
+                            "itemID":result[i].id
+                        }
+                        console.log("id from post to delete api"+result[i].id);
 
+                        axios.post('http://localhost:8080/api/user/cart/delete/' + uid, postDeleteitemID).then(res =>{
+                            console.log(res);
+                        })
+                    }
+                }).catch(()=>{
+                    console.log('error to get cart list');
+                })
+            
+//reset Total price as 0
+                let postdata ={
+                    "CartTotalPrice": 0
+                };
+                axios.post('http://localhost:8080/api/user/update/' + uid, postdata).then(res =>{
+                })
+        
+                storage.setItem("Total", 0);
+                setTimeout("window.location.href = '/SuccessPayment'", 5000)
 
-
-import React, { useState } from 'react';
-
-function Payment() {
-
-    const [checkout, setCheckOut] = useState(false);
-
+            },
+            onError: (err) => {
+                console.log(err);
+            }
+        }).render(paypal.current)
+    }, [])
+    
     return (
-        <>
-        <div id="paypal-button-container" class="paypal-button-container"></div>
-        <div class="card_container">
-            <form id="card-form">
-                <label for="card-number">Card Number</label>
-                <div id="card-number" class="card_field"></div>
-                <div>
-                    <label for="expiration-date">Expiration Date</label>
-                    <div id="expiration-date" class="card_field"></div>
-                </div>
-                <div>
-                    <label for="cvv">CVV</label>
-                    <div id="cvv" class="card_field"></div>
-                </div>
-                <label for="card-holder-name">Name on Card</label>
-                <input
-                    type="text"
-                    id="card-holder-name"
-                    name="card-holder-name"
-                    autocomplete="off"
-                    placeholder="card holder name" />
-                <div>
-                    <label for="card-billing-address-street">Billing Address</label>
-                    <input
-                        type="text"
-                        id="card-billing-address-street"
-                        name="card-billing-address-street"
-                        autocomplete="off"
-                        placeholder="street address" />
-                </div>
-                <div>
-                    <label for="card-billing-address-unit">&nbsp;</label>
-                    <input
-                        type="text"
-                        id="card-billing-address-unit"
-                        name="card-billing-address-unit"
-                        autocomplete="off"
-                        placeholder="unit" />
-                </div>
-                <div>
-                    <input
-                        type="text"
-                        id="card-billing-address-city"
-                        name="card-billing-address-city"
-                        autocomplete="off"
-                        placeholder="city" />
-                </div>
-                <div>
-                    <input
-                        type="text"
-                        id="card-billing-address-state"
-                        name="card-billing-address-state"
-                        autocomplete="off"
-                        placeholder="state" />
-                </div>
-                <div>
-                    <input
-                        type="text"
-                        id="card-billing-address-zip"
-                        name="card-billing-address-zip"
-                        autocomplete="off"
-                        placeholder="zip / postal code" />
-                </div>
-                <div>
-                    <input
-                        type="text"
-                        id="card-billing-address-country"
-                        name="card-billing-address-country"
-                        autocomplete="off"
-                        placeholder="country code" />
-                </div>
-                <br /><br />
-                <button value="submit" id="submit" class="btn">Pay</button>
-            </form>
+        <div>
+            <div ref={paypal}></div>
         </div>
-        <script src="/app.js"></script>
-        </>
-    );
+    )
 }
-
-export default Payment;
