@@ -13,36 +13,38 @@ export const AccordionSection = styled.div`
         border: 1px solid black;
     }
     h1 {
-        color: hotpink;
+        color: #3D550C;
         position: relative;
         width: max-width;
         font-size: 35px;
         margin-bottom: 50px;
+        font-weight: bold;
     }
     h1::after {
         content: "";
         position: absolute;
         bottom: 0;
         margin-right: 200px;
-        width: 38%;
+        width: 50%;
         height: 2px;
-        background-color: hotpink;
+        background-color: #3D550C;
     }
 
     p {
       position: relative;
-      justify-content: center;
-      align-items: center;
+      text-align: center;
       margin-top: 20px;
-      margin-left: 300px;
-      font-size: 17px;
+      font-size: 20px;
+      color: #3D550C;
+      font-weight: normal;
     }
 
     a {
       position: relative;
-      color: hotpink;
-      font: bold;
-      font-size: 17px;
+      color: #3D550C;
+      font-weight: bold;
+      font-size: 23px;
+      text-decoration: none;
     }
      ${mobile({ padding: '0px 10px'})}
 `;
@@ -54,11 +56,11 @@ export const Wrap = styled.div`
   width: 100%;
   text-align: center;
   cursor: pointer;
-  border: 2px solid #6db5ff;
+  border: 2px solid #FF9900;
   border-radius: 50px;
   margin: 10px 0;
   h2 {
-    color: #1f5c9a;
+    color: #1A5653;
     padding: 5px 10px 10px 10px;
     font-size: 17px;
     font-weight: normal;
@@ -68,7 +70,7 @@ export const Wrap = styled.div`
     margin: 0 10px 0 0;
     width: 25px;
     height: 25px;
-    background: 8px 7px #6db5ff;
+    background: 8px 7px #107869;
     border-radius: 50%;
     float: left;
     transition: all 0.5s ease-in;
@@ -76,17 +78,26 @@ export const Wrap = styled.div`
 `;
 
 export const Dropdown = styled.div`
-  background-color: #6db5ff;
-  color: #fff;
+  background-color: #107869;
   width: 100%;
   display: flex;
   border-left: 2px solid #fff;
-  border-radius: 50px;
+  border-radius: 30px;
+
   p {
     padding: 5px 10px 10px 10px;
     margin-left: 25px;
     font-size: 17px;
     text-align: left;
     line-height: 1.5;
+    color:#fff;
+    font-weight: normal;
+  }
+
+  a {
+    color:#ffff;
+    font-weight: normal;
+    text-decoration: underline;
+    font-size: 17px;
   }
 `;

@@ -33,6 +33,11 @@ export const FooterInfoItem = styled.p`
     margin-bottom: 20px;
     display: flex;
     align-items: center;
+
+    a {
+        color: grey;
+        text-decoration: none;
+    }
 `;
 
 export const Copyright = styled.p`
