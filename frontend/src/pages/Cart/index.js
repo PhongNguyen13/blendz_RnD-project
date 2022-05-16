@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { CartWrapper, CartHeader,CartHeaderTitle, CartHeaderContent, 
-    CartContentWrappet, CartItemWrapper, ItemName, ItemNumber, Item, CartItemTitleWrapper, 
-    CartItemTitle, Button, SummaryWrapper, Summarytext, Disappear} from "./style";
+    CartContentWrappet, CartItemWrapper, Item, CartItem, 
+    Button, SummaryWrapper, Summarytext, Disappear, PayButton, CartItemTitle } from "./style";
 import { connect } from 'react-redux';
 import { actionCreator as userActionCreators } from ".././User/store";
 import { actionCreators as cartActionCreators } from "./store/index";
@@ -21,13 +21,13 @@ class Cart extends Component {
                 </CartHeader>
                     
 
-                    <CartContentWrappet>Pendding
+                    <CartContentWrappet>
                         <h1>{this.getPenddingListTitle()}</h1>
                         <h1>{this.getPenddingList()}</h1>
                     </CartContentWrappet>
                     
 
-                    <CartContentWrappet>Cart
+                    <CartContentWrappet>
                         <h1>{this.getCartListTitle()}</h1>
                         <h1>{this.getCartList()}</h1>
                     </CartContentWrappet>
@@ -64,7 +64,7 @@ class Cart extends Component {
             )
         }else if (this.props.CartTotalPrice > 0){
             return(
-                <Button><a href="/payment">Pay Now</a></Button>
+                <PayButton><a href="/payment">Pay Now</a></PayButton>
             )
         }else{
             return(
@@ -81,12 +81,17 @@ class Cart extends Component {
             )
         }else if (cartlistSize > 0){
             return[
-            <CartItemTitleWrapper>
-                <CartItemTitle>Product name</CartItemTitle>
-                <CartItemTitle>Quantity</CartItemTitle>
-                <CartItemTitle>Price</CartItemTitle>
-                <CartItemTitle>Total Price</CartItemTitle>
-            </CartItemTitleWrapper>
+                <div>
+                <CartItemTitle>
+                    Cart
+                </CartItemTitle>
+            <CartItemWrapper>
+                <CartItem>Product name</CartItem>
+                <CartItem>Quantity</CartItem>
+                <CartItem>Price</CartItem>
+                <CartItem>Total Price</CartItem>
+            </CartItemWrapper>
+            </div>
             ]
         }else{
             return(
@@ -113,17 +118,17 @@ class Cart extends Component {
             return cartlist.map((item) => {
 
                 return[
-                    <CartItemWrapper>
-                        <Item key={item.get('id')}>
-                            <ItemName>{item.get('id')}</ItemName>
-                            <ItemNumber>{item.get('number')}</ItemNumber>
-                            <ItemNumber>{item.get('Price')}</ItemNumber>
-                            <ItemNumber>{Single = item.get('number') * item.get('Price')}</ItemNumber>
+                    <Item>
+                        <CartItemWrapper key={item.get('id')}>
+                            <CartItem>{item.get('id')}</CartItem>
+                            <CartItem>{item.get('number')}</CartItem>
+                            <CartItem>{item.get('Price')}</CartItem>
+                            <CartItem>{Single = item.get('number') * item.get('Price')}</CartItem>
+                        </CartItemWrapper>
                             <Disappear>{Total = Total + Single}</Disappear>
                             {this.getTotalPrice(Total)}
                             <Button onClick={() => this.props.deleteitem(ID,item.get('id'))}><a href="/cart">Delete</a></Button>
-                        </Item>
-                    </CartItemWrapper>
+                    </Item>
                 ]
             }
             )
@@ -148,12 +153,17 @@ class Cart extends Component {
             )
         }else if (PenddinglistSize > 0){
             return[
-                <CartItemTitleWrapper>
-                <CartItemTitle>Product name</CartItemTitle>
-                <CartItemTitle>Quantity</CartItemTitle>
-                <CartItemTitle>Price</CartItemTitle>
-                <CartItemTitle>Total Price</CartItemTitle>
-            </CartItemTitleWrapper>
+                <div>
+                <CartItemTitle>
+                Pendding
+                </CartItemTitle>
+                <CartItemWrapper>
+                <CartItem>Product name</CartItem>
+                <CartItem>Quantity</CartItem>
+                <CartItem>Price</CartItem>
+                <CartItem>Total Price</CartItem>
+                </CartItemWrapper>
+                </div>
             ]
         }else{
             return(
@@ -172,15 +182,16 @@ class Cart extends Component {
         }else if (PenddinglistSize > 0){
             return penddinglist.map((item) => {
                 return(
-                    <CartItemWrapper>
-                        <Item key={item.get('id')}>
-                            <ItemName>{item.get('id')}</ItemName>
-                            <ItemNumber>{item.get('number')}</ItemNumber>
-                            <ItemNumber>{item.get('Price')}</ItemNumber>
-                            <ItemNumber>{item.get('number') * item.get('Price')}</ItemNumber>
+                    <Item>
+                            <CartItemWrapper key={item.get('id')}>
+                                <CartItem>{item.get('id')}</CartItem>
+                                <CartItem>{item.get('number')}</CartItem>
+                                <CartItem>{item.get('Price')}</CartItem>
+                                <CartItem>{item.get('number') * item.get('Price')}</CartItem>
+                            </CartItemWrapper>
                             <Button onClick={() => this.props.deletependdingitem(ID,item.get('id'))}><a href="/cart">Delete</a></Button>
-                        </Item>
-                    </CartItemWrapper>
+
+                    </Item>
                 )
             })
         }else{
