@@ -67,7 +67,7 @@ class Cart extends Component {
             return(
                 <PayPalScriptProvider 
                        options={{ "client-id": "AZM_MzL_PrjRYM9QMPq8p69xf4-fK8MR7WpTcH4mSGk-IwY2ZJLkziRc7qGf_sfzOXhkSajfBcXd5UQS&currency=NZD" }}>
-                       <PaypalCheckoutButton product={TotalPrice} />
+                       <PaypalCheckoutButton product={this.props.CartTotalPrice} />
                 </PayPalScriptProvider>
             )
         }else{
