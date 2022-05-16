@@ -16,7 +16,7 @@ export const getMachineDetail = (id) => {
     return (dispatch) => {
         axios.get('http://localhost:8080/api/machine/' + id).then((res) => {
             const result = res.data;
-            console.log(result.description);
+            //console.log(result.description);
             dispatch(changedetail(result.imgUrl, result.name, result.price, result.description, result.type, result.priceforPay));
         }).catch(() => {
             console.log('error');
@@ -70,5 +70,17 @@ export const postItem = (UID, itemID, number, Price, Type) => {
             console.log(res);
         })
         }
+    }
+}
+
+
+const inputQUANTITY = (QUANTITY) => ({
+    type: constants.QUANTITY,
+    value: QUANTITY
+})
+
+export const QUANTITY = (inputNumber) => {
+    return (dispatch) => {
+        dispatch(inputQUANTITY(inputNumber));
     }
 }

@@ -11,7 +11,7 @@ export const getCart = (uid) => {
     return (dispatch) => {
         axios.get('http://localhost:8080/api/user/cart/'+ uid).then((res) => {
             const result = res.data;
-            //console.log(res.data[0].id);
+            console.log(res.status);
 
             dispatch(GetCart(result));
         }).catch(() => {

@@ -22,23 +22,13 @@ class Cart extends Component {
                     
 
                     <CartContentWrappet>Pendding
-                        <CartItemTitleWrapper>
-                            <CartItemTitle>Product name</CartItemTitle>
-                            <CartItemTitle>Quantity</CartItemTitle>
-                            <CartItemTitle>Price</CartItemTitle>
-                            <CartItemTitle>Total Price</CartItemTitle>
-                        </CartItemTitleWrapper>
+                        <h1>{this.getPenddingListTitle()}</h1>
                         <h1>{this.getPenddingList()}</h1>
                     </CartContentWrappet>
                     
 
                     <CartContentWrappet>Cart
-                        <CartItemTitleWrapper>
-                            <CartItemTitle>Product name</CartItemTitle>
-                            <CartItemTitle>Quantity</CartItemTitle>
-                            <CartItemTitle>Price</CartItemTitle>
-                            <CartItemTitle>Total Price</CartItemTitle>
-                        </CartItemTitleWrapper>
+                        <h1>{this.getCartListTitle()}</h1>
                         <h1>{this.getCartList()}</h1>
                     </CartContentWrappet>
 
@@ -67,29 +57,65 @@ class Cart extends Component {
         this.props.getpenddingInfo(ID);
     }
 
+    getCartListTitle(){
+        const cartlistSize = this.props.cartlist.size;
+        if(cartlistSize === 0){
+            return (
+                <h1>Nothing in Cart</h1>
+            )
+        }else if (cartlistSize > 0){
+            return[
+            <CartItemTitleWrapper>
+                <CartItemTitle>Product name</CartItemTitle>
+                <CartItemTitle>Quantity</CartItemTitle>
+                <CartItemTitle>Price</CartItemTitle>
+                <CartItemTitle>Total Price</CartItemTitle>
+            </CartItemTitleWrapper>
+            ]
+        }else{
+            return(
+                <h1>Error</h1>
+            )
+        }
+    }
+
     getCartList(){
         const{cartlist} = this.props;
+        const cartlistSize = this.props.cartlist.size;
         var storage=window.localStorage;
         var ID = storage.getItem("UID");
         var Single = 0;
         var Total = 0;
         Total = Total + Single
-        return cartlist.map((item) => {
-            return[
-                <CartItemWrapper>
-                    <Item key={item.get('id')}>
-                        <ItemName>{item.get('id')}</ItemName>
-                        <ItemNumber>{item.get('number')}</ItemNumber>
-                        <ItemNumber>{item.get('Price')}</ItemNumber>
-                        <ItemNumber>{Single = item.get('number') * item.get('Price')}</ItemNumber>
-                        <Disappear>{Total = Total + Single}</Disappear>
-                        {this.getTotalPrice(Total)}
-                        <Button onClick={() => this.props.deleteitem(ID,item.get('id'))}><a href="/cart">Delete</a></Button>
-                    </Item>
-                </CartItemWrapper>
-            ]
+        if(cartlistSize === 0){
+            this.props.updateTotalPrice(ID, 0);
+            return (
+                console.log("Noting in the cart")
+            )
+        }else if (cartlistSize > 0){
+
+            return cartlist.map((item) => {
+
+                return[
+                    <CartItemWrapper>
+                        <Item key={item.get('id')}>
+                            <ItemName>{item.get('id')}</ItemName>
+                            <ItemNumber>{item.get('number')}</ItemNumber>
+                            <ItemNumber>{item.get('Price')}</ItemNumber>
+                            <ItemNumber>{Single = item.get('number') * item.get('Price')}</ItemNumber>
+                            <Disappear>{Total = Total + Single}</Disappear>
+                            {this.getTotalPrice(Total)}
+                            <Button onClick={() => this.props.deleteitem(ID,item.get('id'))}><a href="/cart">Delete</a></Button>
+                        </Item>
+                    </CartItemWrapper>
+                ]
+            }
+            )
+        }else{
+            return (
+                <h1>Error</h1>
+            )
         }
-        )
     }
 
     getTotalPrice(Totalprice){
@@ -98,23 +124,54 @@ class Cart extends Component {
         this.props.updateTotalPrice(ID, Totalprice);
     }
 
+    getPenddingListTitle(){
+        const PenddinglistSize = this.props.penddinglist.size;
+        if(PenddinglistSize === 0){
+            return (
+                <h1>Nothing in Pendding</h1>
+            )
+        }else if (PenddinglistSize > 0){
+            return[
+                <CartItemTitleWrapper>
+                <CartItemTitle>Product name</CartItemTitle>
+                <CartItemTitle>Quantity</CartItemTitle>
+                <CartItemTitle>Price</CartItemTitle>
+                <CartItemTitle>Total Price</CartItemTitle>
+            </CartItemTitleWrapper>
+            ]
+        }else{
+            return(
+                <h1>Error</h1>
+            )
+        }
+    }
+
     getPenddingList(){
         const{penddinglist} = this.props;
         var storage=window.localStorage;
         var ID = storage.getItem("UID");
-        return penddinglist.map((item) => {
+        const PenddinglistSize = this.props.penddinglist.size;
+        if(PenddinglistSize === 0 ){
+            console.log("Noting in pendding list")
+        }else if (PenddinglistSize > 0){
+            return penddinglist.map((item) => {
+                return(
+                    <CartItemWrapper>
+                        <Item key={item.get('id')}>
+                            <ItemName>{item.get('id')}</ItemName>
+                            <ItemNumber>{item.get('number')}</ItemNumber>
+                            <ItemNumber>{item.get('Price')}</ItemNumber>
+                            <ItemNumber>{item.get('number') * item.get('Price')}</ItemNumber>
+                            <Button onClick={() => this.props.deletependdingitem(ID,item.get('id'))}><a href="/cart">Delete</a></Button>
+                        </Item>
+                    </CartItemWrapper>
+                )
+            })
+        }else{
             return(
-                <CartItemWrapper>
-                    <Item key={item.get('id')}>
-                        <ItemName>{item.get('id')}</ItemName>
-                        <ItemNumber>{item.get('number')}</ItemNumber>
-                        <ItemNumber>{item.get('Price')}</ItemNumber>
-                        <ItemNumber>{item.get('number') * item.get('Price')}</ItemNumber>
-                        <Button onClick={() => this.props.deletependdingitem(ID,item.get('id'))}><a href="/cart">Delete</a></Button>
-                    </Item>
-                </CartItemWrapper>
+                <h1>Error</h1>
             )
-        })
+        }
     }
 }
 
