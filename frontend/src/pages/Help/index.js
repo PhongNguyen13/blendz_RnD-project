@@ -39,6 +39,7 @@ const Help = () => {
             );
           })}
         <p>Need more help? <span><a href='/contactus'>Contact Us</a></span></p>
+        <p><a href='/payment'>Payment</a></p>
       </AccordionSection>
     </IconContext.Provider>
   );

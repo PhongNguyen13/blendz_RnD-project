@@ -2,8 +2,8 @@ import * as constants from './constants';
 import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
-    selected: "start",
-    list:[]
+    selected: "Machine",
+    list: []
 });
 
 const selecter = (state = defaultState, action) => {

@@ -21,7 +21,9 @@ const changeList = (result) => ({
 
 export const getMachineList = () => {
     return (dispatch) => {
-        axios.get('/api/Machine.json').then((res) => {
+        var storage=window.localStorage;
+        storage.setItem("Select", "Machine");
+        axios.get('http://localhost:8080/api/machines').then((res) => {
             const result = res.data;
             dispatch(changeList(result));
         }).catch(() => {
@@ -31,7 +33,9 @@ export const getMachineList = () => {
 }
 export const getBeveragesList = () => {
     return (dispatch) => {
-        axios.get('/api/Beverages.json').then((res) => {
+        var storage=window.localStorage;
+        storage.setItem("Select", "Beverage");
+        axios.get('http://localhost:8080/api/beverages').then((res) => {
             const result = res.data;
             dispatch(changeList(result));
         }).catch(() => {
@@ -42,7 +46,9 @@ export const getBeveragesList = () => {
 
 export const getAccessoriesList = () => {
     return (dispatch) => {
-        axios.get('/api/Accessories.json').then((res) => {
+        var storage=window.localStorage;
+        storage.setItem("Select", "Accessorie");
+        axios.get('http://localhost:8080/api/accessories').then((res) => {
             const result = res.data;
             dispatch(changeList(result));
         }).catch(() => {

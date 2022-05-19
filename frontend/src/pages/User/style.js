@@ -14,6 +14,20 @@ export const Button = styled.div`
     cursor:pointer;
 `;
 
+export const SmallButton = styled.div`
+    width: 150px;
+    height: 35px;
+    line-height: 30px;
+    color: #fff;
+    background: black;
+    border-radius: 5px;
+    margin: 10px auto;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 20px;
+    cursor:pointer;
+`;
+
 export const ProfileTitle = styled.div`
     width:100%;
     height:10%;
@@ -22,4 +36,23 @@ export const ProfileTitle = styled.div`
     text-align: center;
     line-height: 200%;
     font-weight: bold;
+`
+
+export const UserInfo = styled.div`
+font-size: 130%;
+text-align: center;
+font-weight: bold;
+`
+
+export const ChangeNameForm = styled.div`
+    margin: auto;
+    width: 30%;
+    font-size: 100%;
+    text-align: center;
+    border-radius: 5px;
+    border: 5px solid #787878;;
+`
+
+export const ChangeNameContent = styled.div`
+    margin: 1% auto;
 `
