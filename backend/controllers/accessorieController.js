@@ -8,8 +8,22 @@ const firestore = firebase.firestore();
 const addAccessorie = async (req, res, next) => {
     try {
         const data = req.body;
-        await firestore.collection('accessorie').doc().set(data);
+        const docID = req.body.name;
+        await firestore.collection('accessorie').doc(docID).set(data);
         res.send('Accessorie Record saved successfuly');
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
+
+const updateAccessorie= async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const data = req.body;
+        const accessorie =  await firestore.collection('accessorie').doc(id);
+        await accessorie.update(data);
+        res.send('Accessorie record updated successfuly');        
     } catch (error) {
         res.status(400).send(error.message);
     }
@@ -29,7 +43,10 @@ const getAllAccessorie = async (req, res, next) => {
                     doc.id,
                     doc.data().name,
                     doc.data().price,
-                    doc.data().imgUrl
+                    doc.data().imgUrl,
+                    doc.data().description,
+                    doc.data().type,
+                    doc.data().priceforPay
                 );
                 accessoriesArray.push(accessorie);
             });
@@ -55,8 +72,20 @@ const getAccessorie = async (req, res, next) => {
     }
 }
 
+const deleteAccessorie = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        await firestore.collection('accessorie').doc(id).delete();
+        res.send('Record deleted successfuly');
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
 module.exports = {
     addAccessorie,
     getAllAccessorie,
-    getAccessorie
+    getAccessorie,
+    updateAccessorie,
+    deleteAccessorie
 }

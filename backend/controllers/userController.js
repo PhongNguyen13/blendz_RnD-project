@@ -33,6 +33,31 @@ const getUser = async (req, res, next) => {
     }
 }
 
+const getAllUser = async (req, res, next) => {
+    try {
+        const users = await firestore.collection('user');
+        const data = await users.get();
+        const usersArray = [];
+        if(data.empty) {
+            res.status(404).send('No users record found');
+        }else {
+            data.forEach(doc => {
+                const user = new User(
+                    doc.id,
+                    doc.data().name,
+                    doc.data().email,
+                    doc.data().Pendding
+                );
+                usersArray.push(user);
+            });
+            res.send(usersArray);
+        }
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
+
 const updateUser = async (req, res, next) => {
     try {
         const id = req.params.id;
@@ -249,5 +274,6 @@ module.exports = {
     updateCart,
     getPaidList,
     CreatePaidList,
-    getDetailOrderList
+    getDetailOrderList,
+    getAllUser
 }

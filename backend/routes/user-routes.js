@@ -12,7 +12,8 @@ const {addUser,
     updateCart,
     getPaidList,
     CreatePaidList,
-    getDetailOrderList} = require('../controllers/userController');
+    getDetailOrderList,
+    getAllUser} = require('../controllers/userController');
 
 const router = express.Router();
 
@@ -30,6 +31,7 @@ router.post('/user/update/cartitem/:id', updateCart);
 router.get('/user/paidlist/:id', getPaidList);
 router.post('/user/create/paidlist/:id', CreatePaidList);
 router.post('/user/order/detail/:id', getDetailOrderList);
+router.get('/users', getAllUser);
 
 module.exports = {
     routes: router

@@ -8,8 +8,21 @@ const firestore = firebase.firestore();
 const addMachine = async (req, res, next) => {
     try {
         const data = req.body;
-        await firestore.collection('machine').doc().set(data);
+        const docID = req.body.name;
+        await firestore.collection('machine').doc(docID).set(data);
         res.send('Machine Record saved successfuly');
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
+const updateMachine = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const data = req.body;
+        const machine =  await firestore.collection('machine').doc(id);
+        await machine.update(data);
+        res.send('Machine record updated successfuly');        
     } catch (error) {
         res.status(400).send(error.message);
     }
@@ -58,8 +71,20 @@ const getMachine = async (req, res, next) => {
     }
 }
 
+const deleteMachine = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        await firestore.collection('machine').doc(id).delete();
+        res.send('Record deleted successfuly');
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
 module.exports = {
     addMachine,
     getAllMachine,
-    getMachine
+    getMachine,
+    updateMachine,
+    deleteMachine
 }

@@ -11,11 +11,11 @@ export const getCart = (uid) => {
     return (dispatch) => {
         axios.get('http://localhost:8080/api/user/cart/'+ uid).then((res) => {
             const result = res.data;
-            console.log(res.status);
+            //console.log(res.status);
 
             dispatch(GetCart(result));
         }).catch(() => {
-            console.log('error');
+            //console.log('error');
         })
     }
 }
@@ -45,7 +45,7 @@ export const getPendding = (uid) => {
             //console.log(res.data);
             dispatch(GetPendding(result));
         }).catch(() => {
-            console.log('error');
+            //console.log('error');
         })
     }
 }
