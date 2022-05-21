@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect, Link} from "react-router-dom";
-import { Wrapper, TitleWrapper, TitleContent, ProductWrapper, ShopInforItem ,Button, ProdutcTitleContent} from "../style";
+import { Wrapper, TitleWrapper, TitleContent, ProductWrapper, ShopInforItem ,Button, ProdutcTitleContent, Button2} from "../style";
 import { connect } from 'react-redux';
 import * as actionCreators from '../store/actionCreator';
 
@@ -13,6 +13,7 @@ class AdministratorsPendding extends Component {
             return(
                 <Wrapper>
                     <TitleWrapper>
+                    <Button2><a href="http://localhost:3000/Administrators/ManageProduct/AddProduct">Add Product to</a></Button2>
                     <ProdutcTitleContent onClick={() => this.props.handleInput("Machine")}><button>Slushy Machine</button></ProdutcTitleContent>
                     <ProdutcTitleContent onClick={() => this.props.handleInput("Beverage")}><button>Beverages</button></ProdutcTitleContent>
                     <ProdutcTitleContent onClick={() => this.props.handleInput("Accessories")}><button>Accessories</button></ProdutcTitleContent>
@@ -20,7 +21,6 @@ class AdministratorsPendding extends Component {
                     <ProductWrapper>
                     {this.getList()}
                     </ProductWrapper>
-                    <Button><a href="http://localhost:3000/Administrators/ManageProduct/AddProduct">Add Product to {type}</a></Button>
                 </Wrapper>
             )
         }else{

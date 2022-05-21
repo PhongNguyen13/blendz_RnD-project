@@ -30,6 +30,18 @@ export const Button = styled.div`
     cursor:pointer;
 `;
 
+export const Button2 = styled.div`
+    height: 35px;
+    line-height: 30px;
+    color: #fff;
+    background: #A0A0A0;
+    border-radius: 5px;
+    margin: 10px;
+    text-align: center;
+    font-size: 20px;
+    cursor:pointer;
+`;
+
 export const TitleWrapper= styled.div`
     display: flex;
     border-bottom: 1px solid #787878;
@@ -55,15 +67,9 @@ export const ProdutcTitleContent = styled.div`
     cursor: pointer;
 
     button:focus{
-    background:Blue;
-    margin:0% 2%;
-    height:10%;
-    font-size: 130%;
-    text-align: center;
-    line-height: 200%;
-    font-weight: bold;
     cursor: pointer;
-        }
+    background: #FCA71B;
+}
 `
 
 
@@ -90,7 +96,6 @@ export const ProductFromWrapper = styled.div`
 
 export const ShopInforItem = styled.div`
     width: 150px;
-    height: 275px;
     display: block;
     float: left;
     border: 2px solid #FF9900;

@@ -87,6 +87,7 @@ export const updateProduct = (name, dprice, PriceToPay, ImgUrl, des, params) => 
                 axios.post('http://localhost:8080/api/beverage/update/'+ params, postdata).then((res) => {
                 console.log(params);
                 console.log(res);
+                console.log(postdata);
             })
             }else if(submitType === "accessories"){
                 axios.post('http://localhost:8080/api/accessorie/update/'+ params, postdata).then((res) => {
@@ -96,7 +97,6 @@ export const updateProduct = (name, dprice, PriceToPay, ImgUrl, des, params) => 
             }
         }
 
-    
         window.location.href = 'http://localhost:3000/Administrators/ManageProduct';
 
     }
@@ -121,6 +121,38 @@ export const deletItem = (id) => {
             })
         }
         window.location.href = 'http://localhost:3000/Administrators/ManageProduct';
+    }
+}
+
+
+const getProductdetail = (result) => ({
+    type: constants.PRODUCTINFO,
+    data: result
+})
+
+export const getProduct = (id) => {
+    return(dispatch) => {
+        var storage=window.localStorage;
+        var submitType = storage.getItem("Type");
+        if(submitType === "machine"){
+            axios.get('http://localhost:8080/api/machine/'+ id).then((res) => {
+                //console.log(res);
+                const data = res.data;
+                dispatch(getProductdetail(data));
+            })
+        }else if (submitType === "beverage"){
+            axios.get('http://localhost:8080/api/beverage/'+ id).then((res) => {
+                //console.log(res);
+                const data = res.data;
+                dispatch(getProductdetail(data));
+            })
+        }else if(submitType === "accessories"){
+            axios.get('http://localhost:8080/api/accessorie/'+ id).then((res) => {
+                //console.log(res);
+                const data = res.data;
+                dispatch(getProductdetail(data));
+            })
+        }
     }
 }
 

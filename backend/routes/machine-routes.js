@@ -7,7 +7,7 @@ router.post('/machine', addMachine);
 router.get('/machines', getAllMachine);
 router.get('/machine/:id', getMachine);
 router.post('/machine/update/:id', updateMachine);
-router.get('/machine/delete/:id', deleteMachine);
+router.post('/machine/delete/:id', deleteMachine);
 
 module.exports = {
     routes: router
