@@ -35,18 +35,19 @@ class Detail extends Component {
     }
 
     render(){
+        //console.log(this.props.data.description)
         var storage=window.localStorage;
         var UID = storage.getItem("UID");
-        let Price = this.props.priceforPay;
-        let Type = this.props.type;
+        let Price = this.props.data.priceforPay;
+        let Type = this.props.data.type;
         return(
             <DetailWrapper>
                 <Itemimg>
-                    <img src={this.props.imgUrl} alt=''/>
+                    <img src={this.props.data.imgUrl} alt=''/>
                 </Itemimg>
                 <ItemInfo>         
-                    <h1>{this.props.name}</h1>
-                    <p>{this.props.price}</p>
+                    <h1>{this.props.data.name}</h1>
+                    <p>{this.props.data.price}</p>
                     <h2>Quantity</h2>
                     <InputWrapper>
                         <InputButton onClick={this.handleChangeminusone}>-</InputButton>
@@ -78,25 +79,23 @@ class Detail extends Component {
     }
 
     getDesc() {
-        const {description} = this.props;
-
-        return description.map((item) => {
+        const des = this.props.data.description;
+        if(typeof des == "undefined" || des == null || des == ""){
             return(
-                <li>{item}</li>
+                <h1>No description</h1>
             )
-        })
+        }else{
+            return(
+                <div dangerouslySetInnerHTML={{__html: des}}/>
+            )
+        }
     }
 }
 
 const mapStateTothis= (state) =>{
     return{
-        imgUrl: state.getIn(['detail', 'imgUrl']),
-        name: state.getIn(['detail', 'name']),
-        price: state.getIn(['detail', 'price']),
-        description: state.getIn(['detail', 'description']),
-        type: state.getIn(['detail', 'type']),
-        priceforPay: state.getIn(['detail', 'priceforPay']),
-        Quantity: state.getIn(['detail', 'Quantity'])
+        Quantity: state.getIn(['detail', 'Quantity']),
+        data: state.getIn(['detail', 'data'])
     }
 }
 const mapDispathTothis = (dispatch) =>({
