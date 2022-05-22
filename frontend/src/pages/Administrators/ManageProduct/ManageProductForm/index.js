@@ -13,12 +13,17 @@ class ManageProductForm extends Component {
             DisplayPrice: "",
             priceforPay: "",
             imgUrl: " ",
+            pdfUrl: "",
+            videoUrl: "",
             description: "",
+            
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleDisplayPriceChange = this.handleDisplayPriceChange.bind(this);
         this.handlepriceforPayChange = this.handlepriceforPayChange.bind(this);
         this.handleimgUrlChange = this.handleimgUrlChange.bind(this);
+        this.handlepdfUrlChange = this.handlepdfUrlChange.bind(this);
+        this.handlevideoUrlChange = this.handlevideoUrlChange.bind(this);
         this.handledescriptionChange = this.handledescriptionChange.bind(this);
     }
     
@@ -34,6 +39,12 @@ class ManageProductForm extends Component {
     handleimgUrlChange(event) {
         this.setState({imgUrl: event.target.value});
     }
+    handlepdfUrlChange(event) {
+        this.setState({pdfUrl: event.target.value});
+    }
+    handlevideoUrlChange(event) {
+        this.setState({VideoUrl: event.target.value});
+    }
     handledescriptionChange(event) {
         this.setState({description: event.target.value});
     }
@@ -42,8 +53,6 @@ class ManageProductForm extends Component {
         var storage=window.localStorage;
         var UID = storage.getItem("UID");
         var params = this.props.match.params.id;
-        console.log();
-        console.log(this.state.Name);
         if(UID === "VsRZyRY71BennFQZOOnS04s876F2"){
             return(
                 <Wrapper>
@@ -77,6 +86,18 @@ class ManageProductForm extends Component {
                             required/>
                     </ProductFrom>
                     <ProductFrom>
+                            pdf Url: <Input ref={(input) => {this.pdfUrl = input}} 
+                            value = {this.state.pdfUrl}
+                            onChange={this.handlepdfUrlChange}
+                            required/>
+                    </ProductFrom>
+                    <ProductFrom>
+                            Video Url: <Input ref={(input) => {this.VideoUrl = input}} 
+                            value = {this.state.VideoUrl}
+                            onChange={this.handlevideoUrlChange}
+                            required/>
+                    </ProductFrom>
+                    <ProductFrom>
                             Description (Please use &lt;br&gt;to start a new line):
                             <StyledTextArea name="message" ref={(input) => {this.des = input}}
                             value = {this.state.description}
@@ -88,6 +109,8 @@ class ManageProductForm extends Component {
                         this.DisplayPrice.value,
                         this.PriceToPay.value,
                         this.ImgUrl.value,
+                        this.pdfUrl.value,
+                        this.VideoUrl.value,
                         this.des.value,
                         params)}>Submit</Button>
                     </ProductFromWrapper>
@@ -105,13 +128,15 @@ class ManageProductForm extends Component {
 
     componentDidUpdate(){
         const productInfo = this.props.productdetail;
-        if(this.state.Name == "done") {
+        if(this.state.Name === "done") {
             this.setState({
                 Name: productInfo.name,
                 DisplayPrice: productInfo.price,
                 priceforPay: productInfo.priceforPay,
                 imgUrl: productInfo.imgUrl,
-                description: productInfo.description,
+                pdfUrl: productInfo.pdfUrl,
+                VideoUrl: productInfo.VideoUrl,
+                description: productInfo.description
             });
         }
         
@@ -126,8 +151,8 @@ const mapStateTothis= (state) => {
 
 const mapDispathTothis = (dispatch) => {
     return{
-        AddProduct(name, dprice, PriceToPay, ImgUrl, des, params){
-            dispatch(actionCreators.updateProduct(name, dprice, PriceToPay, ImgUrl, des, params))
+        AddProduct(name, dprice, PriceToPay, ImgUrl, pdfUrl, VideoUrl, des, params){
+            dispatch(actionCreators.updateProduct(name, dprice, PriceToPay, ImgUrl, pdfUrl, VideoUrl, des, params))
         },
         getProductDetail(params){
             dispatch(actionCreators.getProduct(params));

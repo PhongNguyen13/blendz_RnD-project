@@ -21,7 +21,12 @@ class Cart extends Component {
                 <CartHeaderTitle>Cart</CartHeaderTitle>            
                 <CartHeaderContent>User: <a href="/user">{this.props.username}</a></CartHeaderContent>
                 </CartHeader>
-                    
+
+                    <CartContentWrappet>
+                        <h1>{this.getRentListTitle()}</h1>
+                        <h1>{this.getRentList()}</h1>
+                    </CartContentWrappet>
+
                     <CartContentWrappet>
                         <h1>{this.getPenddingListTitle()}</h1>
                         <h1>{this.getPenddingList()}</h1>
@@ -56,6 +61,7 @@ class Cart extends Component {
         this.props.getUserinfo(ID);
         this.props.getcartInfo(ID);
         this.props.getpenddingInfo(ID);
+        this.props.getrentInfo(ID);
     }
 
     CheckTotalPrice(){
@@ -66,8 +72,8 @@ class Cart extends Component {
         }else if (this.props.CartTotalPrice > 0){
             return(
                 <PayPalScriptProvider 
-                       options={{ "client-id": "AZM_MzL_PrjRYM9QMPq8p69xf4-fK8MR7WpTcH4mSGk-IwY2ZJLkziRc7qGf_sfzOXhkSajfBcXd5UQS&currency=NZD" }}>
-                       <PaypalCheckoutButton product={this.props.CartTotalPrice} />
+                options={{ "client-id": "AZM_MzL_PrjRYM9QMPq8p69xf4-fK8MR7WpTcH4mSGk-IwY2ZJLkziRc7qGf_sfzOXhkSajfBcXd5UQS&currency=NZD" }}>
+                    <PaypalCheckoutButton product={this.props.CartTotalPrice} />
                 </PayPalScriptProvider>
             )
         }else{
@@ -204,7 +210,67 @@ class Cart extends Component {
             )
         }
     }
+
+    getRentListTitle(){
+        const rentlistSize = this.props.rentlist.size;
+        if(rentlistSize === 0){
+            return (
+                <h1>Nothing in rent list</h1>
+            )
+        }else if (rentlistSize > 0){
+            return[
+                <div>
+                <CartItemTitle>
+                Rent Request
+                </CartItemTitle>
+                <CartItemWrapper>
+                <CartItem>Product name</CartItem>
+                <CartItem>Quantity</CartItem>
+                <CartItem>Total Price</CartItem>
+                <CartItem>Start date</CartItem>
+                <CartItem>End date</CartItem>
+                </CartItemWrapper>
+                </div>
+            ]
+        }else{
+            return(
+                <h1>Error</h1>
+            )
+        }
+    }
+
+    getRentList(){
+        const{rentlist} = this.props;
+        var storage=window.localStorage;
+        var ID = storage.getItem("UID");
+        const rentlistSize = this.props.rentlist.size;
+        if(rentlistSize === 0 ){
+            console.log("Noting in pendding list")
+        }else if (rentlistSize > 0){
+            return rentlist.map((item) => {
+                return(
+                    <Item>
+                            <CartItemWrapper key={item.get('id')}>
+                                <CartItem>{item.get('id')}</CartItem>
+                                <CartItem>{item.get('number')}</CartItem>
+                                <CartItem>TBU</CartItem>
+                                <CartItem>{item.get('StartDate')}</CartItem>
+                                <CartItem>{item.get('EndDate')}</CartItem>
+                            </CartItemWrapper>
+                            <Button onClick={() => this.props.deleteRentrequest(ID,item.get('id'))}><a href="/cart">Delete</a></Button>
+                    </Item>
+                )
+            })
+        }else{
+            return(
+                <h1>Error</h1>
+            )
+        }
+    }
+    
 }
+
+
 
 const mapStateToProps = (state) => {
     return {
@@ -213,6 +279,7 @@ const mapStateToProps = (state) => {
         useremail: state.getIn(['user', 'email']),
         cartlist: state.getIn(['cart','cartlist']),
         penddinglist: state.getIn(['cart','penddinglist']),
+        rentlist: state.getIn(['cart','rentlist']),
         CartTotalPrice: state.getIn(['user','CartTotalPrice'])
     }
 }
@@ -236,6 +303,12 @@ const mapDispathToProprs = (dispatch) => {
         },
         updateTotalPrice(uid, TotalNumber){
             dispatch(cartActionCreators.updateTotalPrice(uid, TotalNumber))
+        },
+        getrentInfo(id){
+            dispatch(cartActionCreators.getRentdetail(id));
+        },
+        deleteRentrequest(uid, itemID){
+            dispatch(cartActionCreators.deleteRentRequest(uid, itemID))
         }
     }
 }

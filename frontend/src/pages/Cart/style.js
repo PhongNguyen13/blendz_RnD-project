@@ -9,7 +9,7 @@ export const CartWrapper = styled.div`
 
 export const CartHeader = styled.div`
     width:100%;
-    background: pink;
+    background: #FCB745;
 `
 
 export const CartHeaderTitle = styled.div`

@@ -13,7 +13,12 @@ const {addUser,
     getPaidList,
     CreatePaidList,
     getDetailOrderList,
-    getAllUser} = require('../controllers/userController');
+    getAllUser,
+    updateRentRquest,
+    getuserRequestlist,
+    deleteRentRequest,
+    updateRent,
+    CreateRentList} = require('../controllers/userController');
 
 const router = express.Router();
 
@@ -32,6 +37,12 @@ router.get('/user/paidlist/:id', getPaidList);
 router.post('/user/create/paidlist/:id', CreatePaidList);
 router.post('/user/order/detail/:id', getDetailOrderList);
 router.get('/users', getAllUser);
+router.post('/user/update/RentRequest/:id', updateRentRquest);
+router.get('/user/RentRequestlist/:id', getuserRequestlist);
+router.post('/user/RentRequestlist/delete/:id', deleteRentRequest);
+router.post('/user/RentRequestlist/update/:id', updateRent);
+router.post('/user/RentList/:id', CreateRentList);
+
 
 module.exports = {
     routes: router

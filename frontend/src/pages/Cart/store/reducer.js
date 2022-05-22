@@ -4,7 +4,8 @@ import { getPrice } from './actionCreators';
 
 const defaultState = fromJS({
     cartlist:[],
-    penddinglist:[]
+    penddinglist:[],
+    rentlist:[]
 });
 
 const Cartstate = (state = defaultState, action) => {
@@ -17,6 +18,10 @@ const Cartstate = (state = defaultState, action) => {
     if (action.type === constants.GETCART) {
         return state.set('cartlist',action.data);
     }
+    if (action.type === constants.GETRENTLIST) {
+        return state.set('rentlist',action.data);
+    }
+
 
     return state;
 }

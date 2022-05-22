@@ -77,6 +77,7 @@ export const UserListWrapper = styled.div`
     display: flex;
 `
 
+
 export const UserWrapper = styled.div`
     margin: 1% auto;
     padding:1%;

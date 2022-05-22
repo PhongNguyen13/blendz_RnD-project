@@ -8,9 +8,11 @@ export const DetailWrapper = styled.div`
 `;
 
 export const Itemimg = styled.div`
-    // background: grey;
-    padding: 3%;
+    //background: grey;
+    width:50%;
     img {
+        display:block;
+        margin:auto;
         width: 350px;
         height: 400px;
     }
@@ -18,8 +20,7 @@ export const Itemimg = styled.div`
 
 export const ItemInfo = styled.div`
     //background:lightblue; 
-    padding: 2%;
-    margin-left: 20%;
+    width:50%;
     h1 {
         font-size:25px;
         line-height: 150%;
@@ -44,6 +45,9 @@ export const ItemInfo = styled.div`
 
 export const Description = styled.div`
     padding: 2%;
+    margin:auto;
+    width:100%;
+    //background:blue;
 
     h1 {
         font-size:20px;
@@ -59,9 +63,11 @@ export const Description = styled.div`
 
 export const Button = styled.div`
     height: 50px;
+    float: left;
+    width:50%;
     margin: auto;
     color: #FDFEFE;
-    background: #A0A0A0  ;
+    background: #A0A0A0;
     margin-top: 25px;
     padding: 0 30px;
     line-height:45px;
@@ -103,3 +109,21 @@ export const Input = styled.div`
     cursor: pointer;
     border: 1px solid black;
 `;
+
+export const Request = styled.div`
+    width: 100%;
+    margin-top:10%;
+    padding-left:50%;
+    //border: 1px solid black;
+    margin:auto;
+    
+h1 {
+    font-size:20px;
+    font-weight: bold;
+    margin-bottom: 2%; 
+}
+`;
+
+export const RentInput = styled.input`
+    display: block;
+`

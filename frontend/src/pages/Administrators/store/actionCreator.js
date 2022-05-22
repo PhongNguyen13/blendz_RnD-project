@@ -37,7 +37,7 @@ export const getProductList = (Type) => {
     }}
 }
 
-export const updateProduct = (name, dprice, PriceToPay, ImgUrl, des, params) => {
+export const updateProduct = (name, dprice, PriceToPay, ImgUrl, pdfUrl, VideoUrl, des, params) => {
     var storage=window.localStorage;
     var submitType = storage.getItem("Type");
     return () => {
@@ -49,6 +49,8 @@ export const updateProduct = (name, dprice, PriceToPay, ImgUrl, des, params) => 
                 "imgUrl":ImgUrl,
                 "type":submitType,
                 "priceforPay":PriceToPay,
+                "pdfUrl":pdfUrl,
+                "VideoUrl":VideoUrl,
                 "description":des
             }
             if(submitType === "machine"){
@@ -76,6 +78,8 @@ export const updateProduct = (name, dprice, PriceToPay, ImgUrl, des, params) => 
                 "imgUrl":ImgUrl,
                 "type":submitType,
                 "priceforPay":PriceToPay,
+                "pdfUrl":pdfUrl,
+                "VideoUrl":VideoUrl,
                 "description":des
             }
             if(submitType === "machine"){
@@ -158,6 +162,8 @@ export const getProduct = (id) => {
 
 
 //Manage User ------------------------------------------------
+
+//get all User ------------------------------------------------
 const UserList = (users) => ({
     type: constants.GETUSERS,
     data: fromJS(users)
@@ -173,6 +179,9 @@ export const getUserList = () => {
         })
     }
 }
+
+
+//get  User detail------------------------------------------------
 
 const changedetail = (date) => ({
     type: constants.GETUSER,
@@ -190,6 +199,26 @@ export const getUserdetail = (id) => {
     }
 }
 
+
+const GetRentList = (result) => ({
+    type: constants.GETUSERRENT,
+    data: fromJS(result)
+})
+
+export const getRentdetail = (uid) => {
+    return (dispatch) => {
+        axios.get('http://localhost:8080/api/user/RentRequestlist/'+ uid).then((res) => {
+            const result = res.data;
+            //console.log(res.data);
+            dispatch(GetRentList(result));
+        }).catch(() => {
+            //console.log('error');
+        })
+    }
+}
+
+//Change user state------------------------------------------------
+
 export const postToCart = (UID, itemID, number, Price) => {
     return () => {
         let postdata = {
@@ -198,17 +227,74 @@ export const postToCart = (UID, itemID, number, Price) => {
             "Price":Price
         }
         axios.post('http://localhost:8080/api/user/update/cart/' + UID, postdata).then(res=>{
-                console.log(res);
+                //console.log(res);
             })
         axios.post('http://localhost:8080/api/user/Pendding/delete/' + UID, postdata).then(res =>{
                 //console.log(res);
             })
-        let updatePendingState = {
-                "Pendding": "Nothing"
-        }
-        axios.post('http://localhost:8080/api/user/update/' + UID, updatePendingState).then(res=>{
-        console.log(res);})
         window.location.reload();
         }
+}
+
+export const DeletePendding = (UID) => {
+    return () => {
+        let updatePendingState = {
+            "Pendding": "Nothing"
+        }
+    axios.post('http://localhost:8080/api/user/update/' + UID, updatePendingState).then(res=>{
+    //console.log(res);
+})
+    }
+}
+
+export const AddePendding = (UID) => {
+    return () => {
+        let updatePendingState = {
+            "Pendding": "Yes"
+        }
+    axios.post('http://localhost:8080/api/user/update/' + UID, updatePendingState).then(res=>{
+    //console.log(res);
+})
+    }
+}
+
+
+//Rent start-------------------
+
+export const RentpostToCart = (UID, itemID, number, startDate, endDate, TotalPrice) => {
+    return () => {
+        console.log(TotalPrice);
+        let postdata = {
+            "itemID": itemID,
+            "number":number,
+            "startDate":startDate,
+            "endDate":endDate,
+            "TotalPrice":TotalPrice,
+        }
+        axios.post('http://localhost:8080/api/user/RentList/' + UID, postdata).then(res=>{
+                //console.log(res);
+            })
+        //window.location.reload();
+        }
     
+}
+
+export const DeleteRentstate = (UID) => {
+    return () => {
+        let updateState = {
+            "RentRequest": "Nothing"
+    }
+    axios.post('http://localhost:8080/api/user/update/' + UID, updateState).then(res=>{
+    console.log(res);})
+    }
+}
+
+export const AddeRentstate = (UID) => {
+    return () => {
+        let updateState = {
+            "RentRequest": "Yes"
+    }
+    axios.post('http://localhost:8080/api/user/update/' + UID, updateState).then(res=>{
+    console.log(res);})
+    }
 }

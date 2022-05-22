@@ -13,7 +13,12 @@ class ManageUsers extends Component {
                 <Wrapper>
                     <Title>Manage User pendding</Title>
                     <UserListWrapper>
-                    {this.showUserList()}
+                        pendding
+                        {this.showPenddingUserList()}
+                    </UserListWrapper>
+                    <UserListWrapper>
+                        Rent Request
+                        {this.showRentRequestUserList()}                    
                     </UserListWrapper>
 
                 </Wrapper>
@@ -26,7 +31,7 @@ class ManageUsers extends Component {
         this.props.GetAllUsers();
     }
 
-    showUserList(){
+    showPenddingUserList(){
         const {userList} = this.props;
         return userList.map((item) =>{
             const Pendding = item.get('Pendding');
@@ -43,12 +48,29 @@ class ManageUsers extends Component {
             }
         });
     }
+
+    showRentRequestUserList(){
+        const {userList} = this.props;
+        return userList.map((item) =>{
+            const RentRequest = item.get('RentRequest');
+            if(RentRequest === "Yes"){
+                return (
+                    <UserWrapper>
+                        <Link key={item.get('id')} to={`/Administrators/ManageUser/${item.get('id')}`} >
+                            <p>{item.get('name')}</p>
+                            <p>{item.get('email')}</p>
+                        </Link>
+                    </UserWrapper>
+                        );
+            }else{
+            }
+        });
+    }
 }
 
 const mapStateTothis= (state) => {
     return {
-        userList: state.getIn(['Admin','userList']),
-        list:state.getIn(['Admin','penddingList'])
+        userList: state.getIn(['Admin','userList'])
     }
 }
 
@@ -56,11 +78,7 @@ const mapDispathTothis = (dispatch) => {
     return{
         GetAllUsers(){
             dispatch(actionCreators.getUserList());
-        },
-        GetUser(id){
-            dispatch(actionCreators.getUserdetail(id));
         }
-
     }
 }
 

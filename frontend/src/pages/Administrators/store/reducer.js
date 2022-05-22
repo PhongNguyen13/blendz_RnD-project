@@ -5,7 +5,8 @@ const defaultState = fromJS({
     Productlist: [],
     userList:[],
     penddingList:[],
-    productdetail:[]
+    productdetail:[],
+    rentlist:[]
 })
 
 const AdministratorsState = (state = defaultState, action) => {
@@ -21,6 +22,9 @@ const AdministratorsState = (state = defaultState, action) => {
     }
     if (action.type === constants.PRODUCTINFO) {
         return state.set('productdetail',action.data);
+    }
+    if (action.type === constants.GETUSERRENT) {
+        return state.set('rentlist',action.data);
     }
 
     return state;

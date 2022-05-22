@@ -46,7 +46,9 @@ const getAllAccessorie = async (req, res, next) => {
                     doc.data().imgUrl,
                     doc.data().description,
                     doc.data().type,
-                    doc.data().priceforPay
+                    doc.data().priceforPay,
+                    doc.data().pdfUrl,
+                    doc.data().VideoUrl
                 );
                 accessoriesArray.push(accessorie);
             });
