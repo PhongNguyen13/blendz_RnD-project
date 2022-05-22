@@ -1,7 +1,10 @@
 class User {
-    constructor(email, id) {
-        this.id = id;
+    constructor(id, name, email, Pendding, RentRequest) {
+        this.id = id;        
+        this.name = name;
         this.email = email;
+        this.Pendding = Pendding;
+        this.RentRequest = RentRequest;
     }
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { DetailWrapper, Itemimg, ItemInfo, Description, Button, InputWrapper, InputButton ,Input} from "./style";
+import { DetailWrapper, Itemimg, ItemInfo, Description, Button, InputWrapper, InputButton ,Input, Request, RentInput} from "./style";
 import * as actionCreators from './store/actionCreators';
 
 
@@ -35,18 +35,20 @@ class Detail extends Component {
     }
 
     render(){
+
+        //console.log(this.props.data.VideoUrl)
         var storage=window.localStorage;
         var UID = storage.getItem("UID");
-        let Price = this.props.priceforPay;
-        let Type = this.props.type;
+        let Price = this.props.data.priceforPay;
+        let Type = this.props.data.type;
         return(
             <DetailWrapper>
                 <Itemimg>
-                    <img src={this.props.imgUrl} alt=''/>
+                    <img src={this.props.data.imgUrl} alt=''/>
                 </Itemimg>
                 <ItemInfo>         
-                    <h1>{this.props.name}</h1>
-                    <p>{this.props.price}</p>
+                    <h1>{this.props.data.name}</h1>
+                    <p>{this.props.data.price}</p>
                     <h2>Quantity</h2>
                     <InputWrapper>
                         <InputButton onClick={this.handleChangeminusone}>-</InputButton>
@@ -55,11 +57,19 @@ class Detail extends Component {
                     </InputWrapper>
                     <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id, this.props.Quantity , Price, Type)}>
                         <a href={`/shop/detail/${this.props.match.params.id}`}>Put it in Cart</a></Button>
+                    <Button onClick={() => this.props.openRequest()}>Reqest for Rent</Button>
                 </ItemInfo>
+                {this.RequestforRent(UID, this.props.match.params.id)}
                 <Description> 
                     <h1>Description</h1>
                     {this.getDesc()}
                 </Description>
+                <Description>{this.getPdf()}</Description>
+                <iframe src={this.props.data.VideoUrl}
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen></iframe>
             </DetailWrapper>
         )
     }
@@ -77,26 +87,61 @@ class Detail extends Component {
         }
     }
 
-    getDesc() {
-        const {description} = this.props;
-
-        return description.map((item) => {
+    getPdf(){
+        const pdf = this.props.data.pdfUrl;
+        if(typeof pdf == "undefined" || pdf == null || pdf == ""){
+        }else{
             return(
-                <li>{item}</li>
+                <a href={this.props.data.pdfUrl} type="application/pdf">About the machine</a>
             )
-        })
+        }
+    }
+
+    getDesc() {
+        const des = this.props.data.description;
+        if(typeof des == "undefined" || des == null || des == ""){
+
+            return(
+                <h1>No description</h1>
+            )
+        }else{
+            return(
+                <div dangerouslySetInnerHTML={{__html: des}}/>
+            )
+        }
+    }
+
+    RequestforRent(UID, itemID){
+        const RequestState = this.props.Request;
+        if(RequestState === true){
+            return(
+                <Request>
+                    <h1>Rent request</h1>
+                    Quantity:<RentInput type="number" ref={(input) => {this.RentQuantity = input}}/>
+                    From
+                    <RentInput type="date" ref={(input) => {this.RentStartDate = input}}></RentInput>
+                    To
+                    <RentInput type="date" ref={(input) => {this.RentEndDate = input}}></RentInput>
+                    <button onClick={() => this.props.handleRentRequest(
+                        UID,
+                        itemID,
+                        this.RentQuantity.value,
+                        this.RentStartDate.value,
+                        this.RentEndDate.value)}>Submit</button>
+                    <button onClick={() => this.props.cancelRequest()}>Cancel</button>
+                </Request>
+            )
+        }else{
+        
+        }
     }
 }
 
 const mapStateTothis= (state) =>{
     return{
-        imgUrl: state.getIn(['detail', 'imgUrl']),
-        name: state.getIn(['detail', 'name']),
-        price: state.getIn(['detail', 'price']),
-        description: state.getIn(['detail', 'description']),
-        type: state.getIn(['detail', 'type']),
-        priceforPay: state.getIn(['detail', 'priceforPay']),
-        Quantity: state.getIn(['detail', 'Quantity'])
+        Quantity: state.getIn(['detail', 'Quantity']),
+        data: state.getIn(['detail', 'data']),
+        Request: state.getIn(['detail','RequestState'])
     }
 }
 const mapDispathTothis = (dispatch) =>({
@@ -114,6 +159,15 @@ const mapDispathTothis = (dispatch) =>({
     },
     updateQuantity(number){
         dispatch(actionCreators.QUANTITY(number));
+    },
+    openRequest(){
+        dispatch(actionCreators.RequestRent());
+    },
+    cancelRequest(){
+        dispatch(actionCreators.CancelRequestRent());
+    },
+    handleRentRequest(UID, itemID, Quantity, StartDate, EndDate){
+        dispatch(actionCreators.handinRentRquest(UID, itemID, Quantity, StartDate, EndDate));
     }
 })
 
