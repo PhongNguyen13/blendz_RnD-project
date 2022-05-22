@@ -13,7 +13,11 @@ export const AccordionSection = styled.div`
         border: 1px solid black;
     }
     h1 {
+<<<<<<< HEAD
+        color: #3D550C;
+=======
         color: #0047AB;
+>>>>>>> 401a8ca219fc7d1c002a490a43cf0304708e5623
         position: relative;
         width: max-width;
         font-size: 35px;
