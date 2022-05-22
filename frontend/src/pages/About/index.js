@@ -1,10 +1,14 @@
 import React, { Component } from "react";
-import { AboutWrapper, RightWrap, Title, Content } from "./style";
+import { AboutWrapper, RightWrap, LeftWrap, Title, Content } from "./style";
+import about from '../../assets/about.png';
 
 class About extends Component {
     render(){
         return(
             <AboutWrapper>
+                <LeftWrap>
+                    <img width={250} height={250} src={about}/>
+                </LeftWrap>
                 <RightWrap>
                     <Title>ABOUT BLENDZ</Title>
                     <Content> 
