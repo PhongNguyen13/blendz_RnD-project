@@ -7,36 +7,49 @@ export const AboutWrapper = styled.div`
     ${mobile({ padding: "10px 0px" })}
 `;
 
+export const LeftWrap = styled.div`
+    float: left;
+    height: 350px;
+    width: 350px;
+    margin-left: 50px;
+    margin-top: 50px;
+
+    image {
+        width: 100%;
+        flex:1 1 45rem;
+    }
+`;
+
 export const RightWrap = styled.div`
-    margin: auto;
+    margin-left: 350px;
+    margin-right: 50px;
+    background-color: #93C572;
 `;
 
 export const Title = styled.h1`
     padding-top: 0px;
     text-align: center;
-    font-size: 30px;
-    color: #008000;
+    font-size: 3rem;
+    color: white;
     font-weight: bold;
-`;
 
-export const Content = styled.div`
-    padding: 40px 50px;
-    text-align: justify;
-    font-size: 15px;
-    p {
-        margin: 10px 0px;
-        line-height: 1.5; 
-        text-align: justify;
+    span {
+        margin-left: 10px;
+        color: #CC5500;
     }
 `;
 
-export const LeftWrap = styled.div`
-    float: left;
-    height: 300px;
-    width: 300px;
-    margin-left: 50px;
+export const Content = styled.div`
+    text-align: justify;
+    font-size: 15px;
+    flex:1 1 45rem;
+    padding:2rem;
 
-    image {
-        flex:1 1 45rem;
+    p {
+        font-size: 1.2rem;
+        color:black;
+        padding:1rem 0;
+        line-height: 1.8;
+        text-align: justify;
     }
 `;
