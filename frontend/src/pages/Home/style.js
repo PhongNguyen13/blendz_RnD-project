@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import HomePic from '../../assets/HomeImage.png';
-import Background from '../../assets/background2.jpg';
 
 export const HomeWrapper = styled.div`
     // z-index:-1;
@@ -14,9 +13,6 @@ export const HomeWrapper = styled.div`
     padding-right:100px;
     padding-left: 100px;
     padding-bottom: 200px;
-    // background-image: url(${Background});
-    // background-size: cover;
-    // opacity: 0.3;
 `;
 
 export const RightArea = styled.div`

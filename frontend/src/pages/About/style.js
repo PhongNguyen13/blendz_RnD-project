@@ -23,7 +23,7 @@ export const LeftWrap = styled.div`
 export const RightWrap = styled.div`
     margin-left: 350px;
     margin-right: 50px;
-    background-color: #93C572;
+    background-color: #ADD8E6;
 `;
 
 export const Title = styled.h1`
@@ -35,7 +35,7 @@ export const Title = styled.h1`
 
     span {
         margin-left: 10px;
-        color: #CC5500;
+        color: #0047AB;
     }
 `;
 
