@@ -2,9 +2,12 @@ import * as constants from './constants';
 import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
-    Quantity:1,
-    data:[],
-    RequestState:false
+    imgUrl:'',
+    name:'',
+    price:'',
+    description:[],
+    type:'',
+    priceforPay:''
 });
 
 const detailstate = (state = defaultState, action) => {
