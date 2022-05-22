@@ -57,12 +57,14 @@ export const postItem = (UID, itemID, number, Price, Type) => {
         if(Type === "machine"){
             if(number > 1){
                 axios.post('http://localhost:8080/api/user/update/Pendding/' + UID, postdata).then(res=>{
+
                 //console.log(res);
             })
                 let updatePendingState = {
                     "Pendding": "Yes"
                 }
                 axios.post('http://localhost:8080/api/user/update/' + UID, updatePendingState).then(res=>{
+
                 //console.log(res);
             })
             }else{
