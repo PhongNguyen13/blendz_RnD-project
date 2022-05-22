@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { DetailWrapper, Itemimg, ItemInfo, Description, Button, InputWrapper, InputButton ,Input} from "./style";
+import { DetailWrapper, Itemimg, ItemInfo, Description, Button, InputWrapper, InputButton ,Input, Request, RentInput} from "./style";
 import * as actionCreators from './store/actionCreators';
 
 
@@ -35,7 +35,8 @@ class Detail extends Component {
     }
 
     render(){
-        //console.log(this.props.data.description)
+
+        //console.log(this.props.data.VideoUrl)
         var storage=window.localStorage;
         var UID = storage.getItem("UID");
         let Price = this.props.data.priceforPay;
@@ -56,11 +57,19 @@ class Detail extends Component {
                     </InputWrapper>
                     <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id, this.props.Quantity , Price, Type)}>
                         <a href={`/shop/detail/${this.props.match.params.id}`}>Put it in Cart</a></Button>
+                    <Button onClick={() => this.props.openRequest()}>Reqest for Rent</Button>
                 </ItemInfo>
+                {this.RequestforRent(UID, this.props.match.params.id)}
                 <Description> 
                     <h1>Description</h1>
                     {this.getDesc()}
                 </Description>
+                <Description>{this.getPdf()}</Description>
+                <iframe src={this.props.data.VideoUrl}
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen></iframe>
             </DetailWrapper>
         )
     }
@@ -78,9 +87,20 @@ class Detail extends Component {
         }
     }
 
+    getPdf(){
+        const pdf = this.props.data.pdfUrl;
+        if(typeof pdf == "undefined" || pdf == null || pdf == ""){
+        }else{
+            return(
+                <a href={this.props.data.pdfUrl} type="application/pdf">About the machine</a>
+            )
+        }
+    }
+
     getDesc() {
         const des = this.props.data.description;
         if(typeof des == "undefined" || des == null || des == ""){
+
             return(
                 <h1>No description</h1>
             )
@@ -90,12 +110,38 @@ class Detail extends Component {
             )
         }
     }
+
+    RequestforRent(UID, itemID){
+        const RequestState = this.props.Request;
+        if(RequestState === true){
+            return(
+                <Request>
+                    <h1>Rent request</h1>
+                    Quantity:<RentInput type="number" ref={(input) => {this.RentQuantity = input}}/>
+                    From
+                    <RentInput type="date" ref={(input) => {this.RentStartDate = input}}></RentInput>
+                    To
+                    <RentInput type="date" ref={(input) => {this.RentEndDate = input}}></RentInput>
+                    <button onClick={() => this.props.handleRentRequest(
+                        UID,
+                        itemID,
+                        this.RentQuantity.value,
+                        this.RentStartDate.value,
+                        this.RentEndDate.value)}>Submit</button>
+                    <button onClick={() => this.props.cancelRequest()}>Cancel</button>
+                </Request>
+            )
+        }else{
+        
+        }
+    }
 }
 
 const mapStateTothis= (state) =>{
     return{
         Quantity: state.getIn(['detail', 'Quantity']),
-        data: state.getIn(['detail', 'data'])
+        data: state.getIn(['detail', 'data']),
+        Request: state.getIn(['detail','RequestState'])
     }
 }
 const mapDispathTothis = (dispatch) =>({
@@ -113,6 +159,15 @@ const mapDispathTothis = (dispatch) =>({
     },
     updateQuantity(number){
         dispatch(actionCreators.QUANTITY(number));
+    },
+    openRequest(){
+        dispatch(actionCreators.RequestRent());
+    },
+    cancelRequest(){
+        dispatch(actionCreators.CancelRequestRent());
+    },
+    handleRentRequest(UID, itemID, Quantity, StartDate, EndDate){
+        dispatch(actionCreators.handinRentRquest(UID, itemID, Quantity, StartDate, EndDate));
     }
 })
 

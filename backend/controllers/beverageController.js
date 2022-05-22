@@ -8,12 +8,26 @@ const firestore = firebase.firestore();
 const addBeverage = async (req, res, next) => {
     try {
         const data = req.body;
-        await firestore.collection('beverage').doc().set(data);
+        const docID = req.body.name;
+        await firestore.collection('beverage').doc(docID).set(data);
         res.send('Beverage Record saved successfuly');
     } catch (error) {
         res.status(400).send(error.message);
     }
 }
+
+const updateBeverage= async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const data = req.body;
+        const beverage =  await firestore.collection('beverage').doc(id);
+        await beverage.update(data);
+        res.send('beverage record updated successfuly');        
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
 
 
 const getAllBeverage = async (req, res, next) => {
@@ -29,7 +43,12 @@ const getAllBeverage = async (req, res, next) => {
                     doc.id,
                     doc.data().name,
                     doc.data().price,
-                    doc.data().imgUrl
+                    doc.data().imgUrl,
+                    doc.data().description,
+                    doc.data().type,
+                    doc.data().priceforPay,
+                    doc.data().pdfUrl,
+                    doc.data().VideoUrl
                 );
                 beveragesArray.push(beverage);
             });
@@ -55,8 +74,20 @@ const getBeverage = async (req, res, next) => {
     }
 }
 
+const deleteBeverage = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        await firestore.collection('beverage').doc(id).delete();
+        res.send('Record deleted successfuly');
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
 module.exports = {
     addBeverage,
     getAllBeverage,
-    getBeverage
+    getBeverage,
+    updateBeverage,
+    deleteBeverage
 }

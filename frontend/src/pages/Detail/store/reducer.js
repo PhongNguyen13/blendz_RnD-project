@@ -3,7 +3,8 @@ import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
     Quantity:1,
-    data:[]
+    data:[],
+    RequestState:false
 });
 
 const detailstate = (state = defaultState, action) => {
@@ -14,6 +15,10 @@ const detailstate = (state = defaultState, action) => {
 
     if (action.type === constants.GETDETAIL){
         return state.set('data', action.data);
+    }
+
+    if (action.type === constants.RENTREQUEST){
+        return state.set('RequestState', action.value);
     }
 
     return state;
