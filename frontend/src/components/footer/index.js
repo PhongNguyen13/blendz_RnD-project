@@ -10,6 +10,7 @@ class Footer extends Component {
                     <FooterNavItem href="/shop">Shop</FooterNavItem>
                     <FooterNavItem href="/help">Help</FooterNavItem>
                     <FooterNavItem href="/about">About</FooterNavItem>
+                    <FooterNavItem href="/contactus">Contact Us</FooterNavItem>
                 </FooterNav>
 
                 <FooterInfo>

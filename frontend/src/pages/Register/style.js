@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const RegisterWrapper = styled.div`
-    // z-index:-1;
-    // position absolute;
     top: 0;
     bottom 0;
     left: 0;
@@ -12,8 +10,8 @@ export const RegisterWrapper = styled.div`
 `;
 
 export const RegisterBox = styled.div`
-    width: 20%;
-    height: 50%;
+    width: 400px;
+    height: 400px;
     margin: 8% auto;
     background: white;
     padding-top: 3%;
@@ -24,6 +22,7 @@ export const Content = styled.div`
     &.Title{
         text-align: center;
         font-size: 150%;
+        margin: 10%;
     }
     &.STitle{
         margin-top: 10%;

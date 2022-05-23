@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Image = styled.img`
     display: block;
     margin: 60px auto;
+    width: 400px; 
 `;
 
 export const Message = styled.p`

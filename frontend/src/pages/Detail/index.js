@@ -39,9 +39,8 @@ class Detail extends Component {
         //console.log(this.props.data.VideoUrl)
         var storage=window.localStorage;
         var UID = storage.getItem("UID");
-        let Price = this.props.priceforPay;
-        let Type = this.props.type;
-
+        let Price = this.props.data.priceforPay;
+        let Type = this.props.data.type;
         return(
             <DetailWrapper>
                 <Itemimg>
@@ -57,14 +56,20 @@ class Detail extends Component {
                         <InputButton onClick={this.handleChangeplusone}>+</InputButton>
                     </InputWrapper>
                     <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id, this.props.Quantity , Price, Type)}>
-                        <a href={`/shop/detail/${this.props.match.params.id}`}>Put it in Cart</a></Button>
-                    <Button onClick={() => this.props.openRequest()}>Reqest for Rent</Button>
+                        <a href={`/shop/detail/${this.props.match.params.id}`}>Add to Cart</a></Button>
+                    <Button onClick={() => this.props.openRequest()}>Request for Rent</Button>
                 </ItemInfo>
                 {this.RequestforRent(UID, this.props.match.params.id)}
                 <Description> 
                     <h1>Description</h1>
                     {this.getDesc()}
-                </Description> 
+                </Description>
+                <Description>{this.getPdf()}</Description>
+                <iframe src={this.props.data.VideoUrl}
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen></iframe>
             </DetailWrapper>
         )
     }
@@ -81,16 +86,55 @@ class Detail extends Component {
             return console.log("error to get detail");
         }
     }
-    getDesc(){
-        const {description} = this.props;
-        return description.map((item) => {
+
+    getPdf(){
+        const pdf = this.props.data.pdfUrl;
+        if(typeof pdf == "undefined" || pdf == null || pdf == ""){
+        }else{
             return(
-                <li>{item}</li>
+                <a href={this.props.data.pdfUrl} type="application/pdf">Download the Brochure</a>
             )
-        })
+        }
     }
 
+    getDesc() {
+        const des = this.props.data.description;
+        if(typeof des == "undefined" || des == null || des == ""){
 
+            return(
+                <h1>No description</h1>
+            )
+        }else{
+            return(
+                <div dangerouslySetInnerHTML={{__html: des}}/>
+            )
+        }
+    }
+
+    RequestforRent(UID, itemID){
+        const RequestState = this.props.Request;
+        if(RequestState === true){
+            return(
+                <Request>
+                    <h1>Rent request</h1>
+                    Quantity:<RentInput type="number" ref={(input) => {this.RentQuantity = input}}/>
+                    From
+                    <RentInput type="date" ref={(input) => {this.RentStartDate = input}}></RentInput>
+                    To
+                    <RentInput type="date" ref={(input) => {this.RentEndDate = input}}></RentInput>
+                    <button onClick={() => this.props.handleRentRequest(
+                        UID,
+                        itemID,
+                        this.RentQuantity.value,
+                        this.RentStartDate.value,
+                        this.RentEndDate.value)}>Submit</button>
+                    <button onClick={() => this.props.cancelRequest()}>Cancel</button>
+                </Request>
+            )
+        }else{
+        
+        }
+    }
 }
 
 const mapStateTothis= (state) =>{

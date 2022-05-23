@@ -30,7 +30,7 @@ export const ItemInfo = styled.div`
     p {
         font-size:25px;
         line-height: 150%;
-        color: red;
+        color: grey;
     }
     h2{
         margin-top:5%;

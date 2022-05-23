@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const LoginWrapper = styled.div`
-    // z-index:-1;
-    // position absolute;
     top: 0;
     bottom 0;
     left: 0;
@@ -10,7 +8,7 @@ export const LoginWrapper = styled.div`
 `;
 
 export const LoginBox = styled.div`
-    width: 600px;
+    width: 500px;
     height: 350px;
     margin: 200px auto;
     background: white;
@@ -22,13 +20,15 @@ export const Content = styled.div`
     &.Title{
         text-align: center;
         font-size: 25px;
+            margin-bottom: 40px;
+
     }
-    &.STitle{
-        margin-top: 20px;
-        margin-bottom: 0px;
-        margin-left:180px;
-        font-size: 15px;
-    }
+    // &.STitle{
+    //     margin-top: 20px;
+    //     margin-bottom: 0px;
+    //     margin-left:180px;
+    //     font-size: 15px;
+    // }
 
 `;
 
@@ -63,13 +63,14 @@ export const Button = styled.div`
 `;
 
 export const RegisterWrapper = styled.div`
-    width: 20%;
-    height: 8%;
-    margin: auto;
+    // width: 20%;
+    // height: 8%;
+    margin: 10px;
+    text-align: center;
 `;
 
 export const Register = styled.a`
     width:80%;
     height:80%;
-    color:red;
+    color:black;
 `;
