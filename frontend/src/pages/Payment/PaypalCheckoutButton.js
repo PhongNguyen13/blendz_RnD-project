@@ -10,7 +10,7 @@ const PaypalCheckoutButton = (props) => {
 
   var storage=window.localStorage;
   var uid = storage.getItem("UID");
-  var TotalPrice = storage.getItem("Total");
+//   var TotalPrice = storage.getItem("Total");
 
   axios.get('http://localhost:8080/api/user/' + uid).then((res) => {
         const result = res.data;
@@ -77,7 +77,7 @@ const PaypalCheckoutButton = (props) => {
                 //   description: product.description,
                   amount: {
                     currency_code: "NZD",
-                    value: TotalPrice
+                    value: product
                   }
                 }
               ]

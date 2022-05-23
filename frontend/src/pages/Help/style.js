@@ -2,8 +2,10 @@ import styled from "styled-components";
 import { mobile } from "../../responsive";
 
 export const AccordionSection = styled.div`
-    padding: 50px 100px;
-    flex-direction: column;
+    // padding: 50px 100px;
+    // flex-direction: column;
+    margin: 50px 100px 50px 100px;
+    width: max;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -24,8 +26,7 @@ export const AccordionSection = styled.div`
         content: "";
         position: absolute;
         bottom: 0;
-        margin-right: 200px;
-        width: 50%;
+        width: 47%;
         height: 2px;
         background-color: #0047AB;
     }
