@@ -5,7 +5,10 @@ import { getPrice } from './actionCreators';
 const defaultState = fromJS({
     cartlist:[],
     penddinglist:[],
-    rentlist:[]
+    rentlist:[],
+    Approverentlist:[],
+    NullApproveRentList:false,
+    AddressState:false
 });
 
 const Cartstate = (state = defaultState, action) => {
@@ -21,9 +24,17 @@ const Cartstate = (state = defaultState, action) => {
     if (action.type === constants.GETRENTLIST) {
         return state.set('rentlist',action.data);
     }
-
-
+    if (action.type === constants.GETAPPROVERENTLIST) {
+        return state.set('Approverentlist',action.data);
+    }
+    if (action.type === constants.LISTISNULL) {
+        return state.set('NullApproveRentList',action.value);
+    }
+    if (action.type === constants.ADDRESSSTATE) {
+        return state.set('AddressState',action.value);
+    }
     return state;
 }
 
 export default Cartstate;
+

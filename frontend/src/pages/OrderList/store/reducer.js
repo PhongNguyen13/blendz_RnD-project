@@ -3,7 +3,11 @@ import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
     Orderlist: [],
-    OrderDetaillist: []
+    OrderDetaillist: [],
+    Rentlist:[],
+    RentDetaillist: [],
+    OrderID: '',
+    ShippingAddress: ''
 })
 
 const orderstate = (state = defaultState, action) => {
@@ -16,6 +20,21 @@ const orderstate = (state = defaultState, action) => {
         return state.set('OrderDetaillist',action.data);
     }
 
+    if (action.type === constants.GETRENTLIST) {
+        return state.set('Rentlist',action.data);
+    }
+
+    if (action.type === constants.GETRENTDETAIL) {
+        return state.set('RentDetaillist',action.data);
+    }
+
+    if (action.type === constants.ORDERID) {
+        return state.set('OrderID',action.data);
+    }
+
+    if (action.type === constants.SHIPPINGADDRESS) {
+        return state.set('ShippingAddress',action.data);
+    }
     return state;
 }
 

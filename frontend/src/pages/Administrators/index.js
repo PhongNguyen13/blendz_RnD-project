@@ -10,8 +10,9 @@ class Administrators extends Component {
             return(
                 <Wrapper>
                     <Title>Administrators</Title>
-                    <Button><a href="/Administrators/ManageProduct">Product</a></Button>
-                    <Button><a href="/Administrators/ManageUser">User</a></Button>
+                    <Button  onClick={() => window.location.href = '/Administrators/ManageProduct'}>Manage Product</Button>
+                    <Button  onClick={() => window.location.href = '/Administrators/ManageUser'}>Check Request</Button>
+                    <Button  onClick={() => window.location.href = '/Administrators/ManageAllUser'}>Check All Order</Button>
                 </Wrapper>
             )
         }else{

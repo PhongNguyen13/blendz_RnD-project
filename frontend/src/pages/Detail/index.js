@@ -55,8 +55,8 @@ class Detail extends Component {
                         <InputButton onClick={this.handleChangeplusone}>+</InputButton>
                     </InputWrapper>
                     <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id, this.props.Quantity , Price, Type)}>
-                        <a href={`/shop/detail/${this.props.match.params.id}`}>Put it in Cart</a></Button>
-                    <Button onClick={() => this.props.openRequest()}>Reqest for Rent</Button>
+                        Put it in Cart</Button>
+                        {this.CheckIfMachine(this.props.data.type)}
                 </ItemInfo>
                 {this.RequestforRent(UID, this.props.match.params.id)}
                 <Description> 
@@ -83,6 +83,14 @@ class Detail extends Component {
             this.props.getAccessorie(this.props.match.params.id);
         }else{
             return console.log("error to get detail");
+        }
+    }
+
+    CheckIfMachine(type){
+        if(type === "machine"){
+            return(
+                <Button onClick={() => this.props.openRequest()}>Reqest for Rent</Button>
+            )
         }
     }
 
@@ -138,7 +146,8 @@ const mapStateTothis= (state) =>{
     return{
         Quantity: state.getIn(['detail', 'Quantity']),
         data: state.getIn(['detail', 'data']),
-        Request: state.getIn(['detail','RequestState'])
+        Request: state.getIn(['detail','RequestState']),
+        Type: state.getIn(['shop','selected'])
     }
 }
 const mapDispathTothis = (dispatch) =>({

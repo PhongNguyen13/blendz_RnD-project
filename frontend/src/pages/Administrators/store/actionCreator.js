@@ -199,24 +199,6 @@ export const getUserdetail = (id) => {
     }
 }
 
-
-const GetRentList = (result) => ({
-    type: constants.GETUSERRENT,
-    data: fromJS(result)
-})
-
-export const getRentdetail = (uid) => {
-    return (dispatch) => {
-        axios.get('http://localhost:8080/api/user/RentRequestlist/'+ uid).then((res) => {
-            const result = res.data;
-            //console.log(res.data);
-            dispatch(GetRentList(result));
-        }).catch(() => {
-            //console.log('error');
-        })
-    }
-}
-
 //Change user state------------------------------------------------
 
 export const postToCart = (UID, itemID, number, Price) => {
@@ -259,24 +241,38 @@ export const AddePendding = (UID) => {
 }
 
 
-//Rent start-------------------
+//Rent start--------------------------------------
 
-export const RentpostToCart = (UID, itemID, number, startDate, endDate, TotalPrice) => {
+const GetRentList = (result) => ({
+    type: constants.GETUSERRENT,
+    data: fromJS(result)
+})
+
+export const getRentdetail = (uid) => {
+    return (dispatch) => {
+        axios.get('http://localhost:8080/api/user/RentRequestlist/'+ uid).then((res) => {
+            const result = res.data;
+            console.log(res.data);
+            dispatch(GetRentList(result));
+        }).catch(() => {
+            //console.log('error');
+        })
+    }
+}
+
+
+export const RentpostToCart = (UID, itemID, TotalPrice) => {
     return () => {
         console.log(TotalPrice);
         let postdata = {
             "itemID": itemID,
-            "number":number,
-            "startDate":startDate,
-            "endDate":endDate,
             "TotalPrice":TotalPrice,
         }
-        axios.post('http://localhost:8080/api/user/RentList/' + UID, postdata).then(res=>{
+        axios.post('http://localhost:8080/api/user/RentRequestlist/update/' + UID, postdata).then(res=>{
                 //console.log(res);
             })
-        //window.location.reload();
+            window.location.reload();
         }
-    
 }
 
 export const DeleteRentstate = (UID) => {
@@ -296,5 +292,83 @@ export const AddeRentstate = (UID) => {
     }
     axios.post('http://localhost:8080/api/user/update/' + UID, updateState).then(res=>{
     console.log(res);})
+    }
+}
+
+
+//Rent approve list----------------
+
+export const PostToApprove = (UID, itemID, number,StartDate, EndDate, TotalPrice) => {
+    return () => {
+        let postdata = {
+            "itemID": itemID,
+            "number":number,
+            "StartDate":StartDate, 
+            "EndDate":EndDate,
+            "TotalPrice":TotalPrice,
+            "State":"NotPay"
+        }
+        //console.log(postdata);
+        axios.post('http://localhost:8080/api/user/RentList/' + UID, postdata).then(res=>{
+                //console.log(res);
+            })
+        axios.post('http://localhost:8080/api/user/RentRequestlist/delete/' + UID, postdata).then(res =>{
+                //console.log(res);
+            })
+        
+        window.location.reload();
+        
+        }
+}
+
+const RentList = (result) => ({
+    type: constants.GETRENTLIST,
+    data: fromJS(result)
+})
+
+export const GETApprovelist = (uid) => {
+    return (dispatch) => {
+        axios.get('http://localhost:8080/api/user/AllRentList/'+ uid).then((res) => {
+            const result = res.data;
+            console.log(res.data);
+            dispatch(RentList(result));
+        }).catch(() => {
+            //console.log('error');
+        })
+    }
+}
+
+//get Total price --------------------
+
+const SetPrice = () => ({
+    type: constants.TOTALPRICESTATE,
+    state:true
+})
+
+export const SetPriceState = () => {
+    return (dispatch) => {
+        dispatch(SetPrice())
+    }
+}
+
+const ResetPrice = () => ({
+    type: constants.RESETTOTALPRICE,
+    state:false
+})
+
+export const RestPrice = () => {
+    return (dispatch) => {
+        dispatch(ResetPrice())
+    }
+}
+
+const SetTotalPrice = (TotalPrice) => ({
+    type: constants.GETTOTALPRICE,
+    value:TotalPrice
+})
+
+export const GetTotalPrice = (TotalPrice) => {
+    return (dispatch) => {
+        dispatch(SetTotalPrice(TotalPrice))
     }
 }

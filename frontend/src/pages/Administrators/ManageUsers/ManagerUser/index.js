@@ -9,7 +9,7 @@ class ManageUser extends Component {
     render(){
         var storage=window.localStorage;
         var UID = storage.getItem("UID");
-        console.log(this.props.list);
+        //console.log(this.props.list);
         if(UID === "VsRZyRY71BennFQZOOnS04s876F2"){
             return(
                 <Wrapper>
@@ -21,6 +21,11 @@ class ManageUser extends Component {
                         <CartContentWrappet>
                         {this.getRentListTitle()}
                         {this.getRentList()}
+                        {this.showinput()}
+                        </CartContentWrappet>
+                        <CartContentWrappet>
+                            {this.getApproveListTitle()}
+                            {this.getApproveList()}
                         </CartContentWrappet>
 
                 </Wrapper>
@@ -31,7 +36,8 @@ class ManageUser extends Component {
     }
     componentDidMount(){
         this.props.GetUser(this.props.match.params.id);
-        this.props.GetRent(this.props.match.params.id);        
+        this.props.GetRent(this.props.match.params.id);
+        this.props.GetApproveList(this.props.match.params.id);
     }
 
     getPenddingListTitle(){
@@ -65,7 +71,7 @@ class ManageUser extends Component {
         const{list} = this.props;
         var ID = this.props.match.params.id;
         const PenddinglistSize = this.props.list.size;
-        console.log(PenddinglistSize);
+        //console.log(PenddinglistSize);
         if(PenddinglistSize === 0 ){
             this.props.updatePenddingState(ID);
         }else if (PenddinglistSize > 0){
@@ -110,9 +116,9 @@ class ManageUser extends Component {
                 <CartItemWrapper>
                 <CartItem>Product name</CartItem>
                 <CartItem>Quantity</CartItem>
-                <CartItem>Total Price</CartItem>
                 <CartItem>Start date</CartItem>
                 <CartItem>End date</CartItem>
+                <CartItem>TotalPrice</CartItem>
                 <CartItem></CartItem>
                 </CartItemWrapper>
                 </div>
@@ -141,20 +147,26 @@ class ManageUser extends Component {
                             <CartItemWrapper key={item.get('id')}>
                                 <CartItem>{item.get('id')}</CartItem>
                                 <CartItem>{item.get('number')}</CartItem>
-                                <CartItem>TBU</CartItem>
                                 <CartItem>{item.get('StartDate')}</CartItem>
                                 <CartItem>{item.get('EndDate')}</CartItem>
-                                <input name= "a" type="number" value="s"></input>
+                                <CartItem>{item.get('TotalPrice')}</CartItem>
+                                <CartItem></CartItem>
+                                <button onClick={() => this.props.ChangeTotalPriceState()}>Select price</button>
                             </CartItemWrapper>
-                            
                             <Button onClick={() => this.props.updatePrice(
                                 ID,
                                 item.get('id'),
-                                item.get('number'),
-                                item.get('StartDate'),
-                                item.get('EndDate'),
-                                this.a.value
+                                this.props.TotalPrice
                             )}>Update</Button>
+
+                            {this.CheckisSetTotoalPrice(
+                            ID,
+                            item.get('id'),
+                            item.get('number'),
+                            item.get('StartDate'),
+                            item.get('EndDate'),
+                            item.get('TotalPrice'))}
+                            
                     </Item>
                     </>
                 )
@@ -165,7 +177,83 @@ class ManageUser extends Component {
             )
         }
     }
+
+    showinput(){
+        if(this.props.TotalPriceState === true){
+            var TotalPrice = prompt("Total Price for rent this machine is :");
+            this.props.getTotalPrice(TotalPrice);
+            this.props.ResetTotalPriceState();
+        }
+    }
+
+    CheckisSetTotoalPrice(UID, itemID, number,StartDate, EndDate, TotalPrice){
+        if(TotalPrice == null){
+            return "Please update the price";
+        }else{
+            return(
+                <Button onClick={() => this.props.Approve(UID, itemID, number,StartDate, EndDate, TotalPrice)}>Approve</Button>
+            )
+        }
+    }
     
+    getApproveListTitle(){
+        const ApproveListSize = this.props.ApproveList.size;
+        if(ApproveListSize === 0){
+            return (
+                <h1>Nothing in Pendding</h1>
+            )
+        }else if (ApproveListSize > 0){
+            return[
+                <div>
+                <CartItemTitle>
+                Approve Rent
+                </CartItemTitle>
+                <CartItemWrapper>
+                <CartItem>Product name</CartItem>
+                <CartItem>Quantity</CartItem>
+                <CartItem>Start date</CartItem>
+                <CartItem>End date</CartItem>
+                <CartItem>TotalPrice</CartItem>
+                <CartItem>State</CartItem>
+                <CartItem></CartItem>
+                </CartItemWrapper>
+                </div>
+            ]
+        }else{
+            return(
+                <h1>Error</h1>
+            )
+        }
+    }
+
+    getApproveList(){
+        const{ApproveList} = this.props;
+        var ID = this.props.match.params.id;
+        const ApproveListSize = this.props.ApproveList.size;
+        //console.log(ApproveList);
+        if(ApproveListSize === 0 ){
+        }else if (ApproveListSize > 0){
+            return ApproveList.map((item) => {
+                return(
+                    <Item>
+                    <CartItemWrapper key={item.get('id')}>
+                        <CartItem>{item.get('id')}</CartItem>
+                        <CartItem>{item.get('number')}</CartItem>
+                        <CartItem>{item.get('StartDate')}</CartItem>
+                        <CartItem>{item.get('EndDate')}</CartItem>
+                        <CartItem>{item.get('TotalPrice')}</CartItem>
+                        <CartItem>{item.get('State')}</CartItem>
+                        <CartItem></CartItem>
+                    </CartItemWrapper>
+                    </Item>
+                )
+            })
+        }else{
+            return(
+                <h1>Error</h1>
+            )
+        }
+    }
     
 }
 
@@ -173,7 +261,10 @@ class ManageUser extends Component {
 const mapStateTothis= (state) => {
     return {
         list:state.getIn(['Admin','penddingList']),
-        rentlist:state.getIn(['Admin','rentlist'])
+        rentlist:state.getIn(['Admin','rentlist']),
+        TotalPriceState:state.getIn(['Admin','TotalPriceState']),
+        TotalPrice:state.getIn(['Admin','TotalPrice']),
+        ApproveList:state.getIn(['Admin','ApproveList'])        
     }
 }
 
@@ -188,8 +279,8 @@ const mapDispathTothis = (dispatch) => {
         approveItem(uid, itemID, number, Price){
             dispatch(actionCreators.postToCart(uid, itemID, number, Price));
         },
-        updatePrice(uid, itemID, number, startDate, endDate, TotalPrice){
-            dispatch(actionCreators.RentpostToCart(uid, itemID, number, startDate, endDate, TotalPrice));
+        updatePrice(uid, itemID,TotalPrice){
+            dispatch(actionCreators.RentpostToCart(uid, itemID,TotalPrice));
         },
         updatePenddingState(uid){
             dispatch(actionCreators.DeletePendding(uid));
@@ -202,7 +293,23 @@ const mapDispathTothis = (dispatch) => {
         },
         updateRentState2(uid){
             dispatch(actionCreators.AddeRentstate(uid));
+        },
+        ChangeTotalPriceState(){
+            dispatch(actionCreators.SetPriceState());
+        },
+        getTotalPrice(TotalPrice){
+            dispatch(actionCreators.GetTotalPrice(TotalPrice));
+        },
+        ResetTotalPriceState(){
+            dispatch(actionCreators.RestPrice());
+        },
+        Approve(UID, itemID, number,StartDate, EndDate, TotalPrice){
+            dispatch(actionCreators.PostToApprove(UID, itemID, number,StartDate, EndDate, TotalPrice));
+        },
+        GetApproveList(UID){
+            dispatch(actionCreators.GETApprovelist(UID));
         }
+
     }
 }
 

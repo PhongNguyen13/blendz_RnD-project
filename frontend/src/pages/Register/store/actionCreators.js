@@ -17,7 +17,8 @@ export const sign_up = (email, password) => {
             let postdata = {
                 "id":id, 
                 "email":email,
-                "name": "new user"};
+                "name": "new user",
+                "PriceToPay":0};
             axios.post('http://localhost:8080/api/user',postdata).then(res=>{
                 console.log(res);
             })

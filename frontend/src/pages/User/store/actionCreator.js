@@ -2,11 +2,12 @@ import * as constants from './constants';
 import axios from 'axios';
 import { fromJS } from 'immutable';
 
-const getUserdetail = (name, email,CartTotalPrice) => ({
+const getUserdetail = (name, email,CartTotalPrice, TotalrentPrice) => ({
     type: constants.GETUSER,
     name,
     email,
-    CartTotalPrice
+    CartTotalPrice,
+    TotalrentPrice,
 })
 
 export const getUser = (UID) => {
@@ -15,7 +16,7 @@ export const getUser = (UID) => {
             const result = res.data;
             //console.log(res);
             //console.log(result.CartTotalPrice);
-            dispatch(getUserdetail(result.name, result.email, result.CartTotalPrice));
+            dispatch(getUserdetail(result.name, result.email, result.CartTotalPrice,result.TotalrentPrice));
         }).catch(() => {
             console.log('error');
         })

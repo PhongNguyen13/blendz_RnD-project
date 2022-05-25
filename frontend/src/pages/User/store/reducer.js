@@ -5,6 +5,7 @@ const defaultState = fromJS({
     name:'',
     email:'',
     CartTotalPrice:0,
+    TotalrentPrice:0,
     ChangeNameState:false
 });
 
@@ -14,7 +15,8 @@ const Userdetail  = (state = defaultState, action) => {
         return state.merge({
             name:action.name,
             email:action.email,
-            CartTotalPrice:action.CartTotalPrice
+            CartTotalPrice:action.CartTotalPrice,
+            TotalrentPrice:action.TotalrentPrice
         });
     }
     if (action.type === constants.CHANGENAME) {

@@ -48,7 +48,8 @@ const getAllUser = async (req, res, next) => {
                     doc.data().name,
                     doc.data().email,
                     doc.data().Pendding,
-                    doc.data().RentRequest
+                    doc.data().RentRequest,
+                    doc.data().ShippingAddress
                 );
                 usersArray.push(user);
             });
@@ -114,7 +115,8 @@ const getuserCart = async (req, res, next) => {
                     doc.id,
                     doc.data().number,
                     doc.data().Price,
-                    doc.data().orderID
+                    doc.data().orderID,
+                    doc.data().ShippingAddress
                 );
                 cartsArray.push(cart);
             });
@@ -249,7 +251,9 @@ const getDetailOrderList = async (req, res, next) => {
                 const cart = new Cart(
                     doc.id,
                     doc.data().number,
-                    doc.data().Price
+                    doc.data().Price,
+                    doc.data().orderID,
+                    doc.data().ShippingAddress
                 );
                 cartsArray.push(cart);
             });
@@ -306,7 +310,7 @@ const getuserRequestlist = async (req, res, next) => {
                     doc.data().TotalPrice,
                     doc.data().orderID,
                     doc.data().StartDate,
-                    doc.data().EndDate
+                    doc.data().EndDate                    
                 );
                 cartsArray.push(cart);
             });
@@ -342,26 +346,27 @@ const CreateRentList = async (req, res, next) => {
     }
 }
 
-/*
-const updateRentList = async (req, res, next) => {
+const getRentDetail = async (req, res, next) => {
     try {
+        const RentID = req.body.id;
+        //const RentID = req.body.RentID;
         const uid = req.params.id;
-        const itemID = req.body.itemID;
-        const data = req.body;
-        const cart = await firestore.collection('user').doc(uid).collection('RentRequest').doc(itemID);
-        await cart.update(data);
-        res.send('RentRequest record updated successfuly');        
+        const user = await firestore.collection('user').doc(uid).collection('RentList').doc(RentID);
+        const data = await user.get();
+        if(!data.exists) {
+            res.status(404).send('Rent detail with the given ID not found');
+        }else {
+            res.send(data.data());
+        }
     } catch (error) {
         res.status(400).send(error.message);
     }
 }
 
-
-
-const getuserFinsishRequestlist = async (req, res, next) => {
+const AllRequestList = async (req, res, next) => {
     try {
         const uid = req.params.id;
-        const carts = await firestore.collection('user').doc(uid).collection('RentRequest');
+        const carts = await firestore.collection('user').doc(uid).collection('RentList');
         const data = await carts.get();
         const cartsArray = [];
         if(data.empty) {
@@ -370,11 +375,13 @@ const getuserFinsishRequestlist = async (req, res, next) => {
             data.forEach(doc => {
                 const cart = new Rent(
                     doc.id,
-                    doc.data().Quantity,
+                    doc.data().number,
                     doc.data().TotalPrice,
                     doc.data().orderID,
                     doc.data().StartDate,
-                    doc.data().EndDate
+                    doc.data().EndDate,
+                    doc.data().State,
+                    doc.data().ShippingAddress
                 );
                 cartsArray.push(cart);
             });
@@ -385,17 +392,30 @@ const getuserFinsishRequestlist = async (req, res, next) => {
     }
 }
 
+
 const deleteRentList= async (req, res, next) => {
     try {
         const uid = req.params.id;
         const itemID = req.body.itemID;
-        await firestore.collection('user').doc(uid).collection('RentRequest').doc(itemID).delete();
+        await firestore.collection('user').doc(uid).collection('RentList').doc(itemID).delete();
         res.send('Item deleted successfuly');
     } catch (error) {
         res.status(400).send(error.message);
     }
 }
-*/
+
+const updateRentList = async (req, res, next) => {
+    try {
+        const data = req.body;
+        const uid = req.params.id;
+        const itemID = req.body.itemID;
+        const user =  await firestore.collection('user').doc(uid).collection('RentList').doc(itemID);
+        await user.update(data);
+        res.send('updateRentList record updated successfuly');        
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
 
 module.exports = {
     addUser,
@@ -417,5 +437,9 @@ module.exports = {
     getuserRequestlist,
     deleteRentRequest,
     updateRent,
-    CreateRentList
+    CreateRentList,
+    AllRequestList,
+    deleteRentList,
+    getRentDetail,
+    updateRentList
 }

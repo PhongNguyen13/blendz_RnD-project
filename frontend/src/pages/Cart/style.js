@@ -22,7 +22,6 @@ export const CartHeaderContent = styled.div`
 `
 export const CartContentWrappet = styled.div`
     width: 100%;
-    border: 1px solid black;
     margin-top:10px;
 `
 export const CartItemTitle = styled.div`
@@ -78,19 +77,39 @@ export const PayButton = styled.button`
 
 
 export const SummaryWrapper = styled.div`
-    display: flex;
     width: 100%;
-    height: 80px;
     margin-top:50px;
+    margin-left:10%;
     margin-bottom: 20px;
     background: white;
     font-size: 40px;
+
+    h1{
+    font-size: 20px;
+    }
 `
 export const Summarytext= styled.div`
     width: 90%;
+    font-size: 40px;
     height: 80px;
 `
 
 export const Disappear=styled.div`
     display:none;
+`
+
+export const AddressWrapper =styled.div`
+    width:50%;
+    height:20%;
+    background:black;
+`
+
+export const Input =styled.input`
+    width:70%;
+`
+
+
+export const Img = styled.img`
+    display: block;
+    margin:auto;
 `

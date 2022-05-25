@@ -6,7 +6,10 @@ const defaultState = fromJS({
     userList:[],
     penddingList:[],
     productdetail:[],
-    rentlist:[]
+    rentlist:[],
+    TotalPrice:'',
+    TotalPriceState:false,
+    ApproveList:[]
 })
 
 const AdministratorsState = (state = defaultState, action) => {
@@ -25,6 +28,18 @@ const AdministratorsState = (state = defaultState, action) => {
     }
     if (action.type === constants.GETUSERRENT) {
         return state.set('rentlist',action.data);
+    }
+    if (action.type === constants.TOTALPRICESTATE) {
+        return state.set('TotalPriceState',action.state);
+    }
+    if (action.type === constants.RESETTOTALPRICE) {
+        return state.set('TotalPriceState',action.state);
+    }
+    if (action.type === constants.GETTOTALPRICE) {
+        return state.set('TotalPrice',action.value);
+    }
+    if (action.type === constants.GETRENTLIST) {
+        return state.set('ApproveList',action.data);
     }
 
     return state;

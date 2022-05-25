@@ -10,6 +10,8 @@ class OrderList extends Component {
             <OrderWrapper>
             <Title>Order List</Title>
             <div>{this.getOrderList()}</div>
+            <Title>Rent List</Title>
+            <div>{this.getRentList()}</div>
             </OrderWrapper>
         )
     }
@@ -18,6 +20,7 @@ class OrderList extends Component {
         var storage=window.localStorage;
         var uid = storage.getItem("UID");
         this.props.OrderList(uid);
+        this.props.RentList(uid);
     }
 
     getOrderList(){
@@ -34,12 +37,32 @@ class OrderList extends Component {
                     </OrderButton>
                 );
             });
-        }
+    }
+
+    getRentList(){
+        const {Rentlist} = this.props;
+        console.log(Rentlist.size);
+        return Rentlist.map((item) =>{
+            const State = item.get('State');
+            if(State === "Paid"){
+                return (
+                    <OrderButton>
+                    <Link key={item.get('id')} to={`/OrderList/RentDetail/${item.get('id')}`}>
+                    <div>
+                        <p>{item.get('id')}</p>
+                    </div>
+                    </Link>
+                    </OrderButton>
+                );
+            }            
+        });
+}
 }
 
 const mapStateToProps = (state) => {
     return {
-        Orderlist: state.getIn(['order','Orderlist'])
+        Orderlist: state.getIn(['order','Orderlist']),
+        Rentlist: state.getIn(['order','Rentlist'])
     }
 }
 
@@ -47,6 +70,9 @@ const mapDispathToProprs = (dispatch) => {
     return{
         OrderList(uid){
             dispatch(actionCreator.getOrderList(uid))
+        },
+        RentList(uid){
+            dispatch(actionCreator.getRentList(uid))
         }
     }
 }

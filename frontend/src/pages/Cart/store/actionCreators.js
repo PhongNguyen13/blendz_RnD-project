@@ -102,3 +102,76 @@ export const deleteRentRequest = (uid, itemID) => {
         })
     }
 }
+
+//-----------------------------
+
+const RentList = (result) => ({
+    type: constants.GETAPPROVERENTLIST,
+    data: fromJS(result)
+})
+
+export const GETApprovelist = (uid) => {
+    return (dispatch) => {
+        axios.get('http://localhost:8080/api/user/AllRentList/'+ uid).then((res) => {
+            const result = res.data;
+            //console.log(res.data);
+            dispatch(RentList(result));
+        }).catch(() => {
+            //console.log('error');
+        })
+    }
+}
+
+export const deleteApproveRent = (uid, itemID) => {
+    return () => {
+        let postdata ={
+            "itemID": itemID
+        };
+        console.log(postdata);
+        axios.post('http://localhost:8080/api/user/RentList/delete/' + uid, postdata).then(res =>{
+            //console.log(res);
+        })
+    }
+}
+
+export const updateTotalrent = (uid, TotalPrice) => {
+    return () => {
+        let postdata ={
+            "TotalrentPrice": TotalPrice
+        };
+        axios.post('http://localhost:8080/api/user/update/' + uid, postdata).then(res =>{
+            //console.log(res);
+            //console.log(TotalPrice);
+        })
+    }
+}
+
+
+const NOTNULL = () => ({
+    type: constants.LISTISNULL,
+    value:true
+})
+
+export const updateNOTNULL = () => {
+    return (dispatch) => {
+        dispatch(NOTNULL());
+    }
+}
+
+const AddressState = () => ({
+    type: constants.ADDRESSSTATE,
+    value:true
+})
+
+export const updateAddressState = (UID, address) => {
+    return (dispatch) => {
+        let postdata = {
+            "ShippingAddress":address
+        };
+        axios.post('http://localhost:8080/api/user/update/' + UID, postdata).then((res) => {
+            console.log(res);
+        })
+
+        dispatch(AddressState());
+    }
+}

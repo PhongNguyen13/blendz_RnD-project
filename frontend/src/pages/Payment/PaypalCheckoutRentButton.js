@@ -3,7 +3,7 @@ import { PayPalButtons } from "@paypal/react-paypal-js";
 import axios from 'axios';
 import { set } from "immutable";
 
-const PaypalCheckoutButton = (props) => {
+const PaypalCheckoutButton2 = (props) => {
   const { product } = props;
   const [paidFor, setPaidFor] = useState(false);
   const [error, setError] = useState(null);
@@ -15,13 +15,15 @@ const PaypalCheckoutButton = (props) => {
   axios.get('http://localhost:8080/api/user/' + uid).then((res) => {
         const result = res.data;
         let ShippingAddress = result.ShippingAddress;
-        let Total = result.CartTotalPrice;
+        let Total = result.TotalrentPrice;
         var storage=window.localStorage;
-        storage.setItem("Total", Total);
         storage.setItem("Address", ShippingAddress);
+        storage.setItem("TotalRent", Total);
     }).catch(() => {
         console.log('error to get price');
     })
+
+    
 
   const handleApprove = (orderId) => {
     // Call backend function to fulfill order
@@ -72,7 +74,7 @@ const PaypalCheckoutButton = (props) => {
             }
         }}
         createOrder={(data, actions) => {
-            var TotalPrice = storage.getItem("Total");
+          var TotalPrice = storage.getItem("TotalRent");
             return actions.order.create({
               intent: "CAPTURE",
               purchase_units: [
@@ -81,83 +83,44 @@ const PaypalCheckoutButton = (props) => {
                   amount: {
                     currency_code: "NZD",
                     value: TotalPrice
+                  }
                 }
-                }
-            ]
+              ]
             });
         }}
         onApprove={async (data, actions) => {
             const order = await actions.order.capture();
             var ShipAddress = storage.getItem("Address");
-            
-               
                 const orderID = order.id;
-                console.log(orderID);     
-                axios.get('http://localhost:8080/api/user/cart/'+ uid).then((res) => {
+                
+                axios.get('http://localhost:8080/api/user/AllRentList/'+ uid).then((res) => {
                     const result = res.data;
+                    console.log(result);
+
                     for(var i = 0; i < result.length; i++){
                     //update order number for cart
                         let setOrderID = {
-                            "itemID":result[i].id,
+                            "State":"Paid",
                             "orderID": orderID,
+                            itemID:result[i].id,
                             "ShippingAddress":ShipAddress
                         };
-                        axios.post('http://localhost:8080/api/user/update/cartitem/' + uid, setOrderID).then(res=>{
-                            //console.log(res);
-                        })
-                    //create order number
-                        let postPaidListData = {
-                            "orderID": orderID
-                        }
-                            //console.log(postPaidListData);
-                        axios.post('http://localhost:8080/api/user/create/paidlist/' + uid, postPaidListData).then(res => {
+                        console.log(setOrderID);
+                        axios.post('http://localhost:8080/api/user/RentList/update/' + uid, setOrderID).then(res=>{
                             //console.log(res);
                         })
                     }
-                })
-
-
-                axios.get('http://localhost:8080/api/user/cart/'+ uid).then((res) =>{
-                    const result = res.data;
-                    //console.log(result);
-                    //console.log(result[0]);
-                    for(var i = 0; i < result.length; i++){
-                    //post order list
-                        let postdata = {
-                            "id": result[i].id,
-                            "number": result[i].number,
-                            "Price": result[i].Price,
-                            "orderID": result[i].orderID,
-                            "ShippingAddress": result[i].ShippingAddress
-                        }
-                        console.log("this is the the id get from cart" + postdata)
-                        //console.log(result[i]);
-                        axios.post('http://localhost:8080/api/user/update/PaidList/' + uid, postdata).then(res=>{
-                            //console.log(res);
-                        })
-                    //clean the cart
-                    
-                        let postDeleteitemID = {
-                            "itemID":result[i].id
-                        }
-                        //console.log("id from post to delete api"+result[i].id);
-
-                        axios.post('http://localhost:8080/api/user/cart/delete/' + uid, postDeleteitemID).then(res =>{
-                            console.log(res);
-                        })
-                    }
-                }).catch(()=>{
-                    console.log('error to get cart list');
                 })
             
                 //reset Total price as 0
                 let postdata ={
-                    "CartTotalPrice": 0
+                    "TotalrentPrice": 0
                 };
+                console.log(postdata);
                 axios.post('http://localhost:8080/api/user/update/' + uid, postdata).then(res =>{
                 })
         
-                storage.setItem("Total", 0);
+                storage.setItem("TotalRent", 0);
                 setTimeout("window.location.href = '/SuccessPayment'", 5000)
 
             // const order = await actions.order.capture(); 
@@ -177,4 +140,4 @@ const PaypalCheckoutButton = (props) => {
   );
 }
   
-export default PaypalCheckoutButton;
+export default PaypalCheckoutButton2;

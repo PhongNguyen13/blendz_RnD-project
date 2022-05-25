@@ -37,6 +37,60 @@ export const getOrderDetail = (uid, orderID) => {
     }
 }
 
+const GetRentList = (result) => ({
+    type: constants.GETRENTLIST,
+    data: fromJS(result)
+})
 
+export const getRentList = (uid) => {
+    return (dispatch) => {
+        axios.get('http://localhost:8080/api/user/AllRentList/' + uid).then((res) => {
+            const result = res.data;
+            dispatch(GetRentList(result));
+        }).catch(() => {
+            console.log('error');
+        })
+    }
+}
 
+const GetRentDetail = (result) => ({
+    type: constants.GETRENTDETAIL,
+    data: result
+})
+
+export const getrentDetail = (uid, RentID) => {
+    console.log(RentID);
+    return (dispatch) => {
+        console.log(uid);
+        axios.post('http://localhost:8080/api/user/RentList/detail/' + uid, RentID).then((res) => {
+            console.log(res);
+            const result = res.data;
+            dispatch(GetRentDetail(result));
+        }).catch(() => {
+            console.log('error, can not get rent detail');
+        })
+    }
+}
+
+const GetORDERID = (result) => ({
+    type: constants.ORDERID,
+    data: result
+})
+
+export const updateOrderID = (ORDERID) => {
+    return (dispatch) => {
+            dispatch(GetORDERID(ORDERID));
+        }
+}
+
+const GetADDRESS = (result) => ({
+    type: constants.SHIPPINGADDRESS,
+    data: result
+})
+
+export const updateADDRESS = (ADDRESS) => {
+    return (dispatch) => {
+            dispatch(GetADDRESS(ADDRESS));
+        }
+}
 

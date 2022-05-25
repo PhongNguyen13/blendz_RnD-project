@@ -52,3 +52,15 @@ export const OrderPrice = styled.div`
     margin:1% auto;
 
 `
+
+export const OrderInfo = styled.div`
+    font-size: 20px;
+    margin:2% ;
+    display:flex;
+
+    h1{
+        color:red;
+        margin-left:1%;
+    }
+
+`

@@ -75,6 +75,8 @@ export const postItem = (UID, itemID, number, Price, Type) => {
             //console.log(res);
         })
         }
+
+        window.location.href = `/shop/detail/${itemID}`;
     }
 }
 
@@ -117,7 +119,8 @@ export const handinRentRquest = (UID,itemID, Quantity, StartDate, EndDate) => {
                     "itemID":itemID,
                     "Quantity":Quantity, 
                     "StartDate":StartDate, 
-                    "EndDate":EndDate
+                    "EndDate":EndDate,
+                    "State":"NotPay"
                 }
                 axios.post('http://localhost:8080/api/user/update/RentRequest/' + UID, postdate).then(res=>{
                 //console.log(res);
