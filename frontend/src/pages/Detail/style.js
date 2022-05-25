@@ -26,14 +26,12 @@ export const ItemInfo = styled.div`
         line-height: 150%;
         font-weight: bold;
         margin-bottom: 2%;
-
     }
     p {
         font-size:25px;
         line-height: 150%;
         color: red;
     }
-
     h2{
         margin-top:5%;
         margin-bottom:2%;
@@ -48,7 +46,7 @@ export const Description = styled.div`
     margin:auto;
     width:100%;
     //background:blue;
-
+    
     h1 {
         font-size:20px;
         line-height: 150%;

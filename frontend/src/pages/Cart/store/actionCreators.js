@@ -11,11 +11,19 @@ export const getCart = (uid) => {
     return (dispatch) => {
         axios.get('http://localhost:8080/api/user/cart/'+ uid).then((res) => {
             const result = res.data;
+<<<<<<< HEAD
+            console.log(res.status);
+
+            dispatch(GetCart(result));
+        }).catch(() => {
+            console.log('error');
+=======
             //console.log(res.status);
 
             dispatch(GetCart(result));
         }).catch(() => {
             //console.log('error');
+>>>>>>> 401a8ca219fc7d1c002a490a43cf0304708e5623
         })
     }
 }
@@ -45,7 +53,11 @@ export const getPendding = (uid) => {
             //console.log(res.data);
             dispatch(GetPendding(result));
         }).catch(() => {
+<<<<<<< HEAD
+            console.log('error');
+=======
             //console.log('error');
+>>>>>>> 401a8ca219fc7d1c002a490a43cf0304708e5623
         })
     }
 }
@@ -73,6 +85,8 @@ export const updateTotalPrice = (uid, TotalPrice) => {
     }
 }
 
+<<<<<<< HEAD
+=======
 //--------------------------------------------------
 
 const GetRentList = (result) => ({
@@ -102,6 +116,7 @@ export const deleteRentRequest = (uid, itemID) => {
         })
     }
 }
+<<<<<<< HEAD
 
 //-----------------------------
 
@@ -175,3 +190,6 @@ export const updateAddressState = (UID, address) => {
         dispatch(AddressState());
     }
 }
+=======
+>>>>>>> 401a8ca219fc7d1c002a490a43cf0304708e5623
+>>>>>>> 38edb3c6fb58291d5560a710d71ce3a60613bed9

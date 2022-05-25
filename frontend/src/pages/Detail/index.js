@@ -35,6 +35,7 @@ class Detail extends Component {
     }
 
     render(){
+
         //console.log(this.props.data.VideoUrl)
         var storage=window.localStorage;
         var UID = storage.getItem("UID");
@@ -107,6 +108,7 @@ class Detail extends Component {
     getDesc() {
         const des = this.props.data.description;
         if(typeof des == "undefined" || des == null || des == ""){
+
             return(
                 <h1>No description</h1>
             )
@@ -138,6 +140,7 @@ class Detail extends Component {
                 </Request>
             )
         }else{
+        
         }
     }
 }
