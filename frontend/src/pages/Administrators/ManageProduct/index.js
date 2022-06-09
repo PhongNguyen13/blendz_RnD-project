@@ -13,7 +13,7 @@ class AdministratorsPendding extends Component {
             return(
                 <Wrapper>
                     <TitleWrapper>
-                    <Button2><a href="http://localhost:3000/Administrators/ManageProduct/AddProduct">Add Product to</a></Button2>
+                    <Button2><a href="https://blendz.herokuapp.com/Administrators/ManageProduct/AddProduct">Add Product to</a></Button2>
                     <ProdutcTitleContent onClick={() => this.props.handleInput("Machine")}><button>Slushy Machine</button></ProdutcTitleContent>
                     <ProdutcTitleContent onClick={() => this.props.handleInput("Beverage")}><button>Beverages</button></ProdutcTitleContent>
                     <ProdutcTitleContent onClick={() => this.props.handleInput("Accessories")}><button>Accessories</button></ProdutcTitleContent>

@@ -6,19 +6,6 @@ export const AboutWrapper = styled.div`
     ${mobile({ padding: "10px 0px" })}
 `;
 
-// export const LeftWrap = styled.div`
-//     float: left;
-//     height: 350px;
-//     width: 350px;
-//     margin-left: 50px;
-//     margin-top: 50px;
-
-//     image {
-//         width: 100%;
-//         flex:1 1 45rem;
-//     }
-// `;
-
 export const RightWrap = styled.div`
     // margin-left: 350px;
     // margin-right: 50px;

@@ -19,7 +19,7 @@ export const sign_up = (email, password) => {
                 "email":email,
                 "name": "new user",
                 "PriceToPay":0};
-            axios.post('http://localhost:8080/api/user',postdata).then(res=>{
+            axios.post('https://blendz.herokuapp.com/api/user',postdata).then(res=>{
                 console.log(res);
             })
             var storage=window.localStorage;

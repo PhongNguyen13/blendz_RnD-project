@@ -9,7 +9,7 @@ export default function Payment() {
     var TotalPrice = storage.getItem("Total")
 
 
-    axios.get('http://localhost:8080/api/user/' + uid).then((res) => {
+    axios.get('https://blendz.herokuapp.com/api/user/' + uid).then((res) => {
         const result = res.data;
         let Total = result.CartTotalPrice;
         var storage=window.localStorage;
@@ -44,7 +44,7 @@ export default function Payment() {
                 //console.log(order.id);
                 const orderID = order.id;
                 
-                axios.get('http://localhost:8080/api/user/cart/'+ uid).then((res) => {
+                axios.get('https://blendz.herokuapp.com/api/user/cart/'+ uid).then((res) => {
                     const result = res.data;
                     for(var i = 0; i < result.length; i++){
 //update order number for cart
@@ -52,21 +52,21 @@ export default function Payment() {
                             "itemID":result[i].id,
                             "orderID": orderID
                         };
-                        axios.post('http://localhost:8080/api/user/update/cartitem/' + uid, setOrderID).then(res=>{
+                        axios.post('https://blendz.herokuapp.com/api/user/update/cartitem/' + uid, setOrderID).then(res=>{
                             //console.log(res);
                         })
 //create order number
                         let postPaidListData = {
                             "orderID": orderID
                         }
-                        axios.post('http://localhost:8080/api/user/create/paidlist/' + uid, postPaidListData).then(res => {
+                        axios.post('https://blendz.herokuapp.com/api/user/create/paidlist/' + uid, postPaidListData).then(res => {
                             //console.log(res);
                         })
                     }
                 })
 
 
-                axios.get('http://localhost:8080/api/user/cart/'+ uid).then((res) =>{
+                axios.get('https://blendz.herokuapp.com/api/user/cart/'+ uid).then((res) =>{
                     const result = res.data;
                     for(var i = 0; i < result.length; i++){
                         console.log("this is the the id get from cart" + result[i].id)
@@ -74,7 +74,7 @@ export default function Payment() {
 //post order list
                         let postdata = result[i];
                         //console.log(result[i]);
-                        axios.post('http://localhost:8080/api/user/update/PaidList/' + uid, postdata).then(res=>{
+                        axios.post('https://blendz.herokuapp.com/api/user/update/PaidList/' + uid, postdata).then(res=>{
                             //console.log(res);
                         })
 //clean the cart
@@ -83,7 +83,7 @@ export default function Payment() {
                         }
                         console.log("id from post to delete api"+result[i].id);
 
-                        axios.post('http://localhost:8080/api/user/cart/delete/' + uid, postDeleteitemID).then(res =>{
+                        axios.post('https://blendz.herokuapp.com/api/user/cart/delete/' + uid, postDeleteitemID).then(res =>{
                             console.log(res);
                         })
                     }
@@ -95,7 +95,7 @@ export default function Payment() {
                 let postdata ={
                     "CartTotalPrice": 0
                 };
-                axios.post('http://localhost:8080/api/user/update/' + uid, postdata).then(res =>{
+                axios.post('https://blendz.herokuapp.com/api/user/update/' + uid, postdata).then(res =>{
                 })
         
                 storage.setItem("Total", 0);

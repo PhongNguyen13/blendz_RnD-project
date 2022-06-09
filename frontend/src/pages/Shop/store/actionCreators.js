@@ -23,7 +23,7 @@ export const getMachineList = () => {
     return (dispatch) => {
         var storage=window.localStorage;
         storage.setItem("Select", "Machine");
-        axios.get('http://localhost:8080/api/machines').then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/machines').then((res) => {
             const result = res.data;
             dispatch(changeList(result));
         }).catch(() => {
@@ -35,7 +35,7 @@ export const getBeveragesList = () => {
     return (dispatch) => {
         var storage=window.localStorage;
         storage.setItem("Select", "Beverage");
-        axios.get('http://localhost:8080/api/beverages').then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/beverages').then((res) => {
             const result = res.data;
             dispatch(changeList(result));
         }).catch(() => {
@@ -48,7 +48,7 @@ export const getAccessoriesList = () => {
     return (dispatch) => {
         var storage=window.localStorage;
         storage.setItem("Select", "Accessorie");
-        axios.get('http://localhost:8080/api/accessories').then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/accessories').then((res) => {
             const result = res.data;
             dispatch(changeList(result));
         }).catch(() => {

@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/static/js/main.3a0e33b5.js",
+    "static/media/Question7_03.pdf": "/static/media/Question7_03.2199e636570d5ba8b118.pdf",
+    "static/media/Question5_02.pdf": "/static/media/Question5_02.6fdd0e906684ba8aac0c.pdf",
+    "static/media/Question8_02.pdf": "/static/media/Question8_02.e6da44ce2d7df82d9e03.pdf",
+    "static/media/Question7_01.pdf": "/static/media/Question7_01.33132c3b77e159dafba6.pdf",
+    "static/media/Question6.pdf": "/static/media/Question6.fdf04ec6e5cd82bce5cd.pdf",
+    "static/media/Question1.pdf": "/static/media/Question1.23ffe89b93d09399ff34.pdf",
+    "static/media/Question7_02.pdf": "/static/media/Question7_02.7a20a7a49438cefc374a.pdf",
+    "static/media/Question5_01.pdf": "/static/media/Question5_01.0c6ec516cd6ec81655c9.pdf",
+    "static/media/Question8_01.pdf": "/static/media/Question8_01.41bb934c1e8e7b88a947.pdf",
+    "static/media/HomeImage.png": "/static/media/HomeImage.7f4d615750383a553cc8.png",
+    "static/media/404.png": "/static/media/404.a91389064d9493f43e2b.png",
+    "static/media/logo.jpg": "/static/media/logo.cd4a7ce21338b442e078.jpg",
+    "index.html": "/index.html",
+    "main.3a0e33b5.js.map": "/static/js/main.3a0e33b5.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.3a0e33b5.js"
+  ]
+}

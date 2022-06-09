@@ -9,7 +9,7 @@ const GetCart = (result) => ({
 
 export const getCart = (uid) => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/api/user/cart/'+ uid).then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/user/cart/'+ uid).then((res) => {
             const result = res.data;
             //console.log(res.status);
 
@@ -25,7 +25,7 @@ export const deleteCartitem = (uid, itemID) => {
         let postdata ={
             "itemID": itemID
         };
-        axios.post('http://localhost:8080/api/user/cart/delete/' + uid, postdata).then(res =>{
+        axios.post('https://blendz.herokuapp.com/api/user/cart/delete/' + uid, postdata).then(res =>{
             //console.log(res);
         })
     }
@@ -40,7 +40,7 @@ const GetPendding = (result) => ({
 
 export const getPendding = (uid) => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/api/user/Pendding/'+ uid).then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/user/Pendding/'+ uid).then((res) => {
             const result = res.data;
             //console.log(res.data);
             dispatch(GetPendding(result));
@@ -55,7 +55,7 @@ export const deletePenddingitem = (uid, itemID) => {
         let postdata ={
             "itemID": itemID
         };
-        axios.post('http://localhost:8080/api/user/Pendding/delete/' + uid, postdata).then(res =>{
+        axios.post('https://blendz.herokuapp.com/api/user/Pendding/delete/' + uid, postdata).then(res =>{
             //console.log(res);
         })
     }
@@ -66,7 +66,7 @@ export const updateTotalPrice = (uid, TotalPrice) => {
         let postdata ={
             "CartTotalPrice": TotalPrice
         };
-        axios.post('http://localhost:8080/api/user/update/' + uid, postdata).then(res =>{
+        axios.post('https://blendz.herokuapp.com/api/user/update/' + uid, postdata).then(res =>{
             //console.log(res);
             //console.log(TotalPrice);
         })
@@ -82,7 +82,7 @@ const GetRentList = (result) => ({
 
 export const getRentdetail = (uid) => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/api/user/RentRequestlist/'+ uid).then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/user/RentRequestlist/'+ uid).then((res) => {
             const result = res.data;
             //console.log(res.data);
             dispatch(GetRentList(result));
@@ -97,7 +97,7 @@ export const deleteRentRequest = (uid, itemID) => {
         let postdata ={
             "itemID": itemID
         };
-        axios.post('http://localhost:8080/api/user/RentRequestlist/delete/' + uid, postdata).then(res =>{
+        axios.post('https://blendz.herokuapp.com/api/user/RentRequestlist/delete/' + uid, postdata).then(res =>{
             //console.log(res);
         })
     }
@@ -112,7 +112,7 @@ const RentList = (result) => ({
 
 export const GETApprovelist = (uid) => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/api/user/AllRentList/'+ uid).then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/user/AllRentList/'+ uid).then((res) => {
             const result = res.data;
             //console.log(res.data);
             dispatch(RentList(result));
@@ -128,7 +128,7 @@ export const deleteApproveRent = (uid, itemID) => {
             "itemID": itemID
         };
         console.log(postdata);
-        axios.post('http://localhost:8080/api/user/RentList/delete/' + uid, postdata).then(res =>{
+        axios.post('https://blendz.herokuapp.com/api/user/RentList/delete/' + uid, postdata).then(res =>{
             //console.log(res);
         })
     }
@@ -139,7 +139,7 @@ export const updateTotalrent = (uid, TotalPrice) => {
         let postdata ={
             "TotalrentPrice": TotalPrice
         };
-        axios.post('http://localhost:8080/api/user/update/' + uid, postdata).then(res =>{
+        axios.post('https://blendz.herokuapp.com/api/user/update/' + uid, postdata).then(res =>{
             //console.log(res);
             //console.log(TotalPrice);
         })
@@ -168,7 +168,7 @@ export const updateAddressState = (UID, address) => {
         let postdata = {
             "ShippingAddress":address
         };
-        axios.post('http://localhost:8080/api/user/update/' + UID, postdata).then((res) => {
+        axios.post('https://blendz.herokuapp.com/api/user/update/' + UID, postdata).then((res) => {
             console.log(res);
         })
 
