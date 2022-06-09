@@ -2,27 +2,26 @@ import styled from "styled-components";
 import { mobile } from "../../responsive";
 
 export const AboutWrapper = styled.div`
-    padding: 100px 0px;
-    width: 100%;
+    padding: 100px 50px;
     ${mobile({ padding: "10px 0px" })}
 `;
 
-export const LeftWrap = styled.div`
-    float: left;
-    height: 350px;
-    width: 350px;
-    margin-left: 50px;
-    margin-top: 50px;
+// export const LeftWrap = styled.div`
+//     float: left;
+//     height: 350px;
+//     width: 350px;
+//     margin-left: 50px;
+//     margin-top: 50px;
 
-    image {
-        width: 100%;
-        flex:1 1 45rem;
-    }
-`;
+//     image {
+//         width: 100%;
+//         flex:1 1 45rem;
+//     }
+// `;
 
 export const RightWrap = styled.div`
-    margin-left: 350px;
-    margin-right: 50px;
+    // margin-left: 350px;
+    // margin-right: 50px;
     background-color: #ADD8E6;
 `;
 

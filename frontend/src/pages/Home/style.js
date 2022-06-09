@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import HomePic from '../../assets/HomeImage.png';
 
 export const HomeWrapper = styled.div`
     padding: 100px 100px;
