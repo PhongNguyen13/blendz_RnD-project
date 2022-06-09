@@ -56,8 +56,8 @@ class Detail extends Component {
                         <InputButton onClick={this.handleChangeplusone}>+</InputButton>
                     </InputWrapper>
                     <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id, this.props.Quantity , Price, Type)}>
-                        <a href={`/shop/detail/${this.props.match.params.id}`}>Put it in Cart</a></Button>
-                    <Button onClick={() => this.props.openRequest()}>Reqest for Rent</Button>
+                        <a href={`/shop/detail/${this.props.match.params.id}`}>Add to Cart</a></Button>
+                    <Button onClick={() => this.props.openRequest()}>Request for Rent</Button>
                 </ItemInfo>
                 {this.RequestforRent(UID, this.props.match.params.id)}
                 <Description> 
@@ -92,7 +92,7 @@ class Detail extends Component {
         if(typeof pdf == "undefined" || pdf == null || pdf == ""){
         }else{
             return(
-                <a href={this.props.data.pdfUrl} type="application/pdf">About the machine</a>
+                <a href={this.props.data.pdfUrl} type="application/pdf">Download the Brochure</a>
             )
         }
     }

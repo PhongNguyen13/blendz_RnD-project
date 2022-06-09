@@ -2,22 +2,26 @@ import styled from "styled-components";
 import { mobile } from "../../responsive";
 
 export const AboutWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    padding: 3rem 3%;
-    flex-direction: row;
-
-    ${mobile({ padding: "0px 10px" })};
+    padding: 100px 50px;
+    ${mobile({ padding: "10px 0px" })}
 `;
 
-export const Image = styled.img`
-    width: 270px;
-    height: 370px;
+// export const LeftWrap = styled.div`
+//     float: left;
+//     height: 350px;
+//     width: 350px;
+//     margin-left: 50px;
+//     margin-top: 50px;
 
-    // ${mobile({ display: "flex" })};
-`
+//     image {
+//         width: 100%;
+//         flex:1 1 45rem;
+//     }
+// `;
 
 export const RightWrap = styled.div`
+    // margin-left: 350px;
+    // margin-right: 50px;
     background-color: #ADD8E6;
     position: relative;
     // ${mobile({ position: "absolute" })};

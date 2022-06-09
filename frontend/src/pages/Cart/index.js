@@ -67,7 +67,7 @@ class Cart extends Component {
     CheckTotalPrice(){
         if(this.props.CartTotalPrice === 0){
             return (
-                <h1>Noting To Pay</h1>
+                <h1>Nothing To Pay</h1>
             )
         }else if (this.props.CartTotalPrice > 0){
             return(
