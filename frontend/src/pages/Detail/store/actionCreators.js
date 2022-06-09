@@ -10,7 +10,7 @@ const changedetail = (data) => ({
 
 export const getMachineDetail = (id) => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/api/machine/' + id).then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/machine/' + id).then((res) => {
             const result = res.data;
             //console.log(result);
             dispatch(changedetail(result));
@@ -23,7 +23,7 @@ export const getMachineDetail = (id) => {
 
 export const getBeverageDetail = (id) => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/api/beverage/' + id).then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/beverage/' + id).then((res) => {
             const result = res.data;
             dispatch(changedetail(result));
         }).catch(() => {
@@ -35,7 +35,7 @@ export const getBeverageDetail = (id) => {
 
 export const getAccessorieDetail = (id) => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/api/accessorie/' + id).then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/accessorie/' + id).then((res) => {
             const result = res.data;
             //console.log("result");
             dispatch(changedetail(result));
@@ -56,22 +56,22 @@ export const postItem = (UID, itemID, number, Price, Type) => {
         
         if(Type === "machine"){
             if(number > 1){
-                axios.post('http://localhost:8080/api/user/update/Pendding/' + UID, postdata).then(res=>{
+                axios.post('https://blendz.herokuapp.com/api/user/update/Pendding/' + UID, postdata).then(res=>{
                 //console.log(res);
             })
                 let updatePendingState = {
                     "Pendding": "Yes"
                 }
-                axios.post('http://localhost:8080/api/user/update/' + UID, updatePendingState).then(res=>{
+                axios.post('https://blendz.herokuapp.com/api/user/update/' + UID, updatePendingState).then(res=>{
                 //console.log(res);
             })
             }else{
-                axios.post('http://localhost:8080/api/user/update/cart/' + UID, postdata).then(res=>{
+                axios.post('https://blendz.herokuapp.com/api/user/update/cart/' + UID, postdata).then(res=>{
                 //console.log(res);
             })
             }
         }else{
-            axios.post('http://localhost:8080/api/user/update/cart/' + UID, postdata).then(res=>{
+            axios.post('https://blendz.herokuapp.com/api/user/update/cart/' + UID, postdata).then(res=>{
             //console.log(res);
         })
         }
@@ -122,13 +122,13 @@ export const handinRentRquest = (UID,itemID, Quantity, StartDate, EndDate) => {
                     "EndDate":EndDate,
                     "State":"NotPay"
                 }
-                axios.post('http://localhost:8080/api/user/update/RentRequest/' + UID, postdate).then(res=>{
+                axios.post('https://blendz.herokuapp.com/api/user/update/RentRequest/' + UID, postdate).then(res=>{
                 //console.log(res);
             })
                 let updateRentRquestState = {
                     "RentRequest": "Yes"
                 }
-                axios.post('http://localhost:8080/api/user/update/' + UID, updateRentRquestState).then(res=>{
+                axios.post('https://blendz.herokuapp.com/api/user/update/' + UID, updateRentRquestState).then(res=>{
                 //console.log(res);
             })
                 console.log(postdate);

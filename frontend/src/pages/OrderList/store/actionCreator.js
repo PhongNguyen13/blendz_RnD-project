@@ -9,7 +9,7 @@ const GetOrderList = (result) => ({
 
 export const getOrderList = (uid) => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/api/user/paidlist/' + uid).then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/user/paidlist/' + uid).then((res) => {
             const result = res.data;
             dispatch(GetOrderList(result));
         }).catch(() => {
@@ -27,7 +27,7 @@ export const getOrderDetail = (uid, orderID) => {
     console.log(orderID);
     return (dispatch) => {
         console.log(uid);
-        axios.post('http://localhost:8080/api/user/order/detail/' + uid, orderID).then((res) => {
+        axios.post('https://blendz.herokuapp.com/api/user/order/detail/' + uid, orderID).then((res) => {
             console.log(res);
             const result = res.data;
             dispatch(GetOrderDetail(result));
@@ -44,7 +44,7 @@ const GetRentList = (result) => ({
 
 export const getRentList = (uid) => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/api/user/AllRentList/' + uid).then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/user/AllRentList/' + uid).then((res) => {
             const result = res.data;
             dispatch(GetRentList(result));
         }).catch(() => {
@@ -62,7 +62,7 @@ export const getrentDetail = (uid, RentID) => {
     console.log(RentID);
     return (dispatch) => {
         console.log(uid);
-        axios.post('http://localhost:8080/api/user/RentList/detail/' + uid, RentID).then((res) => {
+        axios.post('https://blendz.herokuapp.com/api/user/RentList/detail/' + uid, RentID).then((res) => {
             console.log(res);
             const result = res.data;
             dispatch(GetRentDetail(result));

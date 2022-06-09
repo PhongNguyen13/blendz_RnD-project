@@ -12,7 +12,7 @@ export const getProductList = (Type) => {
         var storage=window.localStorage;
         if(Type === "Beverage"){
             storage.setItem("Type", "beverage");
-            axios.get('http://localhost:8080/api/beverages').then((res) => {
+            axios.get('https://blendz.herokuapp.com/api/beverages').then((res) => {
             const result = res.data;
             dispatch(changeList(result));
         }).catch(() => {
@@ -20,7 +20,7 @@ export const getProductList = (Type) => {
         })
         }else if(Type === "Accessories"){
             storage.setItem("Type", "accessories");
-            axios.get('http://localhost:8080/api/accessories').then((res) => {
+            axios.get('https://blendz.herokuapp.com/api/accessories').then((res) => {
             const result = res.data;
             dispatch(changeList(result));
         }).catch(() => {
@@ -28,7 +28,7 @@ export const getProductList = (Type) => {
         })
         }else{
             storage.setItem("Type", "machine");    
-            axios.get('http://localhost:8080/api/machines').then((res) => {
+            axios.get('https://blendz.herokuapp.com/api/machines').then((res) => {
             const result = res.data;        
             dispatch(changeList(result));
         }).catch(() => {
@@ -54,18 +54,18 @@ export const updateProduct = (name, dprice, PriceToPay, ImgUrl, pdfUrl, VideoUrl
                 "description":des
             }
             if(submitType === "machine"){
-                axios.post('http://localhost:8080/api/machine', postdata).then((res) => {
+                axios.post('https://blendz.herokuapp.com/api/machine', postdata).then((res) => {
                 console.log(res);
                 console.log(params);
 
             })
             }else if (submitType === "beverage"){
-                axios.post('http://localhost:8080/api/beverage', postdata).then((res) => {
+                axios.post('https://blendz.herokuapp.com/api/beverage', postdata).then((res) => {
                 console.log(params);
                 console.log(res);
             })
             }else if(submitType === "accessories"){
-                axios.post('http://localhost:8080/api/accessorie', postdata).then((res) => {
+                axios.post('https://blendz.herokuapp.com/api/accessorie', postdata).then((res) => {
                 console.log(params);
                 console.log(res);
             })
@@ -83,18 +83,18 @@ export const updateProduct = (name, dprice, PriceToPay, ImgUrl, pdfUrl, VideoUrl
                 "description":des
             }
             if(submitType === "machine"){
-                axios.post('http://localhost:8080/api/machine/update/'+ params, postdata).then((res) => {
+                axios.post('https://blendz.herokuapp.com/api/machine/update/'+ params, postdata).then((res) => {
                 console.log(params);
                 console.log(res);
             })
             }else if (submitType === "beverage"){
-                axios.post('http://localhost:8080/api/beverage/update/'+ params, postdata).then((res) => {
+                axios.post('https://blendz.herokuapp.com/api/beverage/update/'+ params, postdata).then((res) => {
                 console.log(params);
                 console.log(res);
                 console.log(postdata);
             })
             }else if(submitType === "accessories"){
-                axios.post('http://localhost:8080/api/accessorie/update/'+ params, postdata).then((res) => {
+                axios.post('https://blendz.herokuapp.com/api/accessorie/update/'+ params, postdata).then((res) => {
                 console.log(params);
                 console.log(res);
             })
@@ -112,15 +112,15 @@ export const deletItem = (id) => {
         var storage=window.localStorage;
         var submitType = storage.getItem("Type");
         if(submitType === "machine"){
-            axios.post('http://localhost:8080/api/machine/delete/'+ id).then((res) => {
+            axios.post('https://blendz.herokuapp.com/api/machine/delete/'+ id).then((res) => {
                 console.log(res);
             })
         }else if (submitType === "beverage"){
-            axios.post('http://localhost:8080/api/beverage/delete/'+ id).then((res) => {
+            axios.post('https://blendz.herokuapp.com/api/beverage/delete/'+ id).then((res) => {
                 console.log(res);
             })
         }else if(submitType === "accessories"){
-            axios.post('http://localhost:8080/api/accessorie/delete/'+ id).then((res) => {
+            axios.post('https://blendz.herokuapp.com/api/accessorie/delete/'+ id).then((res) => {
                 console.log(res);
             })
         }
@@ -139,19 +139,19 @@ export const getProduct = (id) => {
         var storage=window.localStorage;
         var submitType = storage.getItem("Type");
         if(submitType === "machine"){
-            axios.get('http://localhost:8080/api/machine/'+ id).then((res) => {
+            axios.get('https://blendz.herokuapp.com/api/machine/'+ id).then((res) => {
                 //console.log(res);
                 const data = res.data;
                 dispatch(getProductdetail(data));
             })
         }else if (submitType === "beverage"){
-            axios.get('http://localhost:8080/api/beverage/'+ id).then((res) => {
+            axios.get('https://blendz.herokuapp.com/api/beverage/'+ id).then((res) => {
                 //console.log(res);
                 const data = res.data;
                 dispatch(getProductdetail(data));
             })
         }else if(submitType === "accessories"){
-            axios.get('http://localhost:8080/api/accessorie/'+ id).then((res) => {
+            axios.get('https://blendz.herokuapp.com/api/accessorie/'+ id).then((res) => {
                 //console.log(res);
                 const data = res.data;
                 dispatch(getProductdetail(data));
@@ -171,7 +171,7 @@ const UserList = (users) => ({
 
 export const getUserList = () => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/api/users').then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/users').then((res) => {
             const users = res.data;
             dispatch(UserList(users));
         }).catch(() => {
@@ -190,7 +190,7 @@ const changedetail = (date) => ({
 
 export const getUserdetail = (id) => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/api/user/pendding/' + id).then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/user/pendding/' + id).then((res) => {
             const penddingList = res.data;
             dispatch(changedetail(penddingList));
         }).catch(() => {
@@ -208,10 +208,10 @@ export const postToCart = (UID, itemID, number, Price) => {
             "number":number,
             "Price":Price
         }
-        axios.post('http://localhost:8080/api/user/update/cart/' + UID, postdata).then(res=>{
+        axios.post('https://blendz.herokuapp.com/api/user/update/cart/' + UID, postdata).then(res=>{
                 //console.log(res);
             })
-        axios.post('http://localhost:8080/api/user/Pendding/delete/' + UID, postdata).then(res =>{
+        axios.post('https://blendz.herokuapp.com/api/user/Pendding/delete/' + UID, postdata).then(res =>{
                 //console.log(res);
             })
         window.location.reload();
@@ -223,7 +223,7 @@ export const DeletePendding = (UID) => {
         let updatePendingState = {
             "Pendding": "Nothing"
         }
-    axios.post('http://localhost:8080/api/user/update/' + UID, updatePendingState).then(res=>{
+    axios.post('https://blendz.herokuapp.com/api/user/update/' + UID, updatePendingState).then(res=>{
     //console.log(res);
 })
     }
@@ -234,7 +234,7 @@ export const AddePendding = (UID) => {
         let updatePendingState = {
             "Pendding": "Yes"
         }
-    axios.post('http://localhost:8080/api/user/update/' + UID, updatePendingState).then(res=>{
+    axios.post('https://blendz.herokuapp.com/api/user/update/' + UID, updatePendingState).then(res=>{
     //console.log(res);
 })
     }
@@ -250,7 +250,7 @@ const GetRentList = (result) => ({
 
 export const getRentdetail = (uid) => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/api/user/RentRequestlist/'+ uid).then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/user/RentRequestlist/'+ uid).then((res) => {
             const result = res.data;
             console.log(res.data);
             dispatch(GetRentList(result));
@@ -268,7 +268,7 @@ export const RentpostToCart = (UID, itemID, TotalPrice) => {
             "itemID": itemID,
             "TotalPrice":TotalPrice,
         }
-        axios.post('http://localhost:8080/api/user/RentRequestlist/update/' + UID, postdata).then(res=>{
+        axios.post('https://blendz.herokuapp.com/api/user/RentRequestlist/update/' + UID, postdata).then(res=>{
                 //console.log(res);
             })
             window.location.reload();
@@ -280,7 +280,7 @@ export const DeleteRentstate = (UID) => {
         let updateState = {
             "RentRequest": "Nothing"
     }
-    axios.post('http://localhost:8080/api/user/update/' + UID, updateState).then(res=>{
+    axios.post('https://blendz.herokuapp.com/api/user/update/' + UID, updateState).then(res=>{
     console.log(res);})
     }
 }
@@ -290,7 +290,7 @@ export const AddeRentstate = (UID) => {
         let updateState = {
             "RentRequest": "Yes"
     }
-    axios.post('http://localhost:8080/api/user/update/' + UID, updateState).then(res=>{
+    axios.post('https://blendz.herokuapp.com/api/user/update/' + UID, updateState).then(res=>{
     console.log(res);})
     }
 }
@@ -309,10 +309,10 @@ export const PostToApprove = (UID, itemID, number,StartDate, EndDate, TotalPrice
             "State":"NotPay"
         }
         //console.log(postdata);
-        axios.post('http://localhost:8080/api/user/RentList/' + UID, postdata).then(res=>{
+        axios.post('https://blendz.herokuapp.com/api/user/RentList/' + UID, postdata).then(res=>{
                 //console.log(res);
             })
-        axios.post('http://localhost:8080/api/user/RentRequestlist/delete/' + UID, postdata).then(res =>{
+        axios.post('https://blendz.herokuapp.com/api/user/RentRequestlist/delete/' + UID, postdata).then(res =>{
                 //console.log(res);
             })
         
@@ -328,7 +328,7 @@ const RentList = (result) => ({
 
 export const GETApprovelist = (uid) => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/api/user/AllRentList/'+ uid).then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/user/AllRentList/'+ uid).then((res) => {
             const result = res.data;
             console.log(res.data);
             dispatch(RentList(result));

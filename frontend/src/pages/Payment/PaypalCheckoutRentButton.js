@@ -12,7 +12,7 @@ const PaypalCheckoutButton2 = (props) => {
   var uid = storage.getItem("UID");
 
 
-  axios.get('http://localhost:8080/api/user/' + uid).then((res) => {
+  axios.get('https://blendz.herokuapp.com/api/user/' + uid).then((res) => {
         const result = res.data;
         let ShippingAddress = result.ShippingAddress;
         let Total = result.TotalrentPrice;
@@ -93,7 +93,7 @@ const PaypalCheckoutButton2 = (props) => {
             var ShipAddress = storage.getItem("Address");
                 const orderID = order.id;
                 
-                axios.get('http://localhost:8080/api/user/AllRentList/'+ uid).then((res) => {
+                axios.get('https://blendz.herokuapp.com/api/user/AllRentList/'+ uid).then((res) => {
                     const result = res.data;
                     console.log(result);
 
@@ -106,7 +106,7 @@ const PaypalCheckoutButton2 = (props) => {
                             "ShippingAddress":ShipAddress
                         };
                         console.log(setOrderID);
-                        axios.post('http://localhost:8080/api/user/RentList/update/' + uid, setOrderID).then(res=>{
+                        axios.post('https://blendz.herokuapp.com/api/user/RentList/update/' + uid, setOrderID).then(res=>{
                             //console.log(res);
                         })
                     }
@@ -117,7 +117,7 @@ const PaypalCheckoutButton2 = (props) => {
                     "TotalrentPrice": 0
                 };
                 console.log(postdata);
-                axios.post('http://localhost:8080/api/user/update/' + uid, postdata).then(res =>{
+                axios.post('https://blendz.herokuapp.com/api/user/update/' + uid, postdata).then(res =>{
                 })
         
                 storage.setItem("TotalRent", 0);

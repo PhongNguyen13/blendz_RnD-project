@@ -12,7 +12,7 @@ const getUserdetail = (name, email,CartTotalPrice, TotalrentPrice) => ({
 
 export const getUser = (UID) => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/api/user/' + UID).then((res) => {
+        axios.get('https://blendz.herokuapp.com/api/user/' + UID).then((res) => {
             const result = res.data;
             //console.log(res);
             //console.log(result.CartTotalPrice);
@@ -51,7 +51,7 @@ export const updatename = (name, UID) => {
         let postdata = {
             "name":name
         };
-        axios.post('http://localhost:8080/api/user/update/' + UID, postdata).then((res) => {
+        axios.post('https://blendz.herokuapp.com/api/user/update/' + UID, postdata).then((res) => {
             console.log(res);
         })
     }
