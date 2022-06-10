@@ -17,7 +17,9 @@ class Register extends Component {
                         <Input placeholder="Email" ref={(input) => {this.email = input}}/>
                         <Content className="STitle">Please enter your Password:</Content>
                         <Input placeholder="New Password" type='password' ref={(input) => {this.newpassword = input}}/>
-                        <Button onClick={() => this.props.Signup(this.email, this.newpassword)}>Create Account</Button>                    
+                        <Content className="STitle">Please enter your Password again to confirm:</Content>
+                        <Input placeholder="Comfirm Password" type='password' ref={(input) => {this.newpassword2 = input}}/>
+                        <Button onClick={() => this.props.Signup(this.email, this.newpassword, this.newpassword2)}>Create Account</Button>                    
                     </RegisterBox>
                 </RegisterWrapper>
             )
@@ -32,8 +34,8 @@ const mapState = (state) => ({
 })
 
 const mapDispatch = (dispatch) => ({
-    Signup(emailElem, newpasswordElem){
-        dispatch(actionCreators2.sign_up(emailElem.value,newpasswordElem.value));
+    Signup(emailElem, newpasswordElem, newpasswordElem2){
+        dispatch(actionCreators2.sign_up(emailElem.value,newpasswordElem.value, newpasswordElem2.value));
     }
 });
 

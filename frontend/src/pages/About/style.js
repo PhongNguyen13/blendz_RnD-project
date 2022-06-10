@@ -9,7 +9,8 @@ export const AboutWrapper = styled.div`
 export const RightWrap = styled.div`
     // margin-left: 350px;
     // margin-right: 50px;
-    background-color: #ADD8E6;
+    background-color: #F1BD9B;
+    border-radius:25px;
     position: relative;
     // ${mobile({ position: "absolute" })};
 `;

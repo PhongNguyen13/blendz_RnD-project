@@ -21,18 +21,22 @@ const GetUser = (data) => ({
 
 export const log_in = (email, password) => {
     return(dispatch) => {
-        login(email, password).then((res) => {
-            console.log(res);
-            console.log(res.user.uid);
-            let id = res.user.uid;
-            var storage=window.localStorage;
-            storage.setItem("Islogin", "login");
-            storage.setItem("UID", id);
-            dispatch(changeLogin());
-        }).catch(error => {
-            console.log(error);
-            alert(error);
-        })
+        if(checkEmail(email)){
+            login(email, password).then((res) => {
+                console.log(res);
+                console.log(res.user.uid);
+                let id = res.user.uid;
+                var storage=window.localStorage;
+                storage.setItem("Islogin", "login");
+                storage.setItem("UID", id);
+                dispatch(changeLogin());
+            }).catch(error => {
+                console.log(error);
+                alert("Wrong Password. Please try the other one.");
+            })
+        }else{
+            alert("Please enter a valid email, eg 123@gmail.com");
+        }
     }
 }
 
@@ -57,13 +61,18 @@ export const log_out = () => {
 
 export const Reset_Password = (email) => {
     return(dispatch) => {
-        reSetPassword(email).then((res) => {
-            console.log("email has sended");
-            dispatch(ChangeLogout())
-        }).catch(error => {
-            console.log(error);
-            alert(error);
-        })
+        if(checkEmail(email)){
+            reSetPassword(email).then((res) => {
+                console.log("email has sended");
+                dispatch(ChangeLogout())
+            }).catch(error => {
+                console.log(error);
+                alert(error);
+            })
+        }else{
+            alert("Please enter a valid email, eg 123@gmail.com");
+        }
+        
     }
 }
 
@@ -73,3 +82,10 @@ export const get_User = () =>{
         dispatch(GetUser(data.data));
     }
 };
+
+
+function checkEmail(email){
+	var patt=/^\S{1,50}@\S{1,50}(.com)$/;
+	var result=patt.test(email);
+	return result;
+}

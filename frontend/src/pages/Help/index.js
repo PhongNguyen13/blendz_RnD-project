@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Data } from './Data';
-import { AccordionSection, Wrap, Dropdown} from "./style";
+import { AccordionSection, Wrap, Dropdown, Title} from "./style";
 import { IconContext } from 'react-icons';
 import { FiPlus, FiMinus } from 'react-icons/fi';
 

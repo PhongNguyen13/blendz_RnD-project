@@ -9,14 +9,19 @@ const GetCart = (result) => ({
 
 export const getCart = (uid) => {
     return (dispatch) => {
-        axios.get('https://blendz.herokuapp.com/api/user/cart/'+ uid).then((res) => {
+        var storage=window.localStorage;
+        var Islogin = storage.getItem("Islogin");
+        if( Islogin === "Notlogin"){
+            dispatch(GetCart("0"))
+        }else{
+            axios.get('https://blendz.herokuapp.com/api/user/cart/'+ uid).then((res) => {
             const result = res.data;
             //console.log(res.status);
-
             dispatch(GetCart(result));
         }).catch(() => {
             //console.log('error');
         })
+        }
     }
 }
 

@@ -3,7 +3,6 @@ import { mobile } from "../../responsive";
 
 export const GlobalStyle = createGlobalStyle`
   html {
-    height: 100%
   }
   body {
     background: linear-gradient(#ffff, #3D550C);
@@ -11,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     color: #1A5653;
   }
+
   ${mobile({ padding: '0px 10px'})}
 `;
 
@@ -30,6 +30,7 @@ export const StyledFormWrapper = styled.div`
   align-items: center;
   height: 100vh;
   padding: 0 20px;
+
     ${mobile({ padding: '0px 10px'})}
 `;
 
@@ -41,6 +42,7 @@ export const StyledForm = styled.form`
   border-radius: 10px;
   box-sizing: border-box;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+
   h1 {
     color: #3D550C;
     position: relative;

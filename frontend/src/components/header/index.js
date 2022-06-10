@@ -19,9 +19,10 @@ class Header extends Component {
                 <NavItem href="/about">ABOUT</NavItem>
                 {this.Islogin()}
                 <NavItem href="/cart">
-                    <Badge badgeContent={this.props.NumberofCartitem.size} color="primary">
-                        <ShoppingCartOutlined />
-                        </Badge>
+                
+                <Badge badgeContent={this.props.NumberofCartitem.size} color="primary">
+                <ShoppingCartOutlined />
+                </Badge>
                         </NavItem>
                         </Nav>
                         </HeaderWrapper>
@@ -39,7 +40,7 @@ class Header extends Component {
         var UID = storage.getItem("UID");
 
         if(Islogin === "Notlogin"){
-            return(<NavItem href="/login"><AccountCircle /></NavItem>);
+            return(<NavItem href="/login">Login</NavItem>);
         }else if(Islogin === "login"){
             if(UID === "VsRZyRY71BennFQZOOnS04s876F2"){
                 return(

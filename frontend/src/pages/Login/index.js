@@ -15,9 +15,7 @@ class Login extends Component {
                 <LoginWrapper>
                     <LoginBox>
                         <Content className="Title">Blendz Login</Content>
-                        <Content className="STitle">Email:</Content>
                         <Input placeholder="Email" ref={(input) => {this.email = input}}/>
-                        <Content className="STitle">Password:</Content>
                         <Input placeholder="Password" type='password' ref={(input) => {this.password = input}}/>
                         <Button onClick={() => this.props.login(this.email, this.password)}>Login</Button>
                         <RegisterWrapper><Register href="/register">Register</Register></RegisterWrapper>

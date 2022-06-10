@@ -58,7 +58,8 @@ class Cart extends Component {
         }else{
             return(
                 <CartWrapper>
-                    <h1>Please Login</h1> 
+                    <h1>Please Login first</h1>
+                    <a href="/login">Click me to go to Login Page</a>
                 </CartWrapper>
             )
         }

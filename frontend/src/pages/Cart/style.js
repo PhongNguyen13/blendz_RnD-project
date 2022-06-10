@@ -57,7 +57,7 @@ export const Item = styled.div`
 export const Button = styled.button`
     margin: auto 2%;
     color: #FDFEFE;
-    background: #A0A0A0;
+    background: #E17631;
     border-radius: 5px;
     border: 1px solid #9EA482;
     text-decoration : none;
@@ -67,7 +67,7 @@ export const Button = styled.button`
 
 export const PayButton = styled.button`
     color: #FDFEFE;
-    background: #A0A0A0;
+    background: #E17631;
     border-radius: 5px;
     border: 1px solid #9EA482;
     text-decoration : none;

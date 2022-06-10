@@ -67,7 +67,7 @@ export const Button = styled.div`
     width:50%;
     margin: auto;
     color: #FDFEFE;
-    background: #A0A0A0;
+    background: #E17631;
     margin-top: 25px;
     padding: 0 30px;
     line-height:45px;

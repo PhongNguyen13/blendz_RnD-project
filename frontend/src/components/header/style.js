@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logoPic from '../../assets/logo.jpg';
+import logoPic from '../../assets/BlendzLogo.png';
 import { mobile } from "../../responsive";
 
 export const HeaderWrapper = styled.nav`

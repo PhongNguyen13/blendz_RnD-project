@@ -113,30 +113,67 @@ export const handinRentRquest = (UID,itemID, Quantity, StartDate, EndDate) => {
     return(dispatch) => {
         if(Quantity !== '' && StartDate !== '' & EndDate !== ''){
             if(Quantity <= 0){
-                alert("Quanlity must be postive number");
+                alert("Quanlity must be more than 0");
             }else{
-                let postdate = {
-                    "itemID":itemID,
-                    "Quantity":Quantity, 
-                    "StartDate":StartDate, 
-                    "EndDate":EndDate,
-                    "State":"NotPay"
+                if(checkDate(StartDate)){
+                    if(checkEndDate(StartDate, EndDate)){
+                    let postdate = {
+                        "itemID":itemID,
+                        "Quantity":Quantity, 
+                        "StartDate":StartDate, 
+                        "EndDate":EndDate,
+                        "State":"NotPay"
+                    }
+                    axios.post('https://blendz.herokuapp.com/api/user/update/RentRequest/' + UID, postdate).then(res=>{
+                    //console.log(res);
+                })
+                    let updateRentRquestState = {
+                        "RentRequest": "Yes"
+                    }
+                    axios.post('https://blendz.herokuapp.com/api/user/update/' + UID, updateRentRquestState).then(res=>{
+                    //console.log(res);
+                })
+                    console.log(postdate);
+                    alert("Request has been sent");
+                }else{
+                    alert("End date must not be earlier than Start date");
                 }
-                axios.post('https://blendz.herokuapp.com/api/user/update/RentRequest/' + UID, postdate).then(res=>{
-                //console.log(res);
-            })
-                let updateRentRquestState = {
-                    "RentRequest": "Yes"
-                }
-                axios.post('https://blendz.herokuapp.com/api/user/update/' + UID, updateRentRquestState).then(res=>{
-                //console.log(res);
-            })
-                console.log(postdate);
-                alert("Request has been sent");
+            }else{
+                alert("Start date must not be earlier than current date");
+            }
             }            
         }else{
             alert("must fill up all information");
         }
         dispatch(openRequest(false));
     }
+}
+
+
+
+function checkDate(StartDate){
+	var date = new Date()
+    var d = StartDate.split("-");
+    var pickup = new Date(d[0],d[1]-1,d[2]);
+
+	if(date < pickup){
+		return true;
+    }else{
+		return false;
+	}
+}
+
+
+function checkEndDate(StartDate, EndDate){
+    var d = StartDate.split("-");
+    var pickup = new Date(d[0],d[1]-1,d[2]);
+
+    var d2 = EndDate.split("-");
+    var pickup2 = new Date(d2[0],d2[1]-1,d2[2]);
+
+	if(pickup < pickup2){
+		return true;
+    }else{
+		return false;
+	}
 }
