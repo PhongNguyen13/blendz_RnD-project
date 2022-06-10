@@ -68,7 +68,7 @@ export const ProdutcTitleContent = styled.div`
 
     button:focus{
     cursor: pointer;
-    background: #FCA71B;
+    background: #E17631;
 }
 `
 

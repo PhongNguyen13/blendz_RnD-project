@@ -5,7 +5,7 @@ export const Button = styled.div`
     height: 35px;
     line-height: 30px;
     color: #fff;
-    background: #A0A0A0;
+    background: #E17631;
     border-radius: 5px;
     margin: 10px auto;
     margin-top: 40px;
@@ -19,7 +19,7 @@ export const SmallButton = styled.div`
     height: 35px;
     line-height: 30px;
     color: #fff;
-    background: black;
+    background: #E17631;
     border-radius: 5px;
     margin: 10px auto;
     margin-top: 40px;

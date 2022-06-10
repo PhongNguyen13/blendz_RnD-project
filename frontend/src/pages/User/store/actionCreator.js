@@ -54,5 +54,7 @@ export const updatename = (name, UID) => {
         axios.post('https://blendz.herokuapp.com/api/user/update/' + UID, postdata).then((res) => {
             console.log(res);
         })
+
+        window.location.href = 'https://blendz.herokuapp.com/user';
     }
 }

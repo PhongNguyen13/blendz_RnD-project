@@ -101,7 +101,7 @@ export const updateProduct = (name, dprice, PriceToPay, ImgUrl, pdfUrl, VideoUrl
             }
         }
 
-        window.location.href = 'http://localhost:3000/Administrators/ManageProduct';
+        window.location.href = 'https://blendz.herokuapp.com/Administrators/ManageProduct';
 
     }
 }
@@ -124,7 +124,7 @@ export const deletItem = (id) => {
                 console.log(res);
             })
         }
-        window.location.href = 'http://localhost:3000/Administrators/ManageProduct';
+        window.location.href = 'https://blendz.herokuapp.com/Administrators/ManageProduct';
     }
 }
 

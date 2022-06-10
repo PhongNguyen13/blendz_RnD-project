@@ -16,7 +16,7 @@ export const OrderButton = styled.div`
     height: 35px;
     line-height: 30px;
     color: #fff;
-    background: #A0A0A0;
+    background: #E17631;
     border-radius: 5px;
     margin: 10px auto;
     margin-top: 40px;

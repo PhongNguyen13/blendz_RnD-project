@@ -21,7 +21,7 @@ class Login extends Component {
                         <RegisterWrapper><Register href="/register">Register</Register></RegisterWrapper>
                         <RegisterWrapper><Register href="/resetpassword">Forgot password?</Register></RegisterWrapper>
                     </LoginBox>
-                </LoginWrapper>    
+                </LoginWrapper>
             )
         }else{
             return <Redirect to='/'/>

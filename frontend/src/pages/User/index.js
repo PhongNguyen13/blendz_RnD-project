@@ -35,7 +35,7 @@ class User extends Component {
                     <ChangeNameContent>
                         <input ref={(input) => {this.name = input}}/>
                     </ChangeNameContent>
-                    <SmallButton onClick={() => this.props.UpdateName(this.name, ID)} ><a href="/user">Submit</a></SmallButton>
+                    <SmallButton onClick={() => this.props.UpdateName(this.name, ID)} >Submit</SmallButton>
                     <SmallButton onClick={() => this.props.CancelChangeName()} >Cancel</SmallButton>
                 </ChangeNameForm>
             )

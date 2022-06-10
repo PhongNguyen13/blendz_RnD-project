@@ -68,7 +68,7 @@ export const StyledTextArea = styled.textarea`
 `;
 export const StyledButton = styled.button`
   display: block;
-  background-color: #FF9900;
+  background-color: #E17631;
   color: #fff;
   font-size: 0.9rem;
   border: 0;

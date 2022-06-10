@@ -55,7 +55,7 @@ class Detail extends Component {
                         <InputButton onClick={this.handleChangeplusone}>+</InputButton>
                     </InputWrapper>
                     <Button onClick={() => this.props.putIteminCart(UID,this.props.match.params.id, this.props.Quantity , Price, Type)}>
-                        Put it in Cart</Button>
+                        Add to Cart</Button>
                         {this.CheckIfMachine(this.props.data.type)}
                 </ItemInfo>
                 {this.RequestforRent(UID, this.props.match.params.id)}
