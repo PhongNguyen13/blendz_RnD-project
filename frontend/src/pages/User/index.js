@@ -13,7 +13,7 @@ class User extends Component {
             <UserInfo>{this.props.useremail}</UserInfo>
             <Button onClick={() => this.props.ChangeName()}>Update User Name</Button>
             {this.ChangeName()}
-            <Button onClick={() => window.location.href = 'OrderList'}>order List</Button>
+            <Button onClick={() => window.location.href = 'OrderList'}>Order History</Button>
             <Button onClick={() => this.props.logout()}>Logout</Button>
             </div>
         )

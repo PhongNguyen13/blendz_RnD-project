@@ -24,6 +24,7 @@ class Cart extends Component {
                 <CartHeaderContent>User: <a href="/user">{this.props.username}</a></CartHeaderContent>
                 </CartHeader>
 
+                    {this.DispalyEmprtyCart()}
                     <CartContentWrappet>
                         <h1>{this.getRentListTitle()}</h1>
                         <h1>{this.getRentList()}</h1>
@@ -165,10 +166,6 @@ class Cart extends Component {
     getCartListTitle(){
         const cartlistSize = this.props.cartlist.size;
         if(cartlistSize === 0){
-            return (
-            <Img src="https://firebasestorage.googleapis.com/v0/b/blendz-1e3a0.appspot.com/o/EmptyCart.png?alt=media&token=ad201776-061b-492f-b10a-f43b42ed8b86" 
-            alt=''/>
-            )
         }else if (cartlistSize > 0){
             return[
                 <div>
@@ -239,7 +236,7 @@ class Cart extends Component {
             return[
                 <div>
                 <CartItemTitle>
-                Pendding
+                pending
                 </CartItemTitle>
                 <CartItemWrapper>
                 <CartItem>Product name</CartItem>
@@ -416,6 +413,17 @@ class Cart extends Component {
         //console.log(Totalprice);
         var ID = storage.getItem("UID");
         this.props.updateTotalRentPrice(ID, Totalprice);
+    }
+
+    DispalyEmprtyCart(){
+        if(this.props.cartlist.size == 0 && this.props.penddinglist.size == 0 && this.props.rentlist.size ==0 && this.props.Approverentlist.size==0){
+            return (
+                <Img src="https://firebasestorage.googleapis.com/v0/b/blendz-1e3a0.appspot.com/o/EmptyCart.png?alt=media&token=ad201776-061b-492f-b10a-f43b42ed8b86" 
+                alt=''
+                width="450px"
+                height="300px"/>
+                )
+        }
     }
 }
 

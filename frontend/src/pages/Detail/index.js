@@ -89,7 +89,7 @@ class Detail extends Component {
     CheckIfMachine(type){
         if(type === "machine"){
             return(
-                <Button onClick={() => this.props.openRequest()}>Reqest for Rent</Button>
+                <Button onClick={() => this.props.openRequest()}>Request for Rent</Button>
             )
         }
     }
