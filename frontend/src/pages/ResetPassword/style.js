@@ -12,8 +12,8 @@ export const ResetWrapper = styled.div`
 `;
 
 export const ResetBox = styled.div`
-    width: 20%;
-    height: 50%;
+    width: 400px;
+    height: 270px;
     margin: 8% auto;
     background: white;
     padding-top: 3%;
@@ -36,16 +36,17 @@ export const Content = styled.div`
 export const Input = styled.input`
     display: block;
     width: 50%;
-    height: 10%;
+    height: 13%;
     padding: 0 5%;
     margin:auto;
     color: #777;
+    margin-top: 1%;
 
 `;
 
 export const Button = styled.div`
     width: 50%;
-    height: 8%;
+    height: 13%;
     line-height: 150%;
     color: #fff;
     background: #E17631;

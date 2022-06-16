@@ -6,12 +6,12 @@ export const RegisterWrapper = styled.div`
     left: 0;
     right: 0;
     padding-top:5%;
-    margin-bottom:5%;
+    margin-bottom:13%;
 `;
 
 export const RegisterBox = styled.div`
     width: 400px;
-    height: 400px;
+    height: 550px;
     margin: 0% auto;
     background: white;
     padding-top: 3%;
@@ -35,7 +35,7 @@ export const Content = styled.div`
 export const Input = styled.input`
     display: block;
     width: 50%;
-    height: 10%;
+    height: 7%;
     padding: 0 5%;
     margin:auto;
     color: #777;
@@ -43,7 +43,7 @@ export const Input = styled.input`
 
 export const Button = styled.div`
     width: 60%;
-    height: 10%;
+    height: 7%;
     line-height: 150%;
     color: #fff;
     background: #E17631;

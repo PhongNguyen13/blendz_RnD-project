@@ -63,11 +63,11 @@ export const Reset_Password = (email) => {
     return(dispatch) => {
         if(checkEmail(email)){
             reSetPassword(email).then((res) => {
-                console.log("email has sended");
+                alert("Email had sent. Please check Your Email: " + email );
                 dispatch(ChangeLogout())
             }).catch(error => {
                 console.log(error);
-                alert(error);
+                alert("Email not found. Please try another email.");
             })
         }else{
             alert("Please enter a valid email, eg 123@gmail.com");
